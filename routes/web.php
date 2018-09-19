@@ -8,6 +8,6 @@ Route::get('/', function () {
 
 Route::post('/slack/hook', function(Request $request){
     
-    dd($request);
+    return response($request->challenge, 200);
     
 });
