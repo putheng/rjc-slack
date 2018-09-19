@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Route::get('/slack/hook', function(){
     
-    return response(null, 200);
+    $updates = json_decode(file_get_contents('php://input') ,true);
+    
+    dd($updates);
     
 });
