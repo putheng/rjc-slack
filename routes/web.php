@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/slack/hook', function(){
+    
+    return response(null, 200);
+    
+});
