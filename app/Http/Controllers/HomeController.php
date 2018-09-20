@@ -10,5 +10,7 @@ class HomeController extends Controller
     {
         $count = file_get_contents('count.txt') + 1;
         file_put_contents('count.txt', $count);
+        
+        return $count;
     }
 }
