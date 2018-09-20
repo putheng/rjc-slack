@@ -8,6 +8,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return response('ok', 200);
+        $count = file_get_contents('count.txt') + 1;
+        file_put_contents('count.txt', $count);
     }
 }
