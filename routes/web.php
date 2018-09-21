@@ -8,6 +8,8 @@ Route::get('/', function () {
 
 Route::post('/slack/hook', 'HomeController@index');
 
-Route::get('test', function(Request $request){
-    return $request->ip();
+Route::get('user', function(){
+    $users = App\User::all();
+    
+    dd($users);
 });
