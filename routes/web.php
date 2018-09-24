@@ -13,3 +13,5 @@ Route::get('user', function(){
     
     dd($users);
 });
+
+Route::get('video', 'Courses\CourseController@index');
