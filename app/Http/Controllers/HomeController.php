@@ -17,7 +17,7 @@ class HomeController extends Controller
         
         $work = new Work;
         
-        $check = $work->isInTody($request->user_id);
+        $check = $work->isInToday($request->user_id);
         
         if(!$check->count()){
         
