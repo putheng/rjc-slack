@@ -18,12 +18,12 @@ class HomeController extends Controller
         $work = new Work;
         
         $check = $work->isInToday($request->user_id);
-        
+        dd($check);
         if(!$check->count()){
         
-            $work->slackid      = $request->user_id;
-            $work->username    = $request->user_name;
-            $work->in         = $request->text;
+            $work->slackid  = $request->user_id;
+            $work->username = $request->user_name;
+            $work->in       = $request->text;
             
             $work->save();
             
