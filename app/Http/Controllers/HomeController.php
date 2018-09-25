@@ -12,16 +12,28 @@ class HomeController extends Controller
         $this->validate($request, [
             'user_id' => 'required',
             'user_name' => 'required',
-            'text' => 'required',
+            'in' => 'required',
         ]);
         
         $work = new Work;
         
-        $work->slackid      = $request->user_id;
-        $work->username    = $request->user_name;
-        $work->text         = $request->text;
+        $check = $work->isInTody($request->user_id);
         
-        $work->save();
+        if(!$check->count()){
+        
+            $work->slackid      = $request->user_id;
+            $work->username    = $request->user_name;
+            $work->in         = $request->text;
+            
+            $work->save();
+            
+            return;
+            
+        }
+        
+        $check->update([
+            'out' => $request->text,
+        ]);
         
         return response(null, 200);
     }

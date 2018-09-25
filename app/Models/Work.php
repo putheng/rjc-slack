@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Work extends Model
@@ -9,7 +10,13 @@ class Work extends Model
     protected $filable = [
         'slackid',
         'username',
-        'text'
+        'in',
+        'out'
     ];
+    
+    public function scopeIsInToday($query, $id)
+    {
+        return $query->whereDate('created_at', Carbon::today());
+    }
     
 }
