@@ -2,48 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Work;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(Request $request)
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        $this->validate($request, [
-            'user_id' => 'required',
-            'user_name' => 'required',
-            'text' => 'required',
-        ]);
-        
-        $text = $request->text;
-        $id = $request->user_id;
-        
-        $morning = ['Good morning', 'Good Morning', 'good morning', 'good Morning'];
-        $bye = ['Good Bye', 'Good Bye', 'Good bye', 'good bye', 'good by'];
-        
-        $work = new Work;
-        
-        $check = $work->isInToday($id);
-        
-        if($check->count())
-        {
-            if(in_array($text, $bye))
-            {
-                $check->update([
-                    'out' => $text,
-                ]);
-            }
-        }else
-        
-        if(in_array($text, $morning))
-        {
-            $work->slackid  = $id;
-            $work->username = $request->user_name;
-            $work->in       = $text;
-            
-            $work->save();
-        }
-        
-        return response(null, 200);
+        $this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('home');
     }
 }
