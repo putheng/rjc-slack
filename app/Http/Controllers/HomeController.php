@@ -13,7 +13,7 @@ class HomeController extends Controller
         $work = new Work;
         
         $work->slackid      = $request->user_id;
-        $work->user_name    = $request->user_name;
+        $work->username    = $request->user_name;
         $work->text         = $request->text;
         
         $work->save();
