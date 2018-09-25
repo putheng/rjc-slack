@@ -18,7 +18,7 @@ class HomeController extends Controller
         $work = new Work;
         
         $check = $work->isInToday($request->user_id);
-        dd($check->count());
+        
         if(!$check->count()){
         
             $work->slackid  = $request->user_id;
