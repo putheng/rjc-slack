@@ -9,6 +9,11 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
+        $this->validate($request, [
+            'slackid' => 'required',
+            'username' => 'required',
+            'text' => 'required',
+        ]);
         
         $work = new Work;
         
