@@ -15,25 +15,27 @@ class HomeController extends Controller
             'text' => 'required',
         ]);
         
+        $text = $request->text;
+        
         $work = new Work;
         
         $check = $work->isInToday($request->user_id);
         
-        if(!$check->count()){
+        if(!$check->count() && $text !== 'good bye'){
         
             $work->slackid  = $request->user_id;
             $work->username = $request->user_name;
-            $work->in       = $request->text;
+            $work->in       = $text;
             
             $work->save();
             
-            return;
-            
         }
         
-        $check->update([
-            'out' => $request->text,
-        ]);
+        if($text === 'good bye'){
+            $check->update([
+                'out' => $text,
+            ]);
+        }
         
         return response(null, 200);
     }
