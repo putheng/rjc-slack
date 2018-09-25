@@ -1,0 +1,18 @@
+token=5oXj7WMAJ3bWkct2HvBaNzb2
+&team_id=TCDTENTL7
+&team_domain=renetcambodia
+&service_id=439310470483
+&channel_id=CCX975QBD
+&channel_name=tt
+&timestamp=1537838255.000100
+&user_id=UCC9S0V4Z
+&user_name=putheng
+&text=good+morning
+&trigger_word=good+morning
+
+heroku config:set DB_CONNECTION=pgsql
+heroku config:set DB_HOST=ec2-54-227-244-12.compute-1.amazonaws.com
+heroku config:set DB_PORT=5432
+heroku config:set DB_DATABASE=d3998ngqigmllj
+heroku config:set DB_USERNAME=azhfnlburholaf
+heroku config:set DB_PASSWORD=58eb8e5dc2aaa4529d3135f276498d49f5cb2d7677eaf1fcfdb2449f2e5e7ae0
