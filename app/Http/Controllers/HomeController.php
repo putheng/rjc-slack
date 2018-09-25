@@ -32,10 +32,8 @@ class HomeController extends Controller
                 $check->update([
                     'out' => $text,
                 ]);
-                
-                return;
             }
-        }
+        }else
         
         if(in_array($text, $morning))
         {
