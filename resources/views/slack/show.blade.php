@@ -23,7 +23,7 @@
                     <tbody>
                         @foreach($slacks as $slack)
                         <tr>
-                            <td>{{ $slack->id }}</td>
+                            <td>{{ $slack->slackid }}</td>
                             <td>{{ ucwords($slack->username) }}</td>
                             <td>{{ $slack->created_at }}</td>
                             <td>{{ $slack->updated_at }}</td>
