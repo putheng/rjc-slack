@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Work;
 use Illuminate\Http\Request;
 
 class SlackControler extends Controller
@@ -46,8 +47,10 @@ class SlackControler extends Controller
         return response(null, 200);
     }
     
-    public function show()
+    public function show(Request $request)
     {
-        return view('slack.show');
+        $slacks = Work::paginate(50);
+        
+        return view('slack.show', compact('slacks'));
     }
 }
