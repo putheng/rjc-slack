@@ -12,7 +12,7 @@ class HomeController extends Controller
         $this->validate($request, [
             'user_id' => 'required',
             'user_name' => 'required',
-            'in' => 'required',
+            'text' => 'required',
         ]);
         
         $work = new Work;
