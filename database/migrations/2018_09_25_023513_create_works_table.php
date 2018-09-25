@@ -18,7 +18,7 @@ class CreateWorksTable extends Migration
             $table->string('slackid');
             $table->string('username');
             $table->string('in');
-            $table->string('out');
+            $table->string('out')->nullable();
             $table->timestamps();
         });
     }
