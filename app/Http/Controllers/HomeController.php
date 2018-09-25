@@ -18,13 +18,17 @@ class HomeController extends Controller
         $text = $request->text;
         $id = $request->user_id;
         
+        $morning = ['Good morning', 'Good Morning', 'good morning', 'good Morning'];
+        $bye = ['Good Bye', 'Good Bye', 'Good bye', 'good bye', 'good by'];
+        
         $work = new Work;
         
         $check = $work->isInToday($id);
         
-        if($check->count()){
-        
-            if($text == 'good bye'){
+        if($check->count())
+        {
+            if(in_array($text, $bye))
+            {
                 $check->update([
                     'out' => $text,
                 ]);
@@ -33,12 +37,14 @@ class HomeController extends Controller
             }
         }
         
-        $work->slackid  = $id;
-        $work->username = $request->user_name;
-        $work->in       = $text;
-        
-        $work->save();
-        
+        if(in_array($text, $morning))
+        {
+            $work->slackid  = $id;
+            $work->username = $request->user_name;
+            $work->in       = $text;
+            
+            $work->save();
+        }
         
         return response(null, 200);
     }
