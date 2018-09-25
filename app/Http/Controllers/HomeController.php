@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Work;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        $value = $request->getContent();
         
-        file_put_contents('hook.txt', $value);
+        $work = new Work;
         
-        $count = file_get_contents('count.txt') + 1;
-        file_put_contents('count.txt', $count);
+        $work->slackid      = $request->user_id;
+        $work->user_name    = $request->user_name;
+        $work->text         = $request->text;
         
-        return $count;
+        $work->save();
+        
+        return response(null, 200);
     }
 }
