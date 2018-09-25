@@ -10,8 +10,8 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $this->validate($request, [
-            'slackid' => 'required',
-            'username' => 'required',
+            'slack_id' => 'required',
+            'user_name' => 'required',
             'text' => 'required',
         ]);
         
