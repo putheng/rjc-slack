@@ -8,10 +8,6 @@ Route::get('/', function () {
 
 Route::post('/slack/hook', 'HomeController@index');
 
-Route::get('user', function(){
-    $users = App\User::all();
-    
-    dd($users);
-});
+Route::get('/slack/show', 'HomeController@show');
 
 Route::get('video', 'Courses\CourseController@index');

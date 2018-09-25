@@ -16,26 +16,29 @@ class HomeController extends Controller
         ]);
         
         $text = $request->text;
+        $id = $request->user_id;
         
         $work = new Work;
         
-        $check = $work->isInToday($request->user_id);
+        $check = $work->isInToday($id);
         
-        if(!$check->count() && $text !== 'good bye'){
+        if($check->count()){
         
-            $work->slackid  = $request->user_id;
-            $work->username = $request->user_name;
-            $work->in       = $text;
-            
-            $work->save();
-            
+            if($text == 'good bye'){
+                $check->update([
+                    'out' => $text,
+                ]);
+                
+                return;
+            }
         }
         
-        if($text === 'good bye'){
-            $check->update([
-                'out' => $text,
-            ]);
-        }
+        $work->slackid  = $id;
+        $work->username = $request->user_name;
+        $work->in       = $text;
+        
+        $work->save();
+        
         
         return response(null, 200);
     }

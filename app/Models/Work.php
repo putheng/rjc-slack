@@ -16,7 +16,8 @@ class Work extends Model
     
     public function scopeIsInToday($query, $id)
     {
-        return $query->whereDate('created_at', Carbon::today());
+        return $query->whereDate('created_at', Carbon::today())
+                ->where('slackid', $id);
     }
     
 }
