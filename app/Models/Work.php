@@ -22,10 +22,8 @@ class Work extends Model
     
     public function scopeFilter($query, $request)
     {
-        return $query->whereBetween('created_at', [
-            $request->get('from', null),
-            $request->get('to', null)
-        ]);
+        return $query->whereDate('created_at', '>=', $request->from)
+                ->whereDate('created_at', '<=', $request->to);
     }
     
 }
