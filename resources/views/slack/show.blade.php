@@ -8,16 +8,16 @@
                 <h2>Slack users</h2>
                 <div class="row">
                     <div class="col-md-2">
-                        <input class="form-control" type="text" name="from"/>
+                        <input class="form-control input-sm" type="text" name="from"/>
                     </div>
                     <div class="col-md-2">
-                        <input class="form-control" type="text" name="from"/>
+                        <input class="form-control input-sm" type="text" name="from"/>
                     </div>
                     <div class="col-md-2">
-                        <input type="submit" class="btn btn-primary" value="GO"/>
+                        <input type="submit" class="btn btn-primary btn-sm" value="GO"/>
                     </div>
                 </div>
-                
+                <br>
                 <table class="table table-striped table-bordered">
                     <thead>
                         <th>ID</th>
