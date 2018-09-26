@@ -56,7 +56,7 @@ class SlackControler extends Controller
     
     public function filter(Request $request)
     {
-        $slacks = Work::paginate(50);
+        $slacks = Work::filter($request)->paginate(50);
         
         return view('slack.filter', compact('slacks'));
     }
