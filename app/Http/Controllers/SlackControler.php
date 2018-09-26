@@ -58,6 +58,6 @@ class SlackControler extends Controller
     {
         $slacks = Work::paginate(50);
         
-        return view('slack.show', compact('slacks'));
+        return view('slack.filter', compact('slacks'));
     }
 }
