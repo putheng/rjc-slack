@@ -20,4 +20,12 @@ class Work extends Model
                 ->where('slackid', $id);
     }
     
+    public function scopeFilter($query)
+    {
+        return $query->whereBetween('created_at', [
+            request()->get('from', null),
+            request()->get('to', null)
+        ]);
+    }
+    
 }

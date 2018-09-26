@@ -18,5 +18,5 @@ heroku config:set DB_USERNAME=azhfnlburholaf
 heroku config:set DB_PASSWORD=58eb8e5dc2aaa4529d3135f276498d49f5cb2d7677eaf1fcfdb2449f2e5e7ae0
 
 git add .
-git commit -m "add filter form"
+git commit -m "add filter function"
 git push heroku master
