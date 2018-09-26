@@ -6,17 +6,21 @@
         <div class="row">
             <div class="col-md-12">
                 <h2>Slack users</h2>
-                <div class="row">
-                    <div class="col-md-2">
-                        <input class="form-control input-sm" type="text" name="from"/>
+                <form action="{{ route('slack.filter') }}" method="get">
+                
+                    <div class="row">
+                        <div class="col-md-2">
+                            <input class="form-control input-sm" type="date" name="from"/>
+                        </div>
+                        <div class="col-md-2">
+                            <input class="form-control input-sm" type="date" name="from"/>
+                        </div>
+                        <div class="col-md-2">
+                            <input type="submit" class="btn btn-primary btn-sm" value="GO"/>
+                        </div>
                     </div>
-                    <div class="col-md-2">
-                        <input class="form-control input-sm" type="text" name="from"/>
-                    </div>
-                    <div class="col-md-2">
-                        <input type="submit" class="btn btn-primary btn-sm" value="GO"/>
-                    </div>
-                </div>
+                    
+                </form>
                 <br>
                 <table class="table table-striped table-bordered">
                     <thead>
