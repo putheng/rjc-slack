@@ -10,10 +10,16 @@
                 
                     <div class="row">
                         <div class="col-md-2">
-                            <input class="form-control input-sm" type="date" name="from"/>
+                            <div class="form-group">
+                                <label for="from" class="control-label">From:</label>
+                                <input class="form-control input-sm" type="date" name="from"/>
+                            </div>
                         </div>
                         <div class="col-md-2">
-                            <input class="form-control input-sm" type="date" name="from"/>
+                            <div class="form-group">
+                                <label for="from" class="control-label">To:</label>
+                                <input class="form-control input-sm" type="date" name="to"/>
+                            </div>
                         </div>
                         <div class="col-md-2">
                             <input type="submit" class="btn btn-primary btn-sm" value="GO"/>
