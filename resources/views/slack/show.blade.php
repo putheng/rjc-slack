@@ -21,8 +21,8 @@
                                 <input class="form-control input-sm" type="date" name="to"/>
                             </div>
                         </div>
-                        <div class="col-md-2">
-                            <input type="submit" class="btn btn-primary btn-sm" value="GO"/>
+                        <div class="col-md-12">
+                            <input type="submit" class="btn btn-primary" value="GO"/>
                         </div>
                     </div>
                     
