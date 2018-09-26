@@ -6,6 +6,17 @@
         <div class="row">
             <div class="col-md-12">
                 <h2>Slack users</h2>
+                <div class="row">
+                    <div class="col-md-2">
+                        <input class="form-control" type="text" name="from"/>
+                    </div>
+                    <div class="col-md-2">
+                        <input class="form-control" type="text" name="from"/>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="submit" class="btn btn-primary" value="GO"/>
+                    </div>
+                </div>
                 
                 <table class="table table-striped table-bordered">
                     <thead>
@@ -32,6 +43,7 @@
                     </tbody>
                 </table>
                 
+                <p>{{ $slacks->links() }}</p>
             </div>
         </div>
     </div>
