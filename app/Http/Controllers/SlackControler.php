@@ -10,9 +10,6 @@ class SlackControler extends Controller
     public function index(Request $request)
     {
         
-        dd($request->all());
-        //file_put_contents('hook.txt', );
-        
         $this->validate($request, [
             'user_id' => 'required',
             'user_name' => 'required',
