@@ -6,9 +6,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('/slack/hook', 'SlackControler@index');
+
 Route::group(['prefix' => 'slack', 'as' => 'slack.', 'middleware' => 'auth'], function(){
     
-    Route::post('hook', 'SlackControler@index');
     Route::get('show', 'SlackControler@show');
     
     Route::get('filter', 'SlackControler@filter')->name('filter');
