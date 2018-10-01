@@ -19,8 +19,8 @@ class SlackControler extends Controller
         $text = $request->text;
         $id = $request->user_id;
         
-        $morning = ['Good morning', 'Good Morning', 'good morning', 'good Morning'];
-        $bye = ['Good Bye', 'Good Bye', 'Good bye', 'good bye', 'good by'];
+        $morning = ['Good morning', 'Good Morning', 'good morning', 'good Morning', 'morning', 'Morning'];
+        $bye = ['Good Bye', 'Good Bye', 'Good bye', 'good bye', 'good by', 'Bye', 'bye', 'by', 'By'];
         
         $work = new Work;
         
