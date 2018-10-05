@@ -56,7 +56,7 @@
                 <p>{{ $slacks->links() }}</p>
                 <br>
                 <form target="_blank" action="{{ route('slack.filter.export') }}" method="post">
-                    @csrf
+                    {{ csrf_field() }}
                     <input class="btn btn-success" type="submit" value="Submit"/>
                 </form>
             </div>
