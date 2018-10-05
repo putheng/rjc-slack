@@ -57,6 +57,8 @@
                 <br>
                 <form target="_blank" action="{{ route('slack.filter.export') }}" method="post">
                     {{ csrf_field() }}
+                    <input value="{{ request()->from }}" class="form-control input-sm" type="hidden" name="from"/>
+                    <input value="{{ request()->to }}" class="form-control input-sm" type="hidden" name="to"/>
                     <input class="btn btn-success" type="submit" value="Submit"/>
                 </form>
             </div>
