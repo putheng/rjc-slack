@@ -61,4 +61,9 @@ class SlackControler extends Controller
         
         return view('slack.filter', compact('slacks'));
     }
+    
+    public function exportCsv(Request $request)
+    {
+        
+    }
 }

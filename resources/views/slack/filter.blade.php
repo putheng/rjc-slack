@@ -54,6 +54,11 @@
                 </table>
                 
                 <p>{{ $slacks->links() }}</p>
+                <br>
+                <form target="_blank" action="{{ route('slack.filter.export') }}" method="post">
+                    @csrf
+                    <input class="btn btn-success" type="submit" value="Submit"/>
+                </form>
             </div>
         </div>
     </div>
