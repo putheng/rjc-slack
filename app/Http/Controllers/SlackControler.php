@@ -64,6 +64,27 @@ class SlackControler extends Controller
     
     public function exportCsv(Request $request)
     {
+        $headers = [
+            'Cache-Control'       => 'must-revalidate, post-check=0, pre-check=0',
+            'Content-type'        => 'text/csv',
+            'Content-Disposition' => 'attachment; filename=exports.csv',
+            'Expires'             => '0',
+            'Pragma'              => 'public',
+        ];
         
+        $list = Work::filter($request)->all()->toArray();
+    
+        array_unshift($list, array_keys($list[0]));
+    
+        $callback = function() use ($list) 
+        {
+            $FH = fopen('php://output', 'w');
+            foreach ($list as $row) { 
+                fputcsv($FH, $row);
+            }
+            fclose($FH);
+        };
+    
+        return Response::stream($callback, 200, $headers);
     }
 }
