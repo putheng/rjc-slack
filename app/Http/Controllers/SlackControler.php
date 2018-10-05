@@ -83,7 +83,7 @@ class SlackControler extends Controller
         {
             $FH = fopen('php://output', 'w');
             foreach ($list as $row) { 
-                fputcsv($FH, $row);
+                fputcsv($FH, ucwords(str_replace('.', ' ', $row)));
             }
             fclose($FH);
         };
