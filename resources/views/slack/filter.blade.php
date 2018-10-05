@@ -59,7 +59,7 @@
                     {{ csrf_field() }}
                     <input value="{{ request()->from }}" class="form-control input-sm" type="hidden" name="from"/>
                     <input value="{{ request()->to }}" class="form-control input-sm" type="hidden" name="to"/>
-                    <input class="btn btn-success" type="submit" value="Submit"/>
+                    <input type="submit" value="Export as CSV" class="btn btn-link">
                 </form>
             </div>
         </div>
