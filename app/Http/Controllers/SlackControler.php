@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Models\Work;
 use Illuminate\Http\Request;
 
@@ -72,7 +73,7 @@ class SlackControler extends Controller
             'Pragma'              => 'public',
         ];
         
-        $list = Work::filter($request)->get()->toArray();
+        $list = Work::select(DB::raw('username as name, created_at as in, updated_at as out'))->filter($request)->get()->toArray();
     
         array_unshift($list, array_keys($list[0]));
     
