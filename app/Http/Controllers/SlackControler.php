@@ -72,7 +72,7 @@ class SlackControler extends Controller
             'Pragma'              => 'public',
         ];
         
-        $list = Work::filter($request)->all()->toArray();
+        $list = Work::filter($request)->get()->toArray();
     
         array_unshift($list, array_keys($list[0]));
     
