@@ -65,7 +65,7 @@ class SlackControler extends Controller
     
     public function exportCsv(Request $request)
     {
-        $filename = 'exports-'. date('Y-d-m-h') .'.csv';
+        $filename = 'exports-'. date('Y-m-d-h-A') .'.csv';
         
         $headers = [
             'Cache-Control'       => 'must-revalidate, post-check=0, pre-check=0',
