@@ -85,6 +85,6 @@ class SlackControler extends Controller
             fclose($FH);
         };
     
-        return Response::stream($callback, 200, $headers);
+        return response()->stream($callback, 200, $headers);
     }
 }
