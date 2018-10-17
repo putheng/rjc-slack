@@ -54,8 +54,8 @@ class SlackControler extends Controller
     {
         $date = new Carbon;
         
-        $slacks = Work::whereDate('created_at', '>=', $date->now()->startOfMonth()->format('Y-m-d'))
-                    ->whereDate('created_at', '<=', $date->now()->endOfMonth()->format('Y-m-d'))
+        $slacks = Work::whereDate('created_at', '>=', $date->modify('this week')->format('Y-m-d'))
+                    ->whereDate('created_at', '<=', $date->modify('this week +6 days')->format('Y-m-d'))
                     ->paginate(50);
         
         return view('slack.show', compact('slacks', 'date'));
