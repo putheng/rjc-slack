@@ -52,9 +52,11 @@ class SlackControler extends Controller
     
     public function show(Request $request)
     {
-        $slacks = Work::paginate(50);
-        
         $date = new Carbon;
+        
+        $slacks = Work::whereDate('created_at', '>=', $date->now()->startOfMonth()->format('Y-m-d'))
+                    ->whereDate('created_at', '<=', $date->now()->endOfMonth()->format('Y-m-d'))
+                    ->paginate(50);
         
         return view('slack.show', compact('slacks', 'date'));
     }
