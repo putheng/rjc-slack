@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use DB;
+use Carbon\Carbon;
 use App\Models\Work;
 use Illuminate\Http\Request;
 
@@ -53,7 +54,9 @@ class SlackControler extends Controller
     {
         $slacks = Work::paginate(50);
         
-        return view('slack.show', compact('slacks'));
+        $date = new Carbon;
+        
+        return view('slack.show', compact('slacks', 'date'));
     }
     
     public function filter(Request $request)

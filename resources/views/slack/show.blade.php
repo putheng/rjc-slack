@@ -12,13 +12,13 @@
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label for="from" class="control-label">From:</label>
-                                <input class="form-control input-sm" type="date" name="from"/>
+                                <input value="{{ $date->now()->startOfMonth() }}" class="form-control input-sm" type="date" name="from"/>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label for="from" class="control-label">To:</label>
-                                <input class="form-control input-sm" type="date" name="to"/>
+                                <input value="{{ $date->now()->endOfMonth() }}" class="form-control input-sm" type="date" name="to"/>
                             </div>
                         </div>
                         <div class="col-md-12">
