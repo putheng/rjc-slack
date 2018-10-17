@@ -5,7 +5,9 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Slack users</h2>
+                <h2>Slack users
+                    <small>This week</small>
+                </h2>
                 <form action="{{ route('slack.filter') }}" method="get">
                 
                     <div class="row">
