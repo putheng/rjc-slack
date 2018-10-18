@@ -7,6 +7,7 @@ Route::get('/', function () {
 });
 
 Route::post('/slack/hook', 'SlackControler@index');
+Route::post('/slack/request/leave', 'RequestLeaveController@index');
 
 Route::group(['prefix' => 'slack', 'as' => 'slack.', 'middleware' => 'auth'], function(){
     
