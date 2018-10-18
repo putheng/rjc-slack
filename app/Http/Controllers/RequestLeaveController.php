@@ -8,6 +8,6 @@ class RequestLeaveController extends Controller
 {
     public function index(Request $request)
     {
-        file_put_contents('count.txt', $request->all()->toString());
+        file_put_contents('count.txt', $request->getContent());
     }
 }
