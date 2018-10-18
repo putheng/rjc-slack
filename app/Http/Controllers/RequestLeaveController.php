@@ -9,6 +9,6 @@ class RequestLeaveController extends Controller
     public function index(Request $request)
     {
         
-        file_put_contents('count.txt', json_decode($request->all()));
+        file_put_contents('count.txt', json_encode($request->all()));
     }
 }
