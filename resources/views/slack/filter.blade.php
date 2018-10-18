@@ -54,13 +54,14 @@
                 </table>
                 
                 <p>{{ $slacks->links() }}</p>
-                <br>
                 <form target="_blank" action="{{ route('slack.filter.export') }}" method="post">
                     {{ csrf_field() }}
                     <input value="{{ request()->from }}" class="form-control input-sm" type="hidden" name="from"/>
                     <input value="{{ request()->to }}" class="form-control input-sm" type="hidden" name="to"/>
                     <input type="submit" value="Export as CSV" class="btn btn-link">
                 </form>
+                <br>
+                <br>
             </div>
         </div>
     </div>
