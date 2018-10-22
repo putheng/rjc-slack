@@ -125,6 +125,7 @@
 							</tr>
 							<tr>
 								<td colspan="5">
+									<input type="hidden" name="id" value="{{ request()->id }}"/>
 									<input type="submit" value="SUBMIT" class="btn btn-primary">
 								</td>
 							</tr>

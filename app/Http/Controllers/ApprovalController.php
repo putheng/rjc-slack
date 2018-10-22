@@ -174,7 +174,7 @@ class ApprovalController extends Controller
                 'headers' => ['Content-Type' => 'application/json'],
                 'json' => json_decode('
                     {
-                        "text": "'. $this->buildRequestTo($request) .' \n*Your approval is requested to make an offer to* <@UCC9S0V4Z>",
+                        "text": "'. $this->buildRequestTo($request) .' \n*Your approval is requested to make an offer to* <@'. $request->id .'>",
                         "attachments": [
                             {
                                 "text": "'. $this->defaultText() .'\n\n *'. $request->title .'* \n'. $this->buildRequestText() . $this->Dateout() . $this->DateIN() .' \n\n<http://www.foo.com|Read Doc>",
