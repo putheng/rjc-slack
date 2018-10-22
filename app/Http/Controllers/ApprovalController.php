@@ -26,8 +26,7 @@ class ApprovalController extends Controller
     
     public function view(Request $request, Approval $approval)
     {
-        dd($approval);
-        return view('slack.request.view');
+        return view('slack.request.view', compact('approval'));
     }
     
     public function request(Request $request)
@@ -183,7 +182,7 @@ class ApprovalController extends Controller
                         "text": "'. $this->buildRequestTo($request) .' \n*Your approval is requested to make an offer to* <@'. $request->id .'>",
                         "attachments": [
                             {
-                                "text": "'. $this->defaultText() .'\n\n *'. $request->title .'* \n'. $this->buildRequestText() . $this->Dateout() . $this->DateIN() .' \n\n<http://renet-slack.herokuapp.com/slack/approval/form/'. $id .'|Read Doc>",
+                                "text": "'. $this->defaultText() .'\n\n *'. $request->title .'* \n'. $this->buildRequestText() . $this->Dateout() . $this->DateIN() .' \n",
                                 "fallback": "You are unable to approve",
                                 "callback_id": "aprq",
                                 "color": "#3AA3E3",
