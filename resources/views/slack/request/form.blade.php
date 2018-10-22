@@ -33,22 +33,26 @@
     								</div>
 								</td>
 								<td>
-									<label>អត្ថលេខ / ID</label>
-									<input type="text" name="userid" class="form-control{{ $errors->has('userid') ? ' is-invalid' : '' }}">
-									@if($errors->has('userid'))
-										<span class="invalid-feedback">
-											{{ $errors->first('userid') }}
-										</span>
-									@endif
+									<div class="form-group{{ $errors->has('userid') ? ' has-error' : '' }}">
+										<label class="control-label">អត្ថលេខ / ID</label>
+										<input type="text" name="userid" class="form-control">
+										@if($errors->has('userid'))
+											<span class="help-block">
+												{{ $errors->first('userid') }}
+											</span>
+										@endif
+									</div>
 								</td>
 								<td>
-									<label>ផ្នែក / Department</label>
-									<input type="text" name="department" class="form-control{{ $errors->has('department') ? ' is-invalid' : '' }}">
-									@if($errors->has('department'))
-										<span class="invalid-feedback">
-											{{ $errors->first('department') }}
-										</span>
-									@endif
+									<div class="form-group{{ $errors->has('department') ? ' has-error' : '' }}">
+										<label class="control-label">ផ្នែក / Department</label>
+										<input type="text" name="department" class="form-control">
+										@if($errors->has('department'))
+											<span class="help-block">
+												{{ $errors->first('department') }}
+											</span>
+										@endif
+									</div>
 								</td>
 							</tr>
 							<tr>
@@ -74,8 +78,15 @@
 							</tr>
 							<tr>
 								<td>
-									<label>Title</label>
-									<input type="text" name="title" class="form-control">
+									<div class="control-label{{ $errors->has('title') ? ' has-error' : '' }}">
+										<label class="control-label">Title</label>
+										<input type="text" name="title" class="form-control">
+										@if($errors->has('title'))
+											<span class="help-block">
+												{{ $errors->first('title') }}
+											</span>
+										@endif
+									</div>
 								</td>
 								<td></td>
 								<td></td>
@@ -84,13 +95,15 @@
 							</tr>
 							<tr>
 								<td colspan="5">
-									<label>មូលហេតុនៃការស្នើសុំ / Reason of Leave</label>
-									<textarea name="reason" rows="8" class="form-control{{ $errors->has('reason') ? ' is-invalid' : '' }}"></textarea>
-									@if($errors->has('reason'))
-										<span class="invalid-feedback">
-											{{ $errors->first('reason') }}
-										</span>
-									@endif
+									<div class="form-group{{ $errors->has('reason') ? ' has-error' : '' }}">
+										<label class="control-label">មូលហេតុនៃការស្នើសុំ / Reason of Leave</label>
+										<textarea name="reason" rows="8" class="form-control"></textarea>
+										@if($errors->has('reason'))
+											<span class="help-block">
+												{{ $errors->first('reason') }}
+											</span>
+										@endif
+									</div>
 								</td>
 							</tr>
 							<tr>
