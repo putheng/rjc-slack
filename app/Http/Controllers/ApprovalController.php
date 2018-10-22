@@ -44,7 +44,7 @@ class ApprovalController extends Controller
                 'headers' => ['Content-Type' => 'application/json'],
                 'json' => json_decode('
                     {
-                        "text": "<@UCCBRCTCZ> approved your travel request. Book any airline you like by continuing below.",
+                        "text": "<@'. $id .'> Request any approval you like by continuing below.",
                         "channel": "C061EG9SL",
                         "attachments": [
                             {
@@ -53,7 +53,7 @@ class ApprovalController extends Controller
                                     {
                                         "type": "button",
                                         "text": "Submit Your Form",
-                                        "url": "https://flights.example.com/book/r123456",
+                                        "url": "http://renet-slack.herokuapp.com/slack/approval/form?id="'. $id .'&token='. str_random(120) .',
                                         "style": "primary"
                                     }
                                 ]
