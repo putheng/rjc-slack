@@ -20,6 +20,7 @@ class CreateApprovalsTable extends Migration
             $table->string('department');
             $table->string('dateout');
             $table->string('datein');
+            $table->string('title');
             $table->text('reason');
             $table->timestamps();
         });
