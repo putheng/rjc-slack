@@ -108,13 +108,15 @@
 							</tr>
 							<tr>
 								<td>
-									<label>Request to:</label>
-									<select multiple name="request_to[]" class="form-control select2">
-										<option value="UCCBRCTCZ">Hirose Daichi</option>
-										<option value="UCFNQ3XRU">Shizuka Aoki</option>
-										<option value="UCCSTDGE6">Choup Rotha</option>
-										<option value="UCCNW35C3">But Kakada</option>
-									</select>
+									<div class="form-group{{ $errors->has('request_to') ? ' has-error' : '' }}">
+										<label class="control-label">Request to:</label>
+										<select multiple name="request_to[]" class="form-control select2">
+											<option value="UCCBRCTCZ">Hirose Daichi</option>
+											<option value="UCFNQ3XRU">Shizuka Aoki</option>
+											<option value="UCCSTDGE6">Choup Rotha</option>
+											<option value="UCCNW35C3">But Kakada</option>
+										</select>
+									</div>
 								</td>
 								<td></td>
 								<td></td>
