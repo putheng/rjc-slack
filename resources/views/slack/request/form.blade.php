@@ -16,7 +16,7 @@
 		@endif
 			<div class="table-responsive">
 				<form action="{{ route('form.approval') }}" method="post">
-					@csrf
+					{{ csrf_field() }}
 					<table class="table">
 						<tbody>
 							<tr>
