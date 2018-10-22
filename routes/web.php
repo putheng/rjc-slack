@@ -9,9 +9,11 @@ Route::get('/', function () {
 Route::post('/slack/hook', 'SlackControler@index');
 Route::post('/slack/request/leave', 'RequestLeaveController@index');
 
-Route::get('/slack/request', 'ApprovalController@index')->name('form.approval');
+Route::get('/slack/approval/form', 'ApprovalController@index')->name('form.approval');
 
-Route::post('/slack/request', 'ApprovalController@store');
+Route::post('/slack/approval/form', 'ApprovalController@store');
+
+Route::post('/slac/approval/request', 'ApprovalController@request')->name('approval.request');
 
 Route::group(['prefix' => 'slack', 'as' => 'slack.', 'middleware' => 'auth'], function(){
     

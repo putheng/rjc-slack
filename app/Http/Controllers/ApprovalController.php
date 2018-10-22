@@ -23,6 +23,47 @@ class ApprovalController extends Controller
     {
     	return view('slack.request.form');
     }
+    
+    public function request(Request $request)
+    {
+        $text = $request->text;
+        $id = $request->user_id;
+        
+        $check = ['Approval request', 'approval request', 'Approval Request'];
+        
+        if(in_array($text, $check)){
+            $this->sendRequestForm($id);
+        }
+    }
+    
+    public function sendRequestForm($id)
+    {
+        return $this->client->post(
+            $this->url .'TCDTENTL7/BDGR52M6F/ZYKHb8pACSY3D1bVxu4PzNKw',
+            [
+                'headers' => ['Content-Type' => 'application/json'],
+                'json' => json_decode('
+                    {
+                        "text": "<@UCCBRCTCZ> approved your travel request. Book any airline you like by continuing below.",
+                        "channel": "C061EG9SL",
+                        "attachments": [
+                            {
+                                "fallback": "Your request form at https://flights.example.com/book/r123456",
+                                "actions": [
+                                    {
+                                        "type": "button",
+                                        "text": "Submit Your Form",
+                                        "url": "https://flights.example.com/book/r123456",
+                                        "style": "primary"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ')
+            ]
+        );
+    }
 
     public function store(Request $request)
     {
