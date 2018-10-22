@@ -53,7 +53,7 @@ class ApprovalController extends Controller
                                     {
                                         "type": "button",
                                         "text": "Submit Your Form",
-                                        "url": "http://renet-slack.herokuapp.com/slack/approval/form?token="'. $id .',
+                                        "url": "http://renet-slack.herokuapp.com/slack/approval/form?token='. md5($id) .'&id='. $id .'",
                                         "style": "primary"
                                     }
                                 ]
