@@ -95,7 +95,7 @@ class ApprovalController extends Controller
             'title' => $request->title
     	]);
 
-        dd($this->buildRequestMessage($request, $create->id));
+        $this->buildRequestMessage($request, $create->id);
 
         return back()->withSuccess('your form was successfully submitted');
     }
