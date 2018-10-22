@@ -21,8 +21,10 @@
 						<tbody>
 							<tr>
 								<td colspan="2">
-									<label class="label-control">ឈ្មោះ / Name</label>
-									<input type="text" name="username" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}">
+								    <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
+    									<label class="label-control">ឈ្មោះ / Name</label>
+    									<input type="text" name="username" class="form-control">
+    								</div>
 									@if($errors->has('username'))
 										<span class="invalid-feedback">
 											{{ $errors->first('username') }}
