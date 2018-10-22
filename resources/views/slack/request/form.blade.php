@@ -22,14 +22,15 @@
 							<tr>
 								<td colspan="2">
 								    <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-    									<label class="label-control">ឈ្មោះ / Name</label>
+    									<label class="control-label">ឈ្មោះ / Name</label>
     									<input type="text" name="username" class="form-control">
+    									
+    									@if($errors->has('username'))
+    										<span class="help-block">
+    											{{ $errors->first('username') }}
+    										</span>
+    									@endif
     								</div>
-									@if($errors->has('username'))
-										<span class="invalid-feedback">
-											{{ $errors->first('username') }}
-										</span>
-									@endif
 								</td>
 								<td>
 									<label>អត្ថលេខ / ID</label>
