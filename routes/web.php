@@ -10,8 +10,9 @@ Route::post('/slack/hook', 'SlackControler@index');
 Route::post('/slack/request/leave', 'RequestLeaveController@index');
 
 Route::get('/slack/approval/form', 'ApprovalController@index')->name('form.approval');
-
 Route::post('/slack/approval/form', 'ApprovalController@store');
+
+Route::get('/slack/approval/form/{approval}', 'ApprovalController@view');
 
 Route::post('/slac/approval/request', 'ApprovalController@request')->name('approval.request');
 

@@ -24,6 +24,12 @@ class ApprovalController extends Controller
     	return view('slack.request.form');
     }
     
+    public function view(Request $request, Approval $approval)
+    {
+        dd($approval);
+        return view('slack.request.view');
+    }
+    
     public function request(Request $request)
     {
         $text = $request->text;
@@ -80,7 +86,7 @@ class ApprovalController extends Controller
     		'reason' => 'required|min:3|max:255',
     	]);
 
-    	Approval::create([
+    	$create = Approval::create([
     		'username' => $request->username,
     		'userid' => $request->userid,
     		'department' => $request->department,
@@ -90,7 +96,7 @@ class ApprovalController extends Controller
             'title' => $request->title
     	]);
 
-        $this->buildRequestMessage($request);
+        $this->buildRequestMessage($request, $create->id);
 
         return back()->withSuccess('your form was successfully submitted');
     }
@@ -166,7 +172,7 @@ class ApprovalController extends Controller
         return 'I would like to request your approval for my leave';
     }
 
-    public function buildRequestMessage(Request $request)
+    public function buildRequestMessage(Request $request, $id)
     {
         return $this->client->post(
             $this->url .'TCDTENTL7/BDGR52M6F/ZYKHb8pACSY3D1bVxu4PzNKw',
@@ -177,7 +183,7 @@ class ApprovalController extends Controller
                         "text": "'. $this->buildRequestTo($request) .' \n*Your approval is requested to make an offer to* <@'. $request->id .'>",
                         "attachments": [
                             {
-                                "text": "'. $this->defaultText() .'\n\n *'. $request->title .'* \n'. $this->buildRequestText() . $this->Dateout() . $this->DateIN() .' \n\n<http://www.foo.com|Read Doc>",
+                                "text": "'. $this->defaultText() .'\n\n *'. $request->title .'* \n'. $this->buildRequestText() . $this->Dateout() . $this->DateIN() .' \n\n<http://renet-slack.herokuapp.com/slack/approval/form/'. $id .'|Read Doc>",
                                 "fallback": "You are unable to approve",
                                 "callback_id": "aprq",
                                 "color": "#3AA3E3",
