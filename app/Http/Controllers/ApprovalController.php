@@ -96,7 +96,7 @@ class ApprovalController extends Controller
             'body' => $this->defaultText(),
     	]);
 
-        $this->buildRequestMessage($request, $create->id);
+        $this->buildRequestMessage($request, $create);
 
         return back()->withSuccess('your form was successfully submitted');
     }
@@ -172,7 +172,7 @@ class ApprovalController extends Controller
         return 'I would like to request your approval for my leave \n\n *'. request()->title .'* \n'. $this->buildRequestText() . $this->Dateout() . $this->DateIN();
     }
 
-    public function buildRequestMessage(Request $request, $id)
+    public function buildRequestMessage(Request $request, $create)
     {
         return $this->client->post(
             $this->url .'TCDTENTL7/BDLTV9TNE/bH0otVLUIrclyu0VpCLD3rIR',

@@ -13,7 +13,8 @@ class Approval extends Model
 		'dateout',
 		'datein',
 		'reason',
-		'title'
+		'title',
+		'body'
 	];
 	
 }
