@@ -24,6 +24,7 @@ class CreateApprovalsTable extends Migration
             $table->text('reason');
             $table->text('body')->nullable();
             $table->integer('status')->default(false);
+            $table->string('slackid');
             $table->timestamps();
         });
     }
