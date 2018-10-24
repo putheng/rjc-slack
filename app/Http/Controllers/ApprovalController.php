@@ -92,7 +92,8 @@ class ApprovalController extends Controller
     		'dateout' => $request->dateout .' '. $request->timeout,
     		'datein' => $request->datein .' '. $request->timein,
     		'reason' => $request->reason,
-            'title' => $request->title
+            'title' => $request->title,
+            'body' => $this->defaultText(),
     	]);
 
         $this->buildRequestMessage($request, $create->id);
@@ -168,7 +169,7 @@ class ApprovalController extends Controller
 
     public function defaultText()
     {
-        return 'I would like to request your approval for my leave';
+        return 'I would like to request your approval for my leave \n\n *'. request()->title .'* \n'. $this->buildRequestText() . $this->Dateout() . $this->DateIN();
     }
 
     public function buildRequestMessage(Request $request, $id)
@@ -182,7 +183,7 @@ class ApprovalController extends Controller
                         "text": "'. $this->buildRequestTo($request) .' \n*Your approval is requested to make an offer to* <@'. $request->id .'>",
                         "attachments": [
                             {
-                                "text": "'. $this->defaultText() .'\n\n *'. $request->title .'* \n'. $this->buildRequestText() . $this->Dateout() . $this->DateIN() .' \n",
+                                "text": "'. $this->defaultText() .' \n",
                                 "fallback": "You are unable to approve",
                                 "callback_id": "aprq",
                                 "color": "#3AA3E3",
