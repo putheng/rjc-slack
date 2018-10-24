@@ -84,8 +84,6 @@ class ApprovalController extends Controller
             'request_to' => 'required', 
     		'reason' => 'required|min:3|max:255',
     	]);
-
-        dd($this->defaultText());
         
     	$create = Approval::create([
     		'username' => $request->username,
