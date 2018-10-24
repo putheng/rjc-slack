@@ -194,7 +194,7 @@ class ApprovalController extends Controller
                                         "name": "approval",
                                         "text": "Approval",
                                         "type": "button",
-                                        "value": "approve",
+                                        "value": "approve%'. $request->id .'%'. $create->id .'",
                                         "style": "primary"
                                     },
                                     {
@@ -202,7 +202,7 @@ class ApprovalController extends Controller
                                         "text": "Reject",
                                         "style": "danger",
                                         "type": "button",
-                                        "value": "reject",
+                                        "value": "reject%'. $request->id .'%'. $create->id .'",
                                         "confirm": {
                                             "title": "Are you sure?",
                                             "text": "Would you like to reject this request?",
