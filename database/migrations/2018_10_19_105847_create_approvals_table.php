@@ -23,6 +23,7 @@ class CreateApprovalsTable extends Migration
             $table->string('title');
             $table->text('reason');
             $table->text('body')->nullable();
+            $table->integer('status')->default(false);
             $table->timestamps();
         });
     }
