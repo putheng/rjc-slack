@@ -93,6 +93,7 @@ class ApprovalController extends Controller
     		'datein' => $request->datein .' '. $request->timein,
     		'reason' => $request->reason,
             'title' => $request->title,
+            'slackid' => $request->id,
             'body' => $this->defaultText(),
     	]);
 
