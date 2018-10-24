@@ -13,6 +13,8 @@ class ApprovalController extends Controller
     protected $url = 'https://hooks.slack.com/services/';
     protected $channel;
     protected $token;
+    protected $request_from = 'TCDTENTL7/BDLTV9TNE/bH0otVLUIrclyu0VpCLD3rIR';
+    protected $request_to = 'TCDTENTL7/BDGR52M6F/ZYKHb8pACSY3D1bVxu4PzNKw';
 
     public function __construct()
     {
@@ -41,10 +43,20 @@ class ApprovalController extends Controller
         }
     }
     
+    public function fromChannel($to)
+    {
+        return $this->url . $this->request_to;
+    }
+    
+    public function toChannel()
+    {
+        return $this->url . $this->request_from;
+    }
+    
     public function sendRequestForm($id)
     {
         return $this->client->post(
-            $this->url .'TCDTENTL7/BDGR52M6F/ZYKHb8pACSY3D1bVxu4PzNKw',
+            $this->fromChannel(),
             [
                 'headers' => ['Content-Type' => 'application/json'],
                 'json' => json_decode('
@@ -53,7 +65,7 @@ class ApprovalController extends Controller
                         "channel": "C061EG9SL",
                         "attachments": [
                             {
-                                "fallback": "Your request form at https://flights.example.com/book/r123456",
+                                "fallback": "Your request form at http://renet-slack.herokuapp.com/slack/approval/form?token='. str_random(255) .'&id='. $id .'",
                                 "actions": [
                                     {
                                         "type": "button",
@@ -103,7 +115,7 @@ class ApprovalController extends Controller
     public function buildApprovedMessage()
     {
         return $this->client->post(
-            $this->url .'TCDTENTL7/BDGR52M6F/ZYKHb8pACSY3D1bVxu4PzNKw',
+            $this->fromChannel(),
             [
                 'headers' => ['Content-Type' => 'application/json'],
                 'json' => json_decode('
@@ -174,7 +186,7 @@ class ApprovalController extends Controller
     public function buildRequestMessage(Request $request, $id)
     {
         return $this->client->post(
-            $this->url .'TCDTENTL7/BDGR52M6F/ZYKHb8pACSY3D1bVxu4PzNKw',
+            $this->toChannel(),
             [
                 'headers' => ['Content-Type' => 'application/json'],
                 'json' => json_decode('
