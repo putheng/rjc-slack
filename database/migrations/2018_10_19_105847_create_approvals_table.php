@@ -22,7 +22,7 @@ class CreateApprovalsTable extends Migration
             $table->string('datein');
             $table->string('title');
             $table->text('reason');
-            $table->text('body');
+            $table->text('body')->nullable();
             $table->timestamps();
         });
     }
