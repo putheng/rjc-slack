@@ -43,11 +43,11 @@ class ApprovalController extends Controller
         }
         
         if($response == 'reject'){
-            $approval->status = 'Reject';
             
+            $approval->status = 'Reject';
             $approval->save();
             
-            $this->sendRejectRequest($userid);
+            //$this->sendRejectRequest($userid);
         }
         
         
