@@ -10,6 +10,6 @@ class RequestLeaveController extends Controller
     {
         $payload = json_decode($request->payload);
         
-        file_put_contents('count.txt', $payload->action->value);
+        file_put_contents('count.txt', $payload);
     }
 }
