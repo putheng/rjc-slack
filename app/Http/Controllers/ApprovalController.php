@@ -18,6 +18,31 @@ class ApprovalController extends Controller
     {
         $this->client = new Client();
     }
+    
+    public function getResponse(Request $request)
+    {
+        $payload = json_decode($request->payload);
+        
+        $value = $payload->actions[0]->value;
+        
+        file_put_contents('count.txt', $value);
+        
+        $explode = explode('%', $value);
+        
+        $response = $explode[0];
+        $userid = $explode[1];
+        $requestid = $explode[2];
+        
+        if($response == 'approve'){
+            $approval = Approval::find($requestid);
+            
+            $approval->status = true;
+            
+            $approval->save();
+        }
+        
+        
+    }
 
     public function index()
     {
