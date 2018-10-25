@@ -8,6 +8,8 @@ class RequestLeaveController extends Controller
 {
     public function index(Request $request)
     {
-        file_put_contents('count.txt', $request->payload);
+        $payload = json_decode($request->payload);
+        
+        file_put_contents('count.txt', $payload->action->value);
     }
 }
