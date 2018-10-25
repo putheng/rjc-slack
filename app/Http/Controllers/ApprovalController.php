@@ -33,8 +33,9 @@ class ApprovalController extends Controller
         $userid = $explode[1];
         $requestid = $explode[2];
         
+        $approval = Approval::find($requestid);
+        
         if($response == 'approve'){
-            $approval = Approval::find($requestid);
             
             $approval->status = 'Approved';
             
@@ -42,6 +43,10 @@ class ApprovalController extends Controller
         }
         
         if($response == 'reject'){
+            $approval->status = 'Reject';
+            
+            $approval->save();
+            
             $this->sendRejectRequest($userid);
         }
         
