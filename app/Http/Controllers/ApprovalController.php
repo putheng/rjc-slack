@@ -25,7 +25,7 @@ class ApprovalController extends Controller
         
         $value = $payload->actions[0]->value;
         
-        file_put_contents('count.txt', $value);
+        file_put_contents('count.txt', $payload);
         
         $explode = explode('%', $value);
         
