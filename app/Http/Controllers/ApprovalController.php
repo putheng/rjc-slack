@@ -36,9 +36,15 @@ class ApprovalController extends Controller
         if($response == 'approve'){
             $approval = Approval::find($requestid);
             
-            $approval->status = true;
+            $approval->status = 'Approved';
             
             $approval->save();
+            
+            return;
+        }
+        
+        if($response == 'reject'){
+            return $this->sendRejectRequest($userid);
         }
         
         
@@ -93,6 +99,32 @@ class ApprovalController extends Controller
                 ')
             ]
         );
+    }
+    
+    public function sendRejectRequest($id)
+    {
+        return $this->client->post(
+            $this->url .'TCDTENTL7/BDLTV9TNE/bH0otVLUIrclyu0VpCLD3rIR',
+            [
+                'headers' => ['Content-Type' => 'application/json'],
+                'json' => json_decode('
+                    {
+                        "text": "The request was rejected by <@'. $id .'>",
+                        "channel": "C061EG9SL",
+                        "attachments": [
+                            {
+                                "fallback": "The request was rejected!",
+                            }
+                        ]
+                    }
+                ')
+            ]
+        );
+    }
+    
+    public function responseConfirm()
+    {
+        
     }
 
     public function store(Request $request)
