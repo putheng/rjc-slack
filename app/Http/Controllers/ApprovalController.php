@@ -40,6 +40,8 @@ class ApprovalController extends Controller
             $approval->status = 'Approved';
             
             $approval->save();
+            
+            $this->sendApprovedRequest($userid, $approval);
         }
         
         if($response == 'reject'){
@@ -51,6 +53,47 @@ class ApprovalController extends Controller
         }
         
         
+    }
+    
+    public function sendApprovedRequest($id, $approve)
+    {
+        $this->client->post(
+            $this->url .'TCDTENTL7/BDLTV9TNE/bH0otVLUIrclyu0VpCLD3rIR',
+            [
+                'headers' => ['Content-Type' => 'application/json'],
+                'json' => json_decode('
+                    {
+                        "text": "Requested to leave from <@'. $approve->slackid .'>\n\n *Was approved* by <@'. $id .'>",
+                        "channel": "C061EG9SL",
+                        "attachments": [
+                            {
+                                "fallback": "The request was approved."
+                            }
+                        ]
+                    }
+                ')
+            ]
+        );
+        
+        sleep(1);
+        
+        $this->client->post(
+            $this->url .'TCDTENTL7/BDGR52M6F/ZYKHb8pACSY3D1bVxu4PzNKw',
+            [
+                'headers' => ['Content-Type' => 'application/json'],
+                'json' => json_decode('
+                    {
+                        "text": "Requested to leave from <@'. $approve->slackid .'>\n\n *Was approved* by <@'. $id .'>",
+                        "channel": "C061EG9SL",
+                        "attachments": [
+                            {
+                                "fallback": "The request was approved!"
+                            }
+                        ]
+                    }
+                ')
+            ]
+        );
     }
     
     public function sendRejectRequest($id, $approve)
