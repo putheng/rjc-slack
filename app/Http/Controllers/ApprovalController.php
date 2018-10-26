@@ -27,7 +27,7 @@ class ApprovalController extends Controller
                 'headers' => ['Content-Type' => 'application/json'],
                 'json' => json_decode('
                     {
-                        "text": "New request?",
+                        "text": "Need request?",
                         "attachments": [
                             {
                                 "text": "Request any approval you like by continuing below.",
