@@ -65,7 +65,7 @@ class ApprovalController extends Controller
                         "channel": "C061EG9SL",
                         "attachments": [
                             {
-                                "fallback": "The request was rejected!",
+                                "fallback": "The request was rejected!"
                             }
                         ]
                     }
