@@ -19,6 +19,38 @@ class ApprovalController extends Controller
         $this->client = new Client();
     }
     
+    public function newRequestForm()
+    {
+        $this->client->post(
+            $this->url .'TCDTENTL7/BDLTV9TNE/bH0otVLUIrclyu0VpCLD3rIR',
+            [
+                'headers' => ['Content-Type' => 'application/json'],
+                'json' => json_decode('
+                    {
+                        "text": "New request?",
+                        "attachments": [
+                            {
+                                "text": "Request any approval you like by continuing below.",
+                                "fallback": "Request any approval you like by continuing below.",
+                                "callback_id": "wopr_game",
+                                "color": "#3AA3E3",
+                                "attachment_type": "default",
+                                "actions": [
+                                    {
+                                        "name": "new",
+                                        "text": "Make a request",
+                                        "type": "button",
+                                        "value": "newreques%DCC58KHK2%2"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ')
+            ]
+        );
+    }
+    
     public function getResponse(Request $request)
     {
         $payload = json_decode($request->payload);
@@ -228,6 +260,8 @@ class ApprovalController extends Controller
     	]);
 
         $this->buildRequestMessage($request, $create);
+        
+        $this->newRequestForm();
 
         return back()->withSuccess('your form was successfully submitted');
     }
