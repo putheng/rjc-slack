@@ -55,8 +55,28 @@ class ApprovalController extends Controller
     
     public function sendRejectRequest($id, $approve)
     {
-        return $this->client->post(
+        $this->client->post(
             $this->url .'TCDTENTL7/BDLTV9TNE/bH0otVLUIrclyu0VpCLD3rIR',
+            [
+                'headers' => ['Content-Type' => 'application/json'],
+                'json' => json_decode('
+                    {
+                        "text": "Requested to leave from <@'. $approve->slackid .'>\n\n *Was rejected* by <@'. $id .'>",
+                        "channel": "C061EG9SL",
+                        "attachments": [
+                            {
+                                "fallback": "The request was rejected!"
+                            }
+                        ]
+                    }
+                ')
+            ]
+        );
+        
+        sleep(1);
+        
+        $this->client->post(
+            $this->url .'TCDTENTL7/BDGR52M6F/ZYKHb8pACSY3D1bVxu4PzNKw',
             [
                 'headers' => ['Content-Type' => 'application/json'],
                 'json' => json_decode('
