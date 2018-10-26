@@ -315,7 +315,7 @@ class ApprovalController extends Controller
                                 "actions": [
                                     {
                                         "name": "approval",
-                                        "text": "Approval",
+                                        "text": "Approve",
                                         "type": "button",
                                         "value": "approve%'. $request->id .'%'. $create->id .'",
                                         "style": "primary"
