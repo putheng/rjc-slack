@@ -35,7 +35,13 @@ class ApprovalController extends Controller
         
         $approval = Approval::find($requestid);
         
-        if($response == 'approve'){
+        if($response == 'newreques')
+        {
+            $this->sendRequestForm($userid);
+        }
+        
+        if($response == 'approve')
+        {
             
             $approval->status = 'Approved';
             
@@ -44,7 +50,8 @@ class ApprovalController extends Controller
             $this->sendApprovedRequest($userid, $approval);
         }
         
-        if($response == 'reject'){
+        if($response == 'reject')
+        {
             
             $approval->status = 'Rejected';
             $approval->save();
