@@ -30,7 +30,7 @@ class ApprovalController extends Controller
         $explode = explode('%', $value);
         
         $response = $explode[0];
-        $userid = $explode[1];
+        $userid = $value->user->id;
         $requestid = $explode[2];
         
         $approval = Approval::find($requestid);
