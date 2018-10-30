@@ -303,7 +303,7 @@ class ApprovalController extends Controller
     {
         $id = '';
         foreach($request->request_to as $item){
-            $id .= '<@'. $item .'>';
+            $id .= '<@'. $item .'>, ';
         }
 
         return $id;
