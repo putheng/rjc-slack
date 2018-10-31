@@ -306,7 +306,7 @@ class ApprovalController extends Controller
             $id .= '<@'. $item .'>, ';
         }
 
-        return $id;
+        return rtrim($id, ',');
     }
 
     public function buildRequestText()
