@@ -1,6 +1,5 @@
 <?php
 
-use Storage;
 use Illuminate\Http\Request;
 
 Route::get('/', function () {
