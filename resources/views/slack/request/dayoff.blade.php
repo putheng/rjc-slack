@@ -23,7 +23,7 @@
 								<td colspan="2">
 								    <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
     									<label class="control-label">ឈ្មោះ / Name</label>
-    									<select class="form-control" name="username">
+    									<select class="form-control select2" name="username">
     										<option value=""></option>
     										@foreach(\App\Models\Slack::get() as $slack)
     											<option value="{{ $slack->slackid }}">{{ $slack->name }}</option>
