@@ -25,7 +25,7 @@
     									<label class="control-label">ឈ្មោះ / Name</label>
     									<br>
     									<select class="form-control select2" name="username">
-    										<option value=""></option>
+    										<option value="">Enter your name</option>
     										@foreach(\App\Models\Slack::get() as $slack)
     											<option value="{{ $slack->slackid }}">{{ ucwords(str_replace('.', ' ', $slack->name)) }}</option>
     										@endforeach

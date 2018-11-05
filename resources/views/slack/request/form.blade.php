@@ -23,7 +23,13 @@
 								<td colspan="2">
 								    <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
     									<label class="control-label">ឈ្មោះ / Name</label>
-    									<input type="text" name="username" class="form-control">
+    									
+    									<br><select class="form-control select2" name="username">
+    										<option value="">Enter your name</option>
+    										@foreach(\App\Models\Slack::get() as $slack)
+    											<option value="{{ $slack->slackid }}">{{ ucwords(str_replace('.', ' ', $slack->name)) }}</option>
+    										@endforeach
+    									</select>
     									
     									@if($errors->has('username'))
     										<span class="help-block">

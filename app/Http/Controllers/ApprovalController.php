@@ -285,7 +285,7 @@ class ApprovalController extends Controller
     		'datein' => $request->datein .' '. $request->timein,
     		'reason' => $request->reason,
             'title' => $request->title,
-            'slackid' => $request->id,
+            'slackid' => $request->username,
             'body' => $this->defaultText(),
     	]);
 
@@ -375,7 +375,7 @@ class ApprovalController extends Controller
                 'headers' => ['Content-Type' => 'application/json'],
                 'json' => json_decode('
                     {
-                        "text": "'. $this->buildRequestTo($request) .' \n*Your approval is requested to make an offer to* <@'. $request->id .'>",
+                        "text": "'. $this->buildRequestTo($request) .' \n*Your approval is requested to make an offer to* <@'. $request->username .'>",
                         "attachments": [
                             {
                                 "text": "'. $this->defaultText() .' \n",
@@ -388,7 +388,7 @@ class ApprovalController extends Controller
                                         "name": "approval",
                                         "text": "Approve",
                                         "type": "button",
-                                        "value": "approve%'. $request->id .'%'. $create->id .'",
+                                        "value": "approve%'. $request->username .'%'. $create->id .'",
                                         "style": "primary"
                                     },
                                     {
@@ -396,7 +396,7 @@ class ApprovalController extends Controller
                                         "text": "Reject",
                                         "style": "danger",
                                         "type": "button",
-                                        "value": "reject%'. $request->id .'%'. $create->id .'",
+                                        "value": "reject%'. $request->username .'%'. $create->id .'",
                                         "confirm": {
                                             "title": "Are you sure?",
                                             "text": "Would you like to reject this request?",
