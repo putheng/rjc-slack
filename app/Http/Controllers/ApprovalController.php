@@ -19,6 +19,16 @@ class ApprovalController extends Controller
         $this->client = new Client();
     }
     
+    public function viewOff()
+    {
+        return view('slack.request.dayoff');
+    }
+    
+    public function storeOff()
+    {
+        
+    }
+    
     public function newRequestForm()
     {
         $this->client->post(
