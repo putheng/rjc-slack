@@ -238,7 +238,7 @@ class ApprovalController extends Controller
                                 "actions": [
                                     {
                                         "type": "button",
-                                        "text": "Request To Leave",
+                                        "text": "Request to Leave",
                                         "url": "http://renet-slack.herokuapp.com/slack/approval/form?token='. str_random(255) .'&id='. $id .'",
                                         "style": "primary"
                                     },
