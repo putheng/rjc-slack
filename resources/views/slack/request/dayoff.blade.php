@@ -107,6 +107,26 @@
 								</td>
 							</tr>
 							<tr>
+								<td colspan="5">
+									<div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+										<label class="control-label">ប្រភេទនៃការសុំឈប់សម្រាក / Type of Leave</label>
+										<option name="type" class="form-control">
+											<option value="Annual Leave">ច្បាប់សម្រាកប្រចាំឆ្នាំ Annual Leave</option>
+											<option value="Special Leave">ច្បាប់ពិសេស Special Leave</option>
+											<option value="Maternity Leave">ច្បាប់សម្រាលកូន Maternity Leave</option>
+											<option value="Unpaid Leave">ច្បាប់សម្រាកគ្មានប្រាក់ឈ្នួល Unpaid Leave</option>
+											<option value="Sick Leave">ច្បាប់ឈឺ Sick Leave</option>
+											<option value="Replace day">ប្តូថ្ងៃសម្រាក Replace day</option>
+										</option>
+										@if($errors->has('type'))
+											<span class="help-block">
+												{{ $errors->first('type') }}
+											</span>
+										@endif
+									</div>
+								</td>
+							</tr>
+							<tr>
 								<td>
 									<div class="form-group{{ $errors->has('request_to') ? ' has-error' : '' }}">
 										<label class="control-label">Request to:</label>
