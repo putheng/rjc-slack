@@ -34,7 +34,3 @@ Route::get('video', 'Courses\CourseController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/test', function(){
-    Storage::disk('ftp')->put('file.txt', 'Contents');
-});
