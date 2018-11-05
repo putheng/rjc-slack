@@ -245,7 +245,7 @@ class ApprovalController extends Controller
                                     {
                                         "type": "button",
                                         "text": "Request Day Off",
-                                        "url": "http://renet-slack.herokuapp.com/slack/approval/form?token='. str_random(255) .'&id='. $id .'",
+                                        "url": "http://renet-slack.herokuapp.com/slack/approval/leave?token='. str_random(255) .'&id='. $id .'",
                                         "style": "primary"
                                     }
                                 ]
