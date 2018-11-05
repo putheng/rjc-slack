@@ -107,7 +107,7 @@
 								</td>
 							</tr>
 							<tr>
-								<td colspan="5">
+								<td colspan="2">
 									<div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
 										<label class="control-label">ប្រភេទនៃការសុំឈប់សម្រាក / Type of Leave</label>
 										<select name="type" class="form-control">
@@ -125,6 +125,9 @@
 										@endif
 									</div>
 								</td>
+								<td></td>
+								<td></td>
+								<td></td>
 							</tr>
 							<tr>
 								<td>
