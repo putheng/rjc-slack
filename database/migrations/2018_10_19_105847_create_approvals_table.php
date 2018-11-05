@@ -25,6 +25,7 @@ class CreateApprovalsTable extends Migration
             $table->text('body')->nullable();
             $table->string('status')->default('pending');
             $table->string('slackid');
+            $table->string('type')->nullable();
             $table->timestamps();
         });
     }
