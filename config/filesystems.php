@@ -62,6 +62,20 @@ return [
             'region' => env('AWS_DEFAULT_REGION'),
             'bucket' => env('AWS_BUCKET'),
         ],
+        
+        'ftp' => [
+            'driver'   => 'ftp',
+            'host'     => 'ftp.carfresh.net',
+            'username' => 'slackapp@carfresh.net',
+            'password' => 'l)3IS{DGMn=dU;8',
+        
+            // Optional FTP Settings...
+            'port'     => 21,
+            // 'root'     => '',
+            // 'passive'  => true,
+            // 'ssl'      => true,
+            // 'timeout'  => 30,
+        ],
 
     ],
 

@@ -1,5 +1,6 @@
 <?php
 
+use Storage;
 use Illuminate\Http\Request;
 
 Route::get('/', function () {
@@ -33,3 +34,7 @@ Route::get('video', 'Courses\CourseController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/test', function(){
+    Storage::disk('ftp')->put('file.txt', 'Contents');
+});
