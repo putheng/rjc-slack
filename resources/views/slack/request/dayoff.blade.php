@@ -15,7 +15,7 @@
 			<div class="alert alert-success" role="alert"><strong>Congratulations! </strong>{{ session('success') }}</div>
 		@endif
 			<div class="table-responsive">
-				<form action="{{ route('form.approval') }}" method="post">
+				<form action="{{ route('form.approval.leave') }}" method="post">
 					{{ csrf_field() }}
 					<table class="table">
 						<tbody>

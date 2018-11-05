@@ -12,7 +12,7 @@ Route::post('/slack/request/leave', 'ApprovalController@getResponse');
 Route::get('/slack/approval/form', 'ApprovalController@index')->name('form.approval');
 Route::post('/slack/approval/form', 'ApprovalController@store');
 
-Route::get('/slack/approval/leave', 'ApprovalController@viewOff')->name('form.approval');
+Route::get('/slack/approval/leave', 'ApprovalController@viewOff')->name('form.approval.leave');
 Route::post('/slack/approval/leave', 'ApprovalController@storeOff');
 
 Route::get('/slack/approval/form/{approval}', 'ApprovalController@view');

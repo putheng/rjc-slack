@@ -24,9 +24,23 @@ class ApprovalController extends Controller
         return view('slack.request.dayoff');
     }
     
-    public function storeOff()
+    public function storeOff(Request $request)
     {
-        
+        $this->validate($request, [
+    		'username' => 'required|min:3|max:255',
+    		'userid' => 'required',
+    		'department' => 'required',
+    		'dateout' => 'required',
+            'title' => 'required:min:3|max:255',
+    		'timeout' => 'required',
+    		'datein' => 'required',
+            'timein' => 'required',
+            'request_to' => 'required',
+            'type' => 'required',
+    		'reason' => 'required|min:3|max:255',
+    	]);
+    	
+    	
     }
     
     public function newRequestForm()
