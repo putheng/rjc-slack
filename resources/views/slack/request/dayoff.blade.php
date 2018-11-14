@@ -6,6 +6,10 @@
 		<div class="col">
 			<h3 class="text-center text-underline">ពាក្យសុំច្បាប់ឈប់សំរាក</h3>
 			<h4 class="text-center text-up">Leave Request Form</h4>
+			<br>
+			<p class="text-center h5">រាល់ការឈប់សំរាករបស់អ្នកមានការយលព្រមពីនាក់គ្រប់គ្រងជាមុនសិន</p>
+			<p class="text-center h5">Your request for leave permission must be sumitted and approveal from supervisor in advance.</p>
+
 		</div>
 	</div>
 	<br><br>
@@ -20,7 +24,7 @@
 					<table class="table">
 						<tbody>
 							<tr>
-								<td colspan="2">
+								<td style="width: 25%">
 								    <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
     									<label class="control-label">ឈ្មោះ / Name</label>
     									<br>
@@ -38,7 +42,7 @@
     									@endif
     								</div>
 								</td>
-								<td>
+								<td style="width: 25%">
 									<div class="form-group{{ $errors->has('userid') ? ' has-error' : '' }}">
 										<label class="control-label">អត្ថលេខ / ID</label>
 										<input type="text" name="userid" class="form-control">
@@ -49,32 +53,43 @@
 										@endif
 									</div>
 								</td>
-								<td>
-									<div class="form-group{{ $errors->has('department') ? ' has-error' : '' }}">
-										<label class="control-label">ផ្នែក / Department</label>
-										<input type="text" name="department" class="form-control">
-										@if($errors->has('department'))
+								<td style="width: 25%">
+									<div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
+										<label class="control-label">Phone Number</label>
+										<input type="text" name="phone" class="form-control">
+										@if($errors->has('phone'))
 											<span class="help-block">
-												{{ $errors->first('department') }}
+												{{ $errors->first('phone') }}
+											</span>
+										@endif
+									</div>
+								</td>
+								<td style="width: 25%">
+									<div class="form-group{{ $errors->has('position') ? ' has-error' : '' }}">
+										<label class="control-label">មុខតំណែង / Position</label>
+										<input type="text" name="position" class="form-control">
+										@if($errors->has('position'))
+											<span class="help-block">
+												{{ $errors->first('position') }}
 											</span>
 										@endif
 									</div>
 								</td>
 							</tr>
 							<tr>
-								<td>
+								<td style="width: 30%">
 									<label>ថ្ងៃខែឆ្នាំចេញ / Date Out</label>
 									<input type="date" name="dateout" class="form-control" value="{{ date('Y-m-d') }}">
 								</td>
-								<td>
+								<td style="width: 20%">
 									<label>ម៉ោងចេញ / Time Out</label>
 									<input type="time" name="timeout" class="form-control" value="08:00:00">
 								</td>
-								<td>
+								<td style="width: 30%">
 									<label>ថ្ងៃខែឆ្នាំចូល / Date In</label>
 									<input type="date" name="datein" class="form-control" value="{{ date('Y-m-d') }}">
 								</td>
-								<td>
+								<td style="width: 20%">
 									<label>ម៉ោងចូល / Time In</label>
 									<input type="time" name="timein" class="form-control" value="17:00:00">
 								</td>
@@ -84,18 +99,27 @@
 							</tr>
 							<tr>
 								<td>
-									<div class="control-label{{ $errors->has('title') ? ' has-error' : '' }}">
-										<label class="control-label">Title</label>
-										<input type="text" name="title" class="form-control">
-										@if($errors->has('title'))
+									<div class="control-label{{ $errors->has('branch') ? ' has-error' : '' }}">
+										<label class="control-label">សាខា / Branch</label>
+										<input type="text" name="branch" class="form-control">
+										@if($errors->has('branch'))
 											<span class="help-block">
-												{{ $errors->first('title') }}
+												{{ $errors->first('branch') }}
 											</span>
 										@endif
 									</div>
 								</td>
-								<td></td>
-								<td></td>
+								<td>
+									<div class="control-label{{ $errors->has('section') ? ' has-error' : '' }}">
+										<label class="control-label">ផ្នែក / Section</label>
+										<input type="text" name="section" class="form-control">
+										@if($errors->has('section'))
+											<span class="help-block">
+												{{ $errors->first('section') }}
+											</span>
+										@endif
+									</div>
+								</td>
 								<td></td>
 								<td></td>
 							</tr>

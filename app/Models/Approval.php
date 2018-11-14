@@ -15,6 +15,7 @@ class Approval extends Model
 		'reason',
 		'title',
 		'slackid',
+		'type',
 		'body'
 	];
 	

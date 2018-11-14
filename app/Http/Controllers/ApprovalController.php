@@ -29,9 +29,11 @@ class ApprovalController extends Controller
         $this->validate($request, [
     		'username' => 'required|min:3|max:255',
     		'userid' => 'required',
-    		'department' => 'required',
+            'phone' => 'required',
+    		'position' => 'required',
+            'section' => 'required',
+            'branch' => 'required',
     		'dateout' => 'required',
-            'title' => 'required:min:3|max:255',
     		'timeout' => 'required',
     		'datein' => 'required',
             'timein' => 'required',
@@ -40,7 +42,76 @@ class ApprovalController extends Controller
     		'reason' => 'required|min:3|max:255',
     	]);
     	
+        $create = Approval::create([
+            'username' => $request->username,
+            'userid' => $request->userid,
+            'title' => $request->type,
+            'department' => $request->position,
+            'dateout' => $request->dateout .' '. $request->timeout,
+            'datein' => $request->datein .' '. $request->timein,
+            'reason' => $request->reason,
+            'slackid' => $request->username,
+            'type' => $request->type,
+            'body' => $this->defaultOffText(),
+        ]);
+
+        $this->buildRequestOffMessage($request, $create);
+        
+        $this->newRequestForm();
+
+        return back()->withSuccess('your form was successfully submitted');
     	
+    }
+
+    public function buildRequestOffMessage(Request $request, $create)
+    {
+        return $this->client->post(
+            $this->url .'TCDTENTL7/BDLTV9TNE/bH0otVLUIrclyu0VpCLD3rIR',
+            [
+                'headers' => ['Content-Type' => 'application/json'],
+                'json' => json_decode('
+                    {
+                        "text": "'. $this->buildRequestTo($request) .' \n*Your approval is requested to make an offer to* <@'. $request->username .'>",
+                        "attachments": [
+                            {
+                                "text": "'. $this->defaultOffText() .' \n",
+                                "fallback": "You are unable to approve",
+                                "callback_id": "aprq",
+                                "color": "#3AA3E3",
+                                "attachment_type": "default",
+                                "actions": [
+                                    {
+                                        "name": "approval",
+                                        "text": "Approve",
+                                        "type": "button",
+                                        "value": "approve%'. $request->username .'%'. $create->id .'",
+                                        "style": "primary"
+                                    },
+                                    {
+                                        "name": "approval",
+                                        "text": "Reject",
+                                        "style": "danger",
+                                        "type": "button",
+                                        "value": "reject%'. $request->username .'%'. $create->id .'",
+                                        "confirm": {
+                                            "title": "Are you sure?",
+                                            "text": "Would you like to reject this request?",
+                                            "ok_text": "Yes",
+                                            "dismiss_text": "No"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ')
+            ]
+        );
+    }
+
+    public function defaultOffText()
+    {
+        return 'I would like to request your approval for my leave ('. request()->type .') \n\n *Branch* '. request()->branch .' \n *Section* '. request()->section .'\n'.'*Position* '. request()->position .'\n\n'. $this->buildRequestText() . $this->Dateout() . $this->DateIN();
     }
     
     public function newRequestForm()
