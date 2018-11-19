@@ -111,7 +111,7 @@ class ApprovalController extends Controller
 
     public function defaultOffText()
     {
-        return 'I would like to request your approval for my leave (* '. request()->type .' *) \n\n *Branch* '. request()->branch .' \n *Section* '. request()->section .'\n'.'*Position* '. request()->position .'\n\n'. $this->buildRequestText() . $this->Dateout() . $this->DateIN();
+        return 'I would like to request your approval for my leave ('. request()->type .') \n\n *Branch* '. request()->branch .' \n *Section* '. request()->section .'\n'.'*Position* '. request()->position .'\n\n'. $this->buildRequestText() . $this->Dateout() . $this->DateIN();
     }
     
     public function newRequestForm()
@@ -421,7 +421,7 @@ class ApprovalController extends Controller
         $carbon = new Carbon($date);
         $time = $carbon->format('d-M-Y H:i A');
 
-        return '\n*From Date* :'. $time;
+        return '\n*Time In* :'. $time;
     }
 
     public function DateOut()
@@ -430,7 +430,7 @@ class ApprovalController extends Controller
         $carbon = new Carbon($date);
         $time = $carbon->format('d-M-Y H:i A');
 
-        return '\n\n*To Date* :'. $time;
+        return '\n\n*Time Out* :'. $time;
     }
 
     public function defaultText()
