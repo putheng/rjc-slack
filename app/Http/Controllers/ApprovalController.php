@@ -197,7 +197,7 @@ class ApprovalController extends Controller
                 'headers' => ['Content-Type' => 'application/json'],
                 'json' => json_decode('
                     {
-                        "text": "Requested to leave from <@'. $approve->slackid .'>\n\n *Was approved* by <@'. $id .'>",
+                        "text": "\n\nRequested to leave from <@'. $approve->slackid .'>\n *Was approved* by <@'. $id .'>\n",
                         "channel": "C061EG9SL",
                         "attachments": [
                             {
