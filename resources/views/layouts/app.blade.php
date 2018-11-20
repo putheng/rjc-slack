@@ -52,7 +52,7 @@
 
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="#">Daily Check</a>
+                                        <a href="{{ route('slack.show') }}">Daily Check</a>
                                     </li>
                                     <li>
                                         <a href="#">Dayoff report</a>

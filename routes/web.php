@@ -21,7 +21,7 @@ Route::post('/slac/approval/request', 'ApprovalController@request')->name('appro
 
 Route::group(['prefix' => 'slack', 'as' => 'slack.', 'middleware' => 'auth'], function(){
     
-    Route::get('show', 'SlackControler@show');
+    Route::get('show', 'SlackControler@show')->name('show');
     
     Route::get('filter', 'SlackControler@filter')->name('filter');
     
