@@ -55,7 +55,7 @@
                                         <a href="{{ route('slack.show') }}">Daily Check</a>
                                     </li>
                                     <li>
-                                        <a href="#">Dayoff report</a>
+                                        <a href="{{ route('slack.reportOff') }}">Dayoff report</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('logout') }}"

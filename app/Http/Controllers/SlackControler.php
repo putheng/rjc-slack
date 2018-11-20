@@ -61,9 +61,9 @@ class SlackControler extends Controller
         return view('slack.show', compact('slacks', 'date'));
     }
     
-    public function reportDayOff()
+    public function reportDayOff(Request $request)
     {
-        
+        return 'ok';
     }
     
     public function filter(Request $request)
