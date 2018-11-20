@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 
 Route::get('/', function () {
     //return view('welcome');
-return 'it's work';
+return 'it\'s work';
 });
 
 Route::post('/slack/hook', 'SlackControler@index');
