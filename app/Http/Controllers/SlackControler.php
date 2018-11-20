@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use Carbon\Carbon;
 use App\Models\Work;
+use App\Models\Approval;
 use Illuminate\Http\Request;
 
 class SlackControler extends Controller
@@ -63,7 +64,14 @@ class SlackControler extends Controller
     
     public function reportDayOff(Request $request)
     {
-        return 'ok';
+        $date = new Carbon;
+        
+        $approvals = Approval::whereDate('created_at', '>=', $date->modify('this week')->format('Y-m-d'))
+                    ->whereDate('created_at', '<=', $date->modify('this week +6 days')->format('Y-m-d'))
+                    ->whereNotNull('type')
+                    ->paginate(50);
+                    
+        return view('slack.reportOff', compact('approvals', 'date'));
     }
     
     public function filter(Request $request)

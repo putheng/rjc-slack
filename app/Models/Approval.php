@@ -19,4 +19,14 @@ class Approval extends Model
 		'body'
 	];
 	
+	public function getUsernameAttribute($value)
+	{
+		return ucfirst(str_replace('.', ' ', $this->slack($value)->name));
+	}
+	
+	public function slack($username)
+	{
+		return Slack::where('slackid', $username)->first();
+	}
+	
 }

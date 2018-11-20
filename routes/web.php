@@ -3,8 +3,7 @@
 use Illuminate\Http\Request;
 
 Route::get('/', function () {
-    //return view('welcome');
-return 'it\'s work';
+    return view('welcome');
 });
 
 Route::post('/slack/hook', 'SlackControler@index');
@@ -28,7 +27,7 @@ Route::group(['prefix' => 'slack', 'as' => 'slack.', 'middleware' => 'auth'], fu
     
     Route::post('/filter', 'SlackControler@exportCsv')->name('filter.export');
     
-    Route::get('/', 'SlackControler@reportDayOff')->name('reportOff');
+    Route::get('/report/dayOff', 'SlackControler@reportDayOff')->name('reportOff');
 });
 
 Route::get('video', 'Courses\CourseController@index');
