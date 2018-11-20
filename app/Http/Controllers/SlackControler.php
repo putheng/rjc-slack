@@ -23,7 +23,7 @@ class SlackControler extends Controller
         $id = $request->user_id;
         
         $morning = ['Good morning', 'Good Morning', 'good morning', 'good Morning', 'morning', 'Morning'];
-        $bye = ['Good Bye', 'Good Bye', 'Good bye', 'good bye', 'good by', 'Bye', 'bye', 'by', 'By'];
+        $bye = ['Good Bye', 'Good Bye', 'Good bye', 'good bye', 'good by', 'Bye', 'bye', 'by', 'By', 'Goodbye', 'GoodBye'];
         
         $work = new Work;
         
@@ -70,8 +70,21 @@ class SlackControler extends Controller
                     ->whereDate('created_at', '<=', $date->modify('this week +6 days')->format('Y-m-d'))
                     ->whereNotNull('type')
                     ->paginate(50);
-                    
-        return view('slack.reportOff', compact('approvals', 'date'));
+
+        return view('slack.report.index', compact('approvals', 'date'));
+    }
+
+    function exportReport(Request $request)
+    {
+
+        return back();
+    }
+
+    public function reportDayFilter(Request $request)
+    {
+        $approvals = Approval::filter($request)->paginate(50);
+
+        return view('slack.report.filter', compact('approvals'));
     }
     
     public function filter(Request $request)

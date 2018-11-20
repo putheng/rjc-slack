@@ -24,6 +24,12 @@ class Approval extends Model
 		return ucfirst(str_replace('.', ' ', $this->slack($value)->name));
 	}
 	
+    public function scopeFilter($query, $request)
+    {
+        return $query->whereDate('created_at', '>=', $request->from)
+                ->whereDate('created_at', '<=', $request->to);
+    }
+	
 	public function slack($username)
 	{
 		return Slack::where('slackid', $username)->first();

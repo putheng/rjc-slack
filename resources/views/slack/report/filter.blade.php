@@ -5,22 +5,22 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Report Day Off
+                <h4>Report Day Off
                     <small>This week</small>
-                </h2>
-                <form action="{{ route('slack.filter') }}" method="get">
+                </h4>
+                <form action="{{ route('slack.reportDayFilter') }}" method="get">
                 
                     <div class="row">
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label for="from" class="control-label">From:</label>
-                                <input value="{{ $date->now()->startOfMonth()->format('Y-m-d') }}" class="form-control input-sm" type="date" name="from"/>
+                                <input value="{{ request()->from }}" class="form-control input-sm" type="date" name="from"/>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label for="from" class="control-label">To:</label>
-                                <input value="{{ $date->now()->endOfMonth()->format('Y-m-d') }}" class="form-control input-sm" type="date" name="to"/>
+                                <input value="{{ request()->to }}" class="form-control input-sm" type="date" name="to"/>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -48,14 +48,20 @@
                         <tr>
                             <td>{{ $approval->userid }}</td>
                             <td>{{ $approval->username }}</td>
-                            <td>{{ $approval->created_at }}</td>
-                            <td>{{ $approval->updated_at }}</td>
+                            <td>{{ $approval->type }}</td>
+                            <td>{{ $approval->created_at->format('Y-m-d') }}</td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
                 
                 <p>{{ $approvals->links() }}</p>
+
+                <form action="{{ route('slack.exportReport') }}" method="post">
+                    {{ method_field('PUT') }}
+                    {{ csrf_field() }}
+                    <button class="btn btn-link">Export CSV</button>
+                </form>
             </div>
         </div>
     </div>

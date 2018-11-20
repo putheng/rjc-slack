@@ -28,6 +28,8 @@ Route::group(['prefix' => 'slack', 'as' => 'slack.', 'middleware' => 'auth'], fu
     Route::post('/filter', 'SlackControler@exportCsv')->name('filter.export');
     
     Route::get('/report/dayOff', 'SlackControler@reportDayOff')->name('reportOff');
+    Route::get('/report/dayOff/filter', 'SlackControler@reportDayFilter')->name('reportDayFilter');
+    Route::put('/report/dayOff/filter', 'SlackControler@exportReport')->name('exportReport');
 });
 
 Route::get('video', 'Courses\CourseController@index');
