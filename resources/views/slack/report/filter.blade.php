@@ -37,10 +37,10 @@
                             NAME
                         </th>
                         <th>
-                            IN
+                            TYPE
                         </th>
                         <th>
-                            OUT
+                            DATE
                         </th>
                     </thead>
                     <tbody>

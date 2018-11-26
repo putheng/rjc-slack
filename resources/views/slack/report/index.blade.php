@@ -37,10 +37,13 @@
                             NAME
                         </th>
                         <th>
-                            IN
+                            TYPE
                         </th>
                         <th>
-                            OUT
+                            DATE
+                        </th>
+                        <th>
+                            REASON
                         </th>
                     </thead>
                     <tbody>
@@ -49,7 +52,8 @@
                             <td>{{ $approval->userid }}</td>
                             <td>{{ $approval->username }}</td>
                             <td>{{ $approval->type }}</td>
-                            <td>{{ $approval->created_at->format('Y-m-d') }}</td>
+                            <td>{{ $approval->dateout }} -> {{ $approval->datein }}</td>
+                            <td>{{ $approval->reason }}</td>
                         </tr>
                         @endforeach
                     </tbody>
