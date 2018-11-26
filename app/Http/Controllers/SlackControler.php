@@ -77,7 +77,7 @@ class SlackControler extends Controller
     function exportReport(Request $request)
     {
 
-        $filename = 'report-off-'. date('Y-m-d-h-A') .'.csv';
+        $filename = 'report-off-'. date('Y-m-d-h-i-s-A') .'.csv';
         $headers = [
             'Cache-Control'       => 'must-revalidate, post-check=0, pre-check=0',
             'Content-type'        => 'text/csv',
@@ -125,7 +125,7 @@ class SlackControler extends Controller
     
     public function exportCsv(Request $request)
     {
-        $filename = 'report-checkin-'. date('Y-m-d-h-A') .'.csv';
+        $filename = 'report-checkin-'. date('Y-m-d-h-i-s-A') .'.csv';
         
         $headers = [
             'Cache-Control'       => 'must-revalidate, post-check=0, pre-check=0',
