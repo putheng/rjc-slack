@@ -82,7 +82,9 @@ class SlackControler extends Controller
 
     public function reportDayFilter(Request $request)
     {
-        $approvals = Approval::filter($request)->paginate(50);
+        $approvals = Approval::filter($request)
+                ->whereNotNull('type')
+                ->paginate(50);
 
         return view('slack.report.filter', compact('approvals'));
     }
