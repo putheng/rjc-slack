@@ -77,7 +77,34 @@ class SlackControler extends Controller
     function exportReport(Request $request)
     {
 
-        return back();
+        $filename = 'report-off-'. date('Y-m-d-h-A') .'.csv';
+        $headers = [
+            'Cache-Control'       => 'must-revalidate, post-check=0, pre-check=0',
+            'Content-type'        => 'text/csv',
+            'Content-Disposition' => 'attachment; filename='. $filename,
+            'Expires'             => '0',
+            'Pragma'              => 'public',
+        ];
+
+        $list = Approval::select('name', 'type', 'datein', 'dateout', 'reason')
+                ->join('slacks', 'slacks.slackid', '=', 'approvals.slackid')
+                ->whereNotNull('type')
+                ->filter($request)
+                ->get()
+                ->toArray();
+
+        array_unshift($list, array_keys($list[0]));
+    
+        $callback = function() use ($list) 
+        {
+            $FH = fopen('php://output', 'w');
+            foreach ($list as $row) { 
+                fputcsv($FH, $row);
+            }
+            fclose($FH);
+        };
+    
+        return response()->stream($callback, 200, $headers);
     }
 
     public function reportDayFilter(Request $request)
@@ -98,7 +125,7 @@ class SlackControler extends Controller
     
     public function exportCsv(Request $request)
     {
-        $filename = 'exports-'. date('Y-m-d-h-A') .'.csv';
+        $filename = 'report-checkin-'. date('Y-m-d-h-A') .'.csv';
         
         $headers = [
             'Cache-Control'       => 'must-revalidate, post-check=0, pre-check=0',

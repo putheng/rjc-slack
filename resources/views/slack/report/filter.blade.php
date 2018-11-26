@@ -42,6 +42,9 @@
                         <th>
                             DATE
                         </th>
+                        <th>
+                            REASON
+                        </th>
                     </thead>
                     <tbody>
                         @foreach($approvals as $approval)
@@ -49,7 +52,8 @@
                             <td>{{ $approval->userid }}</td>
                             <td>{{ $approval->username }}</td>
                             <td>{{ $approval->type }}</td>
-                            <td>{{ $approval->created_at->format('Y-m-d') }}</td>
+                            <td>{{ $approval->dateout }} -> {{ $approval->datein }} ({{ date_cal($approval->dateout, $approval->datein) }} hours)</td>
+                            <td>{{ $approval->reason }}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -60,6 +64,8 @@
                 <form action="{{ route('slack.exportReport') }}" method="post">
                     {{ method_field('PUT') }}
                     {{ csrf_field() }}
+                    <input type="hidden" name="from" value="{{ request()->from }}">
+                    <input type="hidden" name="to" value="{{ request()->to }}">
                     <button class="btn btn-link">Export CSV</button>
                 </form>
             </div>

@@ -52,7 +52,7 @@
                             <td>{{ $approval->userid }}</td>
                             <td>{{ $approval->username }}</td>
                             <td>{{ $approval->type }}</td>
-                            <td>{{ $approval->dateout }} -> {{ $approval->datein }}</td>
+                            <td>{{ $approval->dateout }} -> {{ $approval->datein }} ({{ date_cal($approval->dateout, $approval->datein) }} hours)</td>
                             <td>{{ $approval->reason }}</td>
                         </tr>
                         @endforeach
