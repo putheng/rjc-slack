@@ -95,7 +95,7 @@ class SlackControler extends Controller
 
         array_unshift($list, array_keys($list[0]));
     
-        $callback = function() use ($list) 
+        $callback = function() use ($list)
         {
             $FH = fopen('php://output', 'w');
             foreach ($list as $row) { 
