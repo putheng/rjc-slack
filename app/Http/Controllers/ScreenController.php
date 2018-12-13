@@ -16,7 +16,7 @@ class ScreenController extends Controller
 	    $top    = 0;
 	    $left   = 0;
 	    $path = public_path('file.jpg');
-	    $client->getEngine()->setPath(app_path('bin/bin/phantomjs'));
+	    $client->getEngine()->setPath(base_path('bin/phantomjs'));
 	    
 	    $url = 'https://docs.google.com/spreadsheets/d/1jjmA7ITK84I7JAL4mYQZIXSF9FrFnEgAK6V17IA_-gc/edit?usp=sharing';
 

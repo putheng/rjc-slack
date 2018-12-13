@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Http\Request;
+
 Route::get('/test', function(){
-echo base_path('bin/bin/phantomjs');
+
 });
+
 Route::get('/screenshot', 'ScreenController@index');
 
 Route::get('/', function () {
