@@ -120,6 +120,7 @@
 											<option value="UCCBRCTCZ">Hirose Daichi</option>
 											<option value="UCFNQ3XRU">Shizuka Aoki</option>
 											<option value="UCCSTDGE6">Choup Rotha</option>
+											<option value="DCD0FN0US">Phal Kun Kanha</option>
 											<option value="UCF3N7R5G">Niioka Naoki</option>
 											<option value="UCCNW35C3">But Kakada</option>
 										</select>
