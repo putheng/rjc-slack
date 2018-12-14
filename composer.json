@@ -8,7 +8,6 @@
         "php": ">=7.0.0",
         "fideloper/proxy": "~3.3",
         "guzzlehttp/guzzle": "^6.3",
-        "jonnyw/php-phantomjs": "4.6",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "league/flysystem-sftp": "^1.0"
@@ -57,15 +56,11 @@
         ],
         "post-install-cmd": [
             "PhantomInstaller\\Installer::installPhantomJS"
-        ],
-        "post-update-cmd": [
-            "PhantomInstaller\\Installer::installPhantomJS"
         ]
     },
     "config": {
         "preferred-install": "dist",
         "sort-packages": true,
-        "optimize-autoloader": true,
-        "bin-dir": "bin"
+        "optimize-autoloader": true
     }
 }
