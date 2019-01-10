@@ -86,7 +86,7 @@ class SlackControler extends Controller
             'Pragma'              => 'public',
         ];
 
-        $list = Approval::select('name', 'type', 'datein', 'dateout', 'reason')
+        $list = Approval::select('name', 'type', 'datein', 'dateout', 'reason', 'status')
                 ->join('slacks', 'slacks.slackid', '=', 'approvals.slackid')
                 ->whereNotNull('type')
                 ->filter($request)
@@ -94,7 +94,7 @@ class SlackControler extends Controller
                 ->toArray();
 
         array_unshift($list, array_keys($list[0]));
-    
+
         $callback = function() use ($list)
         {
             $FH = fopen('php://output', 'w');
@@ -135,7 +135,7 @@ class SlackControler extends Controller
             'Pragma'              => 'public',
         ];
         
-        $list = Work::select(DB::raw('username as name, created_at as in, updated_at as out'))
+        $list = Work::select(DB::raw('username as name, created_at as in, updated_at as out, status'))
                 ->filter($request)
                 ->get()
                 ->toArray();

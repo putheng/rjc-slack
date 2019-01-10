@@ -1,11 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
-Route::get('/test', function(){
-
-});
-
 Route::get('/screenshot', 'ScreenController@index');
 
 Route::get('/', function () {

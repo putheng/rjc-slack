@@ -33,18 +33,11 @@
                 <table class="table table-striped table-bordered">
                     <thead>
                         <th>ID</th>
-                        <th>
-                            NAME
-                        </th>
-                        <th>
-                            TYPE
-                        </th>
-                        <th>
-                            DATE
-                        </th>
-                        <th>
-                            REASON
-                        </th>
+                        <th>NAME</th>
+                        <th>TYPE</th>
+                        <th>DATE</th>
+                        <th> REASON</th>
+                        <th> STATUS</th>
                     </thead>
                     <tbody>
                         @foreach($approvals as $approval)
@@ -54,6 +47,7 @@
                             <td>{{ $approval->type }}</td>
                             <td>{{ $approval->dateout }} -> {{ $approval->datein }} ({{ date_cal($approval->dateout, $approval->datein) }} hours)</td>
                             <td>{{ $approval->reason }}</td>
+                            <td>{{ $approval->status }}</td>
                         </tr>
                         @endforeach
                     </tbody>
