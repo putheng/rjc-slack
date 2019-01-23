@@ -11,5 +11,7 @@ if(!function_exists('date_cal')){
 		if($hours <= 9){
 			return 8;
 		}
+
+		return $hours;
 	}
 }
