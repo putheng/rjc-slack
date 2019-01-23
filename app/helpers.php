@@ -6,12 +6,6 @@ if(!function_exists('date_cal')){
 		$date = Carbon::parse($from);
 		$to = Carbon::parse($to);
 
-		$hours = $date->diffInHours($to);
-
-		if($hours <= 9){
-			return 8;
-		}
-
-		return $hours;
+		return $date->diffInHours($to);
 	}
 }
