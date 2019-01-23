@@ -322,7 +322,7 @@ class ApprovalController extends Controller
                                     {
                                         "type": "button",
                                         "text": "Request Over Time",
-                                        "url": "http://renet-slack.herokuapp.com/slack/approval/leave?token='. str_random(255) .'&id='. $id .'",
+                                        "url": "http://renet-slack.herokuapp.com/slack/approval/ot?token='. str_random(255) .'&id='. $id .'",
                                         "style": "primary"
                                     }
                                 ]

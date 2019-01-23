@@ -6,6 +6,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/slack/approval/ot', 'OTController@index')->name('form.ot');
+Route::post('/slack/approval/ot', 'OTController@store');
+
 Route::post('/slack/hook', 'SlackControler@index');
 Route::post('/slack/request/leave', 'ApprovalController@getResponse');
 
