@@ -86,7 +86,7 @@ class SlackControler extends Controller
             'Pragma'              => 'public',
         ];
 
-        $list = Approval::select('name', 'type', 'datein', 'dateout', 'reason', 'status')
+        $list = Approval::select('name', 'type', 'dateout', 'datein', 'reason', 'status')
                 ->join('slacks', 'slacks.slackid', '=', 'approvals.slackid')
                 ->whereNotNull('type')
                 ->filter($request)
@@ -99,7 +99,7 @@ class SlackControler extends Controller
         {
             $FH = fopen('php://output', 'w');
             foreach ($list as $row) { 
-                fputcsv($FH, $row);
+                fputcsv($FH, ucfirst($row));
             }
             fclose($FH);
         };

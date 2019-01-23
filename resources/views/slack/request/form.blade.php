@@ -117,15 +117,11 @@
 									<div class="form-group{{ $errors->has('request_to') ? ' has-error' : '' }}">
 										<label class="control-label">Request to:</label>
 										<select multiple name="request_to[]" class="form-control select2">
-											<option value="UCCBRCTCZ">Hirose Daichi</option>
-											<option value="UCFNQ3XRU">Shizuka Aoki</option>
-											<option value="UCCSTDGE6">Choup Rotha</option>
-											<option value="UDFCN3Q2D">Tivdararith</option>
-											<option value="UDYFN8QMV">Masamichi Nasuno</option>
-											<option value="UCEADU7E2">Phal Kun Kanha</option>
-											<option value="UCD2VSGLQ">Chhoeng Sreyleak</option>
-											<option value="UCF3N7R5G">Niioka Naoki</option>
-											<option value="UCCNW35C3">But Kakada</option>
+											@foreach(\App\Approver::get() as $approver)
+												<option value="{{ $approver->slackid  }}">
+													{{ $approver->name  }}
+												</option>
+											@endforeach
 										</select>
 									</div>
 								</td>

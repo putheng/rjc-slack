@@ -36,6 +36,7 @@
                         <th>NAME</th>
                         <th>TYPE</th>
                         <th>DATE</th>
+                        <th>HOURS</th>
                         <th>REASON</th>
                         <th>STATUS</th>
                     </thead>
@@ -45,7 +46,8 @@
                             <td>{{ $approval->userid }}</td>
                             <td>{{ $approval->username }}</td>
                             <td>{{ $approval->type }}</td>
-                            <td>{{ $approval->dateout }} -> {{ $approval->datein }} ({{ date_cal($approval->dateout, $approval->datein) }} hours)</td>
+                            <td>{{ $approval->dateout }} -> {{ $approval->datein }} </td>
+                            <td>{{ date_cal($approval->dateout, $approval->datein) }} hours</td>
                             <td>{{ $approval->reason }}</td>
                             <td>{{ ucwords($approval->status) }}</td>
                         </tr>

@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use GuzzleHttp\Client;
 use App\Models\Approval;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreDayOffFromResuest;
 
 class ApprovalController extends Controller
 {
@@ -24,24 +25,8 @@ class ApprovalController extends Controller
         return view('slack.request.dayoff');
     }
     
-    public function storeOff(Request $request)
-    {
-        $this->validate($request, [
-    		'username' => 'required|min:3|max:255',
-    		'userid' => 'required',
-            'phone' => 'required',
-    		'position' => 'required',
-            'section' => 'required',
-            'branch' => 'required',
-    		'dateout' => 'required',
-    		'timeout' => 'required',
-    		'datein' => 'required',
-            'timein' => 'required',
-            'request_to' => 'required',
-            'type' => 'required',
-    		'reason' => 'required|min:3|max:255',
-    	]);
-    	
+    public function storeOff(StoreDayOffFromResuest $request)
+    {	
         $create = Approval::create([
             'username' => $request->username,
             'userid' => $request->userid,
