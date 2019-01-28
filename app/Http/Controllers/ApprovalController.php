@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 use App\Models\Approval;
+use App\Models\OverTime;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreDayOffFromResuest;
 
@@ -161,6 +162,27 @@ class ApprovalController extends Controller
             
             $this->sendApprovedRequest($userid, $approval);
         }
+
+        if($response == 'approveOt')
+        {
+            $approval = OverTime::find($requestid);
+            
+            $approval->status = 'Approved';
+            
+            $approval->save();
+            
+            $this->sendApprovedOtRequest($userid, $approval);
+        }
+        
+        if($response == 'rejectOt')
+        {
+            $approval = OverTime::find($requestid);
+
+            $approval->status = 'Rejected';
+            $approval->save();
+            
+            $this->sendRejectOtRequest($userid, $approval);
+        }
         
         if($response == 'reject')
         {
@@ -172,6 +194,88 @@ class ApprovalController extends Controller
         }
         
         
+    }
+
+    public function sendApprovedOtRequest($id, $approve)
+    {
+        $this->client->post(
+            $this->url .'TCDTENTL7/BDLTV9TNE/bH0otVLUIrclyu0VpCLD3rIR',
+            [
+                'headers' => ['Content-Type' => 'application/json'],
+                'json' => json_decode('
+                    {
+                        "text": "\n\nRequested *Over Time* from <@'. $approve->slackid .'>\n *Was approved* by <@'. $id .'>\n",
+                        "channel": "C061EG9SL",
+                        "attachments": [
+                            {
+                                "fallback": "The request was approved."
+                            }
+                        ]
+                    }
+                ')
+            ]
+        );
+        
+        sleep(1);
+        
+        $this->client->post(
+            $this->url .'TCDTENTL7/BDGR52M6F/ZYKHb8pACSY3D1bVxu4PzNKw',
+            [
+                'headers' => ['Content-Type' => 'application/json'],
+                'json' => json_decode('
+                    {
+                        "text": "\n\nRequested *Over Time* from <@'. $approve->slackid .'>\n *Was approved* by <@'. $id .'>\n",
+                        "channel": "C061EG9SL",
+                        "attachments": [
+                            {
+                                "fallback": "The request was approved!"
+                            }
+                        ]
+                    }
+                ')
+            ]
+        );
+    }
+
+    public function sendRejectOtRequest($id, $approve)
+    {
+        $this->client->post(
+            $this->url .'TCDTENTL7/BDLTV9TNE/bH0otVLUIrclyu0VpCLD3rIR',
+            [
+                'headers' => ['Content-Type' => 'application/json'],
+                'json' => json_decode('
+                    {
+                        "text": "\n\nRequested *Over Time* from <@'. $approve->slackid .'>\n *Was rejected* by <@'. $id .'>\n",
+                        "channel": "C061EG9SL",
+                        "attachments": [
+                            {
+                                "fallback": "The request was rejected!"
+                            }
+                        ]
+                    }
+                ')
+            ]
+        );
+        
+        sleep(1);
+        
+        $this->client->post(
+            $this->url .'TCDTENTL7/BDGR52M6F/ZYKHb8pACSY3D1bVxu4PzNKw',
+            [
+                'headers' => ['Content-Type' => 'application/json'],
+                'json' => json_decode('
+                    {
+                        "text": "\n\nRequested *Over Time* from <@'. $approve->slackid .'>\n *Was rejected* by <@'. $id .'>\n",
+                        "channel": "C061EG9SL",
+                        "attachments": [
+                            {
+                                "fallback": "The request was rejected!"
+                            }
+                        ]
+                    }
+                ')
+            ]
+        );
     }
     
     public function sendApprovedRequest($id, $approve)

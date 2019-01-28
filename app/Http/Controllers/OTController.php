@@ -67,7 +67,7 @@ class OTController extends Controller
                                         "name": "approval",
                                         "text": "Approve",
                                         "type": "button",
-                                        "value": "approve%'. $request->name .'%'. $create->id .'",
+                                        "value": "approveOt%'. $request->name .'%'. $create->id .'",
                                         "style": "primary"
                                     },
                                     {
@@ -75,7 +75,7 @@ class OTController extends Controller
                                         "text": "Reject",
                                         "style": "danger",
                                         "type": "button",
-                                        "value": "reject%'. $request->name .'%'. $create->id .'",
+                                        "value": "rejectOt%'. $request->name .'%'. $create->id .'",
                                         "confirm": {
                                             "title": "Are you sure?",
                                             "text": "Would you like to reject this request?",
