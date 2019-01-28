@@ -145,7 +145,7 @@ class OTController extends Controller
         $carbon = new Carbon($date);
         $time = $carbon->format('d-M-Y H:i A');
 
-        return '\n*Start Date* :'. $time;
+        return '\n\n*Start Date* :'. $time;
     }
 
     public function DateOut()
@@ -154,7 +154,7 @@ class OTController extends Controller
         $carbon = new Carbon($date);
         $time = $carbon->format('d-M-Y H:i A');
 
-        return '\n\n*End Date* :'. $time;
+        return '\n*End Date* :'. $time;
     }
 
    	public function buildRequestText()
