@@ -135,7 +135,7 @@ class ApprovalController extends Controller
     public function getResponse(Request $request)
     {
         $payload = json_decode($request->payload);
-        dd($request->payload);
+        dd('ok');
         $value = $payload->actions[0]->value;
         
         file_put_contents('count.txt', $request->payload);
