@@ -512,7 +512,7 @@ class ApprovalController extends Controller
     {
         $date = request()->datein . request()->timein;
         $carbon = new Carbon($date);
-        $time = $carbon->format('d-M-Y H:i A');
+        $time = $carbon->format('d-M-Y H:i');
 
         return '\n*Time In* :'. $time;
     }
@@ -521,7 +521,7 @@ class ApprovalController extends Controller
     {
         $date = request()->dateout . request()->timeout;
         $carbon = new Carbon($date);
-        $time = $carbon->format('d-M-Y H:i A');
+        $time = $carbon->format('d-M-Y H:i');
 
         return '\n\n*Time Out* :'. $time;
     }

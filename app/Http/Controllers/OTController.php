@@ -143,18 +143,18 @@ class OTController extends Controller
     {
         $date = request()->startdate . request()->starttime;
         $carbon = new Carbon($date);
-        $time = $carbon->format('d-M-Y H:i A');
+        $time = $carbon->format('d-M-Y H:i');
 
-        return '\n\n*Start Date* :'. $time;
+        return '\n\n*Start* :'. $time;
     }
 
     public function DateOut()
     {
         $date = request()->enddate . request()->endtime;
         $carbon = new Carbon($date);
-        $time = $carbon->format('d-M-Y H:i A');
+        $time = $carbon->format('d-M-Y H:i');
 
-        return '\n*End Date* :'. $time;
+        return '\n*End* :'. $time;
     }
 
    	public function buildRequestText()
