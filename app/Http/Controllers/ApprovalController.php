@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 use App\Models\Approval;
-use App\Models\OverTime;
+use App\OverTime;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreDayOffFromResuest;
 
@@ -136,8 +136,6 @@ class ApprovalController extends Controller
     {
         $payload = json_decode($request->payload);
 
-        dd($request->all());
-        
         $value = $payload->actions[0]->value;
         
         file_put_contents('count.txt', $request->payload);
