@@ -135,7 +135,7 @@ class ApprovalController extends Controller
     public function getResponse(Request $request)
     {
         $payload = json_decode($request->payload);
-        
+        dd($payload);
         $value = $payload->actions[0]->value;
         
         file_put_contents('count.txt', $request->payload);
@@ -146,8 +146,6 @@ class ApprovalController extends Controller
         $userid = $payload->user->id;
         $requestid = $explode[2];
         
-        $approval = Approval::find($requestid);
-        
         if($response == 'newreques')
         {
             $this->sendRequestForm($userid);
@@ -155,7 +153,7 @@ class ApprovalController extends Controller
         
         if($response == 'approve')
         {
-            
+            $approval = Approval::find($requestid);
             $approval->status = 'Approved';
             
             $approval->save();
@@ -186,7 +184,7 @@ class ApprovalController extends Controller
         
         if($response == 'reject')
         {
-            
+            $approval = Approval::find($requestid);
             $approval->status = 'Rejected';
             $approval->save();
             
