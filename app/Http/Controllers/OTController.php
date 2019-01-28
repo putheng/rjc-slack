@@ -136,7 +136,7 @@ class OTController extends Controller
 
     public function defaultOffText()
     {
-        return 'I would like to request your approval for my *Over time / Holiday* working\n\n *Department* '. request()->department .' \n *Reason* '. request()->reason .'\n'.'*Activities* \n\n'. $this->buildRequestText() . $this->DateOut() . $this->DateIN();
+        return 'I would like to request your approval for my *Over time / Holiday* working\n\n *Department* '. request()->department .' \n *Reason* '. request()->reason .'\n'.'*Activities* \n\n'. $this->buildRequestText() . $this->DateIN() . $this->DateOut();
     }
 
     public function DateIN()
@@ -145,7 +145,7 @@ class OTController extends Controller
         $carbon = new Carbon($date);
         $time = $carbon->format('d-M-Y H:i A');
 
-        return '\n*Time In* :'. $time;
+        return '\n*Start Date* :'. $time;
     }
 
     public function DateOut()
@@ -154,7 +154,7 @@ class OTController extends Controller
         $carbon = new Carbon($date);
         $time = $carbon->format('d-M-Y H:i A');
 
-        return '\n\n*Time Out* :'. $time;
+        return '\n\n*End Date* :'. $time;
     }
 
    	public function buildRequestText()
