@@ -3,6 +3,9 @@
 @section('content')
 
     <div class="container">
+        @if(session()->has('success'))
+            <div class="alert alert-success" role="alert">{{ session('success') }}</div>
+        @endif
         <div class="row">
             <div class="col-md-12">
                 <h4>Report Day Off
@@ -30,30 +33,55 @@
                     
                 </form>
                 <br>
-                <table class="table table-striped table-bordered">
-                    <thead>
-                        <th>ID</th>
-                        <th>NAME</th>
-                        <th>TYPE</th>
-                        <th>DATE</th>
-                        <th>HOURS</th>
-                        <th>REASON</th>
-                        <th>STATUS</th>
-                    </thead>
-                    <tbody>
-                        @foreach($approvals as $approval)
-                        <tr>
-                            <td>{{ $approval->userid }}</td>
-                            <td>{{ $approval->username }}</td>
-                            <td>{{ $approval->type }}</td>
-                            <td>{{ $approval->dateout }} -> {{ $approval->datein }} </td>
-                            <td>{{ date_cal($approval->dateout, $approval->datein) }} hours</td>
-                            <td>{{ $approval->reason }}</td>
-                            <td>{{ ucwords($approval->status) }}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Out</th>
+                            <th>In</th>
+                            <th>Hours</th>
+                            <th>Reason</th>
+                            <th>Status</th>
+                            <th class="text-center">Approve</th>
+                            <th class="text-center">Reject</th>
+                            <th class="text-center">Delete</th>
+                        </thead>
+                        <tbody>
+                            @foreach($approvals as $approval)
+                            <tr>
+                                <td>{{ $approval->userid }}</td>
+                                <td>{{ $approval->username }}</td>
+                                <td>{{ $approval->type }}</td>
+                                <td>{{ $approval->dateout }} </td>
+                                <td>{{ $approval->datein }}</td>
+                                <td>{{ date_cal($approval->dateout, $approval->datein) }} hours</td>
+                                <td>{{ $approval->reason }}</td>
+                                <td>{{ ucwords($approval->status) }}</td>
+                                <td class="text-center">
+                                    <button onclick="approve('{{ $approval->id }}')" class="btn btn-success">Approve</button>
+                                    <form id="approve_{{ $approval->id }}" action="{{ route('update.approve', $approval) }}" method="post">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </td>
+                                <td class="text-center">
+                                    <button onclick="reject('{{ $approval->id }}')" class="btn btn-warning">Reject</button>
+                                    <form id="reject_{{ $approval->id }}" action="{{ route('update.reject', $approval) }}" method="post">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </td>
+                                <td class="text-center">
+                                    <button onclick="deletes('{{ $approval->id }}')" class="btn btn-danger">Delete</button>
+                                    <form id="delete_{{ $approval->id }}" action="{{ route('update.delete', $approval) }}" method="post">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
                 
                 <p>{{ $approvals->links() }}</p>
 
@@ -67,5 +95,23 @@
             </div>
         </div>
     </div>
+<script type="text/javascript">
+    function approve(id){
+        if(confirm('Are you sure you want to approve ?')){
+            $('#approve_'+ id).submit();
+        }
+    }
 
+    function reject(id){
+        if(confirm('Are you sure you want to reject ?')){
+            $('#reject_'+ id).submit();
+        }
+    }
+
+    function deletes(id){
+        if(confirm('Are you sure you want to delete ?')){
+            $('#delete_'+ id).submit();
+        }
+    }
+</script>
 @endsection

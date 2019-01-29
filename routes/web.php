@@ -39,3 +39,14 @@ Route::get('video', 'Courses\CourseController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::group(['prefix' => 'change', 'namespace' => 'Slack', 'as' => 'update.'], function(){
+
+	Route::post('/approve/{approval}', 'ActionController@approve')->name('approve');
+
+	Route::post('/delete/{approval}', 'ActionController@delete')->name('delete');
+
+	Route::post('/reject/{approval}', 'ActionController@rejecte')->name('reject');
+
+});

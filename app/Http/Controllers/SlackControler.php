@@ -117,7 +117,6 @@ class SlackControler extends Controller
     {
         $approvals = Approval::filter($request)
                 ->whereNotNull('type')
-                ->where('status', 'Approved')
                 ->orderby('id', 'desc')
                 ->paginate(50);
 
