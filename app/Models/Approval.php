@@ -27,8 +27,8 @@ class Approval extends Model
 	
     public function scopeFilter($query, $request)
     {
-        return $query->whereDate('created_at', '>=', $request->from)
-                ->whereDate('created_at', '<=', $request->to);
+        return $query->whereDate('dateout', '>=', $request->from)
+                ->whereDate('dateout', '<=', $request->to);
     }
 	
 	public function slack($username)

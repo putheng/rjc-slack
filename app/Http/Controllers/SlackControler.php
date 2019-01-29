@@ -55,8 +55,8 @@ class SlackControler extends Controller
     {
         $date = new Carbon;
         
-        $slacks = Work::whereDate('created_at', '>=', $date->modify('this week')->format('Y-m-d'))
-                    ->whereDate('created_at', '<=', $date->modify('this week +6 days')->format('Y-m-d'))
+        $slacks = Work::whereDate('dateout', '>=', $date->modify('this week')->format('Y-m-d'))
+                    ->whereDate('dateout', '<=', $date->modify('this week +6 days')->format('Y-m-d'))
                     ->where('status', 'Approved')
                     ->orderby('id', 'desc')
                     ->paginate(50);
@@ -68,8 +68,8 @@ class SlackControler extends Controller
     {
         $date = new Carbon;
         
-        $approvals = Approval::whereDate('created_at', '>=', $date->modify('this week')->format('Y-m-d'))
-                    ->whereDate('created_at', '<=', $date->modify('this week +6 days')->format('Y-m-d'))
+        $approvals = Approval::whereDate('dateout', '>=', $date->modify('this week')->format('Y-m-d'))
+                    ->whereDate('dateout', '<=', $date->modify('this week +6 days')->format('Y-m-d'))
                     ->whereNotNull('type')
                     ->where('status', 'Approved')
                     ->orderby('id', 'desc')
