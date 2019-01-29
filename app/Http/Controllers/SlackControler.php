@@ -57,6 +57,8 @@ class SlackControler extends Controller
         
         $slacks = Work::whereDate('created_at', '>=', $date->modify('this week')->format('Y-m-d'))
                     ->whereDate('created_at', '<=', $date->modify('this week +6 days')->format('Y-m-d'))
+                    ->where('status', 'Approved')
+                    ->orderby('id', 'desc')
                     ->paginate(50);
         
         return view('slack.show', compact('slacks', 'date'));
@@ -69,6 +71,8 @@ class SlackControler extends Controller
         $approvals = Approval::whereDate('created_at', '>=', $date->modify('this week')->format('Y-m-d'))
                     ->whereDate('created_at', '<=', $date->modify('this week +6 days')->format('Y-m-d'))
                     ->whereNotNull('type')
+                    ->where('status', 'Approved')
+                    ->orderby('id', 'desc')
                     ->paginate(50);
 
         return view('slack.report.index', compact('approvals', 'date'));
@@ -89,7 +93,9 @@ class SlackControler extends Controller
         $list = Approval::select('name', 'type', 'dateout', 'datein', 'reason', 'status')
                 ->join('slacks', 'slacks.slackid', '=', 'approvals.slackid')
                 ->whereNotNull('type')
+                ->where('status', 'Approved')
                 ->filter($request)
+                ->orderby('id', 'desc')
                 ->get()
                 ->toArray();
 
@@ -111,6 +117,8 @@ class SlackControler extends Controller
     {
         $approvals = Approval::filter($request)
                 ->whereNotNull('type')
+                ->where('status', 'Approved')
+                ->orderby('id', 'desc')
                 ->paginate(50);
 
         return view('slack.report.filter', compact('approvals'));
@@ -118,7 +126,7 @@ class SlackControler extends Controller
     
     public function filter(Request $request)
     {
-        $slacks = Work::filter($request)->paginate(50);
+        $slacks = Work::filter($request)->orderBy('id', 'desc')->paginate(50);
         
         return view('slack.filter', compact('slacks'));
     }
@@ -137,6 +145,8 @@ class SlackControler extends Controller
         
         $list = Work::select(DB::raw('username as name, created_at as in, updated_at as out, status'))
                 ->filter($request)
+                ->where('status', 'Approved')
+                ->orderby('id', 'desc')
                 ->get()
                 ->toArray();
     
