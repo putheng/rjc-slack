@@ -514,7 +514,7 @@ class ApprovalController extends Controller
         $carbon = new Carbon($date);
         $time = $carbon->format('d-M-Y H:i');
 
-        return '\n*Time In* :'. $time;
+        return '\n*Until Time* :'. $time;
     }
 
     public function DateOut()
@@ -523,7 +523,7 @@ class ApprovalController extends Controller
         $carbon = new Carbon($date);
         $time = $carbon->format('d-M-Y H:i');
 
-        return '\n\n*Time Out* :'. $time;
+        return '\n\n*Start* :'. $time;
     }
 
     public function defaultText()

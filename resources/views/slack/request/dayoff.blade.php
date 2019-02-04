@@ -86,11 +86,11 @@
 									<input type="time" name="timeout" class="form-control" value="08:00:00">
 								</td>
 								<td style="width: 30%">
-									<label>ថ្ងៃខែឆ្នាំចូល / Date In</label>
+									<label>រហូតដល់ថ្ងៃ / Until Date</label>
 									<input type="date" name="datein" class="form-control" value="{{ date('Y-m-d') }}">
 								</td>
 								<td style="width: 20%">
-									<label>ម៉ោងចូល / Time In</label>
+									<label>រហូតដល់ម៉ោង / Until Time</label>
 									<input type="time" name="timein" class="form-control" value="17:00:00">
 								</td>
 							</tr>
