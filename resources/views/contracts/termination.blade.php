@@ -44,7 +44,8 @@
 					</label>
 					<select class="form-control" name="payoff">
 						<option value="">--select--</option>
-						<option value="Pay Off" {{ old('payoff') == 'Pay Off' ? 'selected' : '' }}>Pay Off</option>
+						<option value="Early Termination" {{ old('payoff') == 'Early Termination' ? 'selected' : '' }}>Early Termination</option>
+						<option value="Complete Repayments" {{ old('payoff') == 'Complete Repayments' ? 'selected' : '' }}>Complete Repayments</option>
 						<option value="Pick Up" {{ old('payoff') == 'Pick Up' ? 'selected' : '' }}>Pick Up</option>
 					</select>
 					@if($errors->has('payoff'))
