@@ -67,6 +67,19 @@ return [
             'sslmode' => 'prefer',
         ],
 
+        'pgsql_live' => [
+            'driver' => 'pgsql',
+            'host' => env('LIVE_DB_HOST'),
+            'port' => env('DB_PORT'),
+            'database' => env('LIVE_DB_DATABASE'),
+            'username' => env('LIVE_DB_USERNAME'),
+            'password' => env('LIVE_DB_PASSWORD'),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],
+
         'sqlsrv' => [
             'driver' => 'sqlsrv',
             'host' => env('DB_HOST', 'localhost'),
