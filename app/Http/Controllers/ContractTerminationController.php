@@ -50,7 +50,7 @@ class ContractTerminationController extends Controller
                 'headers' => ['Content-Type' => 'application/json'],
                 'json' => json_decode('
                     {
-                        "text": "\n\n\n\n *Contract Number:* '. $create->contract .'\n *Client Name:* '. $create->name .'\n *Pay Off / Pick Up:* '. $create->payoff .' \n *Sales Staff:* '. $create->sale .'\n *Termination Date:* '. $create->date .'\n *Appointment Date:* '. $create->appointment .'",
+                        "text": "\n\n\n\n *Contract Number:* '. $create->contract .'\n *Client Name:* '. $create->name .'\n *Type:* '. $create->payoff .' \n *Sales Staff:* '. $create->sale .'\n *Termination Date:* '. $create->date .'\n *Appointment Date:* '. $create->appointment .'",
                         "channel": "CG1D8VB0X",
                         "attachments": [
                             {
