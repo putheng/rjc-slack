@@ -1,6 +1,9 @@
 <?php
 
 Route::get('/screenshot', 'ScreenController@index');
+
+Route::get('/webhoos/contract_termination', 'ContractTerminationController@webhoos');
+
 Route::get('/contract_termination', 'ContractTerminationController@index')->name('contract.terminate');
 Route::post('/contract_termination', 'ContractTerminationController@store');
 

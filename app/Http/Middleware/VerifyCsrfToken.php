@@ -15,6 +15,7 @@ class VerifyCsrfToken extends Middleware
         '/slack/hook',
         '/slack/request/leave',
         '/slac/approval/request',
-        '/slack/approval/leave'
+        '/slack/approval/leave',
+        '/webhoos/contract_termination'
     ];
 }
