@@ -40,7 +40,7 @@
 			<div class="col-md-4 col-md-offset-2">
 				<div class="form-group{{ $errors->has('payoff') ? ' has-error' : '' }}">
 					<label class="control-label">
-						Pay Off / Pick Up
+						Type
 					</label>
 					<select class="form-control" name="payoff">
 						<option value="">--select--</option>
@@ -76,7 +76,7 @@
 		</div>
 		<br>
 		<div class="row">
-			<div class="col-md-4 col-md-offset-2">
+			<div class="col-md-3 col-md-offset-2">
 				<div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
 					<label class="control-label">
 						Termination Date
@@ -88,7 +88,19 @@
 				</div>
 			</div>
 
-			<div class="col-md-4 text-center">
+			<div class="col-md-3">
+				<div class="form-group{{ $errors->has('appointment') ? ' has-error' : '' }}">
+					<label class="control-label">
+						Appointment date
+					</label>
+					<input type="date" name="appointment" class="form-control">
+					@if($errors->has('appointment'))
+						<p class="help-block">{{ $errors->first('appointment') }}</p>
+					@endif
+				</div>
+			</div>
+
+			<div class="col-md-2 text-center">
 				<br>
 				{{ csrf_field() }}
 				<input type="submit" value="Submit" class="btn btn-primary btn-block">

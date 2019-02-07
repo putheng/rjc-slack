@@ -11,6 +11,7 @@ class Termination extends Model
     	'name',
     	'sale',
     	'payoff',
-    	'date'
+    	'date',
+    	'appointment'
     ];
 }
