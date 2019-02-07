@@ -29,7 +29,9 @@ class ContractTerminationController extends Controller
 			'date' => 'required'
 		]);
 
-		$create = Termination::create($request->only('contract', 'name', 'payoff', 'sale', 'date', 'appointment'));
+		$create = Termination::create(
+			$request->only('contract', 'name', 'payoff', 'sale', 'date', 'appointment')
+		);
 
 		$this->submitFormToSlack($create);
 		$this->newRequestForm();

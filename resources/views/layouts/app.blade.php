@@ -12,6 +12,8 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
 </head>
 <body>
     <div id="app">
@@ -80,7 +82,15 @@
     </div>
 
     <!-- Scripts -->
-    <script src="/js/app.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+<script src="{{ asset('js/bootstrap-datetimepicker.js') }}"></script>
+<script type="text/javascript">
+    $(function() {
+        $('#datetimepicker1').datetimepicker();
+    });
+</script>
     @yield('script')
 </body>
 </html>

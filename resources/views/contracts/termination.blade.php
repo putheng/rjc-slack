@@ -89,11 +89,16 @@
 			</div>
 
 			<div class="col-md-3">
-				<div class="form-group{{ $errors->has('appointment') ? ' has-error' : '' }}">
+				<div class="form-group">
 					<label class="control-label">
 						Appointment date
 					</label>
-					<input type="date" name="appointment" class="form-control">
+					<div class="input-group date {{ $errors->has('appointment') ? ' has-error' : '' }}" id="datetimepicker1">
+						<input value="{{ old('appointment') }}" type="text" class="form-control" name="appointment"  />
+						<span class="input-group-addon">
+							<span class="glyphicon glyphicon-calendar"></span>
+						</span>
+					</div>
 					@if($errors->has('appointment'))
 						<p class="help-block">{{ $errors->first('appointment') }}</p>
 					@endif
@@ -108,4 +113,8 @@
 		</div>
 	</div>
 </form>
+@endsection
+
+@section('script')
+
 @endsection
