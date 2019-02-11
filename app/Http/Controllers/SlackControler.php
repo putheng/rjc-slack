@@ -58,7 +58,7 @@ class SlackControler extends Controller
         $slacks = Work::whereDate('dateout', '>=', $date->modify('this week')->format('Y-m-d'))
                     ->whereDate('dateout', '<=', $date->modify('this week +6 days')->format('Y-m-d'))
                     ->where('status', 'Approved')
-                    ->orderby('id', 'desc')
+                    ->orderby('works.id', 'desc')
                     ->paginate(50);
         
         return view('slack.show', compact('slacks', 'date'));
@@ -72,7 +72,7 @@ class SlackControler extends Controller
                     ->whereDate('dateout', '<=', $date->modify('this week +6 days')->format('Y-m-d'))
                     ->whereNotNull('type')
                     ->where('status', 'Approved')
-                    ->orderby('id', 'desc')
+                    ->orderby('approvals.id', 'desc')
                     ->paginate(50);
 
         return view('slack.report.index', compact('approvals', 'date'));
