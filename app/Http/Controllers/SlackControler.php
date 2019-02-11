@@ -78,9 +78,9 @@ class SlackControler extends Controller
         return view('slack.report.index', compact('approvals', 'date'));
     }
 
+    // Export day off report
     function exportReport(Request $request)
     {
-
         $filename = 'report-off-'. date('Y-m-d-h-i-s-A') .'.csv';
         $headers = [
             'Cache-Control'       => 'must-revalidate, post-check=0, pre-check=0',
@@ -93,9 +93,9 @@ class SlackControler extends Controller
         $list = Approval::select('name', 'type', 'dateout', 'datein', 'reason', 'status')
                 ->join('slacks', 'slacks.slackid', '=', 'approvals.slackid')
                 ->whereNotNull('type')
-                ->where('status', 'Approved')
                 ->filter($request)
-                ->orderby('id', 'desc')
+                ->where('status', 'Approved')
+                ->orderby('approvals.id', 'desc')
                 ->get()
                 ->toArray();
 
