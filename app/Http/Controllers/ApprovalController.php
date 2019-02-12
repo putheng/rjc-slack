@@ -168,7 +168,6 @@ class ApprovalController extends Controller
             
             //$this->sendApprovedRequest($userid, $approval);
             //
-            file_put_contents('logg.txt', '')
         }
 
         if($response == 'approveOt')
