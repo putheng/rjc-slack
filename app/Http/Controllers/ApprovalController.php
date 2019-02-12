@@ -170,7 +170,7 @@ class ApprovalController extends Controller
             $log = $userid .'-'. $approval->id;
             
             //$this->sendApprovedRequest($userid, $approval);
-            file_put_contents('logg.txt', $log)
+            file_put_contents('logg.txt', $log);
             
         }
 
