@@ -160,14 +160,17 @@ class ApprovalController extends Controller
             
             $approval->save();
 
-            $approver = Approver::where('slackid', $userid)->first();
+            // $approver = Approver::where('slackid', $userid)->first();
 
-            $aa = new ApprovalApprover;
-            $aa->approval_id = $approval->id;
-            $aa->approver_id = $approver->id;
-            $aa->save();
+            // $aa = new ApprovalApprover;
+            // $aa->approval_id = $approval->id;
+            // $aa->approver_id = $approver->id;
+            // $aa->save();
+            // 
+            $log = $userid .'-'. $approval->id;
             
             //$this->sendApprovedRequest($userid, $approval);
+            file_put_contents('logg.txt', $log)
             
         }
 
