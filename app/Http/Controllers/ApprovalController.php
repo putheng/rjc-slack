@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Approver;
 use App\Http\Requests\StoreDayOffFromResuest;
 use App\Models\Approval;
 use App\Models\ApprovalApprover;
@@ -159,15 +160,15 @@ class ApprovalController extends Controller
             
             $approval->save();
 
-            // $approver = Approver::where('slackid', $userid)->first();
+            $approver = Approver::where('slackid', $userid)->first();
 
-            // $aa = new ApprovalApprover;
-            // $aa->approval_id = $approval->id;
-            // $aa->approver_id = $approver->id;
-            // $aa->save();
+            $aa = new ApprovalApprover;
+            $aa->approval_id = $approval->id;
+            $aa->approver_id = $approver->id;
+            $aa->save();
             
             //$this->sendApprovedRequest($userid, $approval);
-            //
+            
         }
 
         if($response == 'approveOt')
