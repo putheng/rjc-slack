@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreDayOffFromResuest;
+use App\Models\Approval;
+use App\Models\ApprovalApprover;
+use App\OverTime;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
-use App\Models\Approval;
-use App\OverTime;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreDayOffFromResuest;
 
 class ApprovalController extends Controller
 {
@@ -157,6 +158,13 @@ class ApprovalController extends Controller
             $approval->status = 'Approved';
             
             $approval->save();
+
+            $approver = Approver::where('slackid', $userid)->first();
+
+            $aa = new ApprovalApprover;
+            $aa->approval_id = $approval->id;
+            $aa->approver_id = $approver->id;
+            $aa->save();
             
             $this->sendApprovedRequest($userid, $approval);
         }
