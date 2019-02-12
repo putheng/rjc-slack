@@ -166,7 +166,7 @@ class ApprovalController extends Controller
             // $aa->approver_id = $approver->id;
             // $aa->save();
             
-            $this->sendApprovedRequest($userid, $approval);
+            //$this->sendApprovedRequest($userid, $approval);
         }
 
         if($response == 'approveOt')
