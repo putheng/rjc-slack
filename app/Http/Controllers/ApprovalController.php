@@ -135,12 +135,11 @@ class ApprovalController extends Controller
     
     public function getResponse(Request $request)
     {
-        dd($request->all());
         $payload = json_decode($request->payload);
 
         $value = $payload->actions[0]->value;
         
-        file_put_contents('count.txt', $request->payload);
+        file_put_contents('count.txt', $request->all());
         
         $explode = explode('%', $value);
         
