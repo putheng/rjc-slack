@@ -47,6 +47,7 @@
                             <th class="text-center">Approve</th>
                             <th class="text-center">Reject</th>
                             <th class="text-center">Delete</th>
+                            <th class="text-center">Approved By</th>
                         </thead>
                         <tbody>
                             @foreach($approvals as $approval)
@@ -76,6 +77,11 @@
                                     <form id="delete_{{ $approval->id }}" action="{{ route('update.delete', $approval) }}" method="post">
                                         {{ csrf_field() }}
                                     </form>
+                                </td>
+                                <td>
+                                    @if($approval->getApprover()->count())
+                                        {{ implode(', ', $approval->getApprover()->toArray()) }}
+                                    @endif
                                 </td>
                             </tr>
                             @endforeach

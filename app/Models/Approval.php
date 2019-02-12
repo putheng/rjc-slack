@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Approver;
 use Illuminate\Database\Eloquent\Model;
 
 class Approval extends Model
@@ -34,6 +35,14 @@ class Approval extends Model
 	public function slack($username)
 	{
 		return Slack::where('slackid', $username)->first();
+	}
+
+	public function getApprover()
+	{
+		$approver = ApprovalApprover::where('approval_id', $this->id)
+			->get()->pluck('approver_id');
+
+		return Approver::whereIn('id', $approver)->get()->pluck('name');
 	}
 	
 }
