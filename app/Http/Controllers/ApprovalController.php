@@ -139,7 +139,7 @@ class ApprovalController extends Controller
 
         $value = $payload->actions[0]->value;
         
-        file_put_contents('count.txt', $request->all());
+        file_put_contents('count.txt', 'ok');
         
         $explode = explode('%', $value);
         
@@ -167,6 +167,8 @@ class ApprovalController extends Controller
             // $aa->save();
             
             //$this->sendApprovedRequest($userid, $approval);
+            //
+            file_put_contents('logg.txt', '')
         }
 
         if($response == 'approveOt')
