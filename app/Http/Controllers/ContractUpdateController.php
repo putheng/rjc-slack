@@ -15,8 +15,12 @@ class ContractUpdateController extends Controller
 
     public function slackAuthorize()
 	{
+		return 'https://hooks.slack.com/services/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';
+	}
+
+	public function slackAuthorizeB()
+	{
 		return 'https://hooks.slack.com/services/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';
-		//return 'https://hooks.slack.com/services/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';
 	}
 
     public function index()
@@ -80,7 +84,7 @@ class ContractUpdateController extends Controller
     public function newRequestForm()
     {
         $this->client->post(
-            $this->slackAuthorize() ,
+            $this->slackAuthorizeB() ,
             [
                 'headers' => ['Content-Type' => 'application/json'],
                 'json' => json_decode('
