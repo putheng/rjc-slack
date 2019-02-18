@@ -55,3 +55,6 @@ Route::group(['prefix' => 'change', 'namespace' => 'Slack', 'as' => 'update.'], 
 	Route::post('/reject/{approval}', 'ActionController@rejecte')->name('reject');
 
 });
+
+Route::get('/car/update', 'ContractUpdateController@index')->name('contract.update');
+Route::post('/car/update', 'ContractUpdateController@store');

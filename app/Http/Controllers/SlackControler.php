@@ -154,7 +154,7 @@ class SlackControler extends Controller
         $callback = function() use ($list) 
         {
             $FH = fopen('php://output', 'w');
-            foreach ($list as $row) { 
+            foreach ($list as $row) {
                 fputcsv($FH, $row);
             }
             fclose($FH);
