@@ -85,7 +85,7 @@ class ContractTerminationController extends Controller
                                 "actions": [
                                     {
                                         "url": "https://renet-slack.herokuapp.com/contract_termination",
-                                        "text": "Request a form",
+                                        "text": "Request contract terminate form",
                                         "type": "button",
                                         "style": "primary"
                                     }

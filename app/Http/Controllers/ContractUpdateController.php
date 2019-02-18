@@ -96,7 +96,7 @@ class ContractUpdateController extends Controller
                                 "actions": [
                                     {
                                         "url": "https://renet-slack.herokuapp.com/car/update",
-                                        "text": "Request a form",
+                                        "text": "Request car update form",
                                         "type": "button",
                                         "style": "primary"
                                     }
