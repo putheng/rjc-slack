@@ -84,12 +84,13 @@ class ContractUpdateController extends Controller
     public function newRequestForm()
     {
         $this->client->post(
-            $this->slackAuthorizeB() ,
+            $this->slackAuthorize() ,
             [
                 'headers' => ['Content-Type' => 'application/json'],
                 'json' => json_decode('
                     {
                         "text": "Need a form?",
+                        "channel": "CG1D8VB0X",
                         "attachments": [
                             {
                                 "text": "Submit any form you like by continuing below.",
