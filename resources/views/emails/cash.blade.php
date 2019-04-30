@@ -261,21 +261,21 @@ border-color: #34495e !important; } }
 			<tr>
 				<td colspan="2">
 					<h2>Daily Cash Situation</h2>
-					<h3>Bank Balance on April, 29, 2019</h3>
+					<h3>Bank Balance on <b>{{ date('F, d, Y') }}</b></h3>
 				</td>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td colspan="2"><hr><h3>RJC</h3></td>
+				<td colspan="2"><hr><h3><b>RJC</b></h3></td>
 			</tr>
 			<tr>
 				<td style="width: 40%"><h4>Current account is</h4></td>
-				<td><strong>USD 8,765.92</strong></td>
+				<td>USD <strong>{{ $current }}</strong></td>
 			</tr>
 			<tr>
 				<td style="width: 40%"><h4>Total All Bank Balances </h4></td>
-				<td><strong>USD 692,221.41</strong></td>
+				<td>USD <strong>{{ $total }}</strong></td>
 			</tr>
 
 			<tr>
@@ -283,11 +283,11 @@ border-color: #34495e !important; } }
 			</tr>
 
 			<tr>
-				<td colspan="2"><h3>Metrey HR</h3></td>
+				<td colspan="2"><h3><b>Metrey HR</b></h3></td>
 			</tr>
 			<tr>
 				<td style="width: 40%"><h4>Bank Balance</h4></td>
-				<td><strong>USD 8,765.92</strong></td>
+				<td>USD <strong>{{ $mhr }}</strong></td>
 			</tr>
 		</tbody>
 	</table>
