@@ -7,15 +7,19 @@ use Illuminate\Support\Facades\Mail;
 
 class WebHookController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+		$current = $request->current;
+		$total = $request->total;
+		$mhr = $request->mhr;
+
 		$to_name = 'Putheng';
 		$to_email = ['putheng@renet.com.kh', 'puthengemail@gmail.com'];
 
 		$data = [
-			'current' => '543,765.92',
-			'total' => '741,523.16',
-			'mhr' => '11,076.76',
+			'current' => $current,
+			'total' => $total,
+			'mhr' => $mhr,
 		];
 		    
 		Mail::send('emails.cash', $data, function($message) use ($to_name, $to_email) {
