@@ -62,13 +62,13 @@ class ContractUpdateController extends Controller
 	public function submitFormToSlack($contract)
     {
         $this->client->post(
-            $this->slackAuthorize(),
+            $this->slackAuthorizeB(),
             [
                 'headers' => ['Content-Type' => 'application/json'],
                 'json' => json_decode('
                     {
                         "text": "*Client Name:* '. $contract->client_name .'\n *Contract No.:* '. $contract->number .' \n *Vehicle Mark:* '. $contract->vehicle_mark .'\n *Vehicle Mode: '. $contract->vehicle_mode .'*\n *Price: $'. $contract->price .'* \n\n *Update To*\n\n *Client Name:* '. $contract->client_name_update .' \n *Vehicle Mark:* '. $contract->vehicle_mark_update .'\n *Vehicle Mode: '. $contract->vehicle_mode_update .'*\n *Price: $'. $contract->price_update .'*",
-                        "channel": "CG1D8VB0X",
+                        "channel": "CGATB5S14",
                         "attachments": [
                             {
                                 "fallback": "The request was approved."
