@@ -14,7 +14,19 @@ class WebHookController extends Controller
 		$mhr = $request->mhr;
 
 		$to_name = 'Putheng';
-		$to_email = ['putheng@renet.com.kh', 'puthengemail@gmail.com'];
+		$to_email = [
+			'putheng@renet.com.kh',
+			'chhoeng.sreyleak@renet.com.kh',
+			'shizuka.aoki@renet.com.kh',
+			'heang.mouyteang@renet.com.kh',
+			'hirose.daichi@renet.jp',
+			'masahiro.sunaga@renet.com.kh',
+			'niioka.naoki@renet.jp',
+			'kumai.yuichi@renet.jp',
+			'yamane.hideyuki@renet.jp',
+			'kuch.kimlek@renet.com.kh',
+			'masamichi.nasuno@renet.com.kh',
+		];
 
 		$data = [
 			'current' => $current,
