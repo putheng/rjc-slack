@@ -36,8 +36,10 @@ class WebHookController extends Controller
 		    
 		Mail::send('emails.cash', $data, function($message) use ($to_name, $to_email) {
 		    $message->to($to_email, $to_name)
-		            ->subject('Renet Daily Cash');
+		            ->subject('Renet Daily Cash Situation');
 		    $message->from('info@renet.com.kh', 'Renet information');
 		});
+
+		return 'ok';
     }
 }
