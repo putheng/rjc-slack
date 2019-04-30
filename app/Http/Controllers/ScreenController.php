@@ -17,7 +17,7 @@ class ScreenController extends Controller
 			"body" => "Test mail"
 		];
 		    
-		Mail::send('emails.mail', $data, function($message) use ($to_name, $to_email) {
+		Mail::send('emails.cash', $data, function($message) use ($to_name, $to_email) {
 		    $message->to($to_email, $to_name)
 		            ->subject('Renet Daily Cash');
 		    $message->from('info@renet.com.kh', 'Renet information');
