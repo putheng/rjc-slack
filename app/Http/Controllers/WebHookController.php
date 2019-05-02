@@ -28,7 +28,7 @@ class WebHookController extends Controller
 			'masamichi.nasuno@renet.com.kh',
 			'kuroda@renet.jp',
 			'murai.katsushi@renet.jp',
-			'yamda.masumi@renet.jp',
+			'yamada.masumi@renet.jp',
 			'masuda.takayuki@renet.jp',
 			'yamaguchi.kaori@renet.jp',
 		];
