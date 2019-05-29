@@ -30,7 +30,7 @@
                 <br>
                 <table class="table table-striped table-bordered">
                     <thead>
-                        <th>ID</th>
+                        {{-- <th>ID</th> --}}
                         <th>
                             NAME
                         </th>
@@ -44,8 +44,8 @@
                     <tbody>
                         @foreach($slacks as $slack)
                         <tr>
-                            <td>{{ $slack->slackid }}</td>
-                            <td>{{ ucwords($slack->username) }}</td>
+                            {{-- <td>{{ $slack->slackid }}</td> --}}
+                            <td>{{ ucwords(str_replace('.', ' ', $slack->username)) }}</td>
                             <td>{{ $slack->created_at }}</td>
                             <td>{{ $slack->updated_at }}</td>
                         </tr>

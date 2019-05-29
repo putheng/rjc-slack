@@ -7,9 +7,7 @@ Route::get('/webhoos/contract_termination', 'ContractTerminationController@webho
 Route::get('/contract_termination', 'ContractTerminationController@index')->name('contract.terminate');
 Route::post('/contract_termination', 'ContractTerminationController@store');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'SlackControler@show');
 
 Route::get('/slack/approval/ot', 'OTController@index')->name('form.ot');
 Route::post('/slack/approval/ot', 'OTController@store');
@@ -35,8 +33,8 @@ Route::group(['prefix' => 'slack', 'as' => 'slack.', 'middleware' => 'auth'], fu
     
     Route::post('/filter', 'SlackControler@exportCsv')->name('filter.export');
     
-    Route::get('/report/dayOff', 'SlackControler@reportDayOff')->name('reportOff');
-    Route::get('/report/dayOff/filter', 'SlackControler@reportDayFilter')->name('reportDayFilter');
+    Route::get('/report/off', 'SlackControler@reportDayOff')->name('reportOff');
+    Route::get('/report/off/filter', 'SlackControler@reportDayFilter')->name('reportDayFilter');
     Route::put('/report/dayOff/filter', 'SlackControler@exportReport')->name('exportReport');
 });
 

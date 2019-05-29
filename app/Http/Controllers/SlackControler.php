@@ -54,10 +54,12 @@ class SlackControler extends Controller
     public function show(Request $request)
     {
         $date = new Carbon;
+
+        $startWeek = $date->modify('this week')->format('Y-m-d');
+        $endWeek = $date->modify('this week +6 days')->format('Y-m-d');
         
-        $slacks = Work::whereDate('dateout', '>=', $date->modify('this week')->format('Y-m-d'))
-                    ->whereDate('dateout', '<=', $date->modify('this week +6 days')->format('Y-m-d'))
-                    ->where('status', 'Approved')
+        $slacks = Work::whereDate('created_at', '>=', $startWeek)
+                    ->whereDate('created_at', '<=', $endWeek)
                     ->orderby('works.id', 'desc')
                     ->paginate(50);
         

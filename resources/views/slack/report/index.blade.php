@@ -50,7 +50,7 @@
                             @foreach($approvals as $approval)
                             <tr>
                                 <td>{{ $approval->userid }}</td>
-                                <td>{{ $approval->username }}</td>
+                                <td>{{ $approval->slackName }}</td>
                                 <td>{{ $approval->type }}</td>
                                 <td>{{ $approval->dateout }} </td>
                                 <td>{{ $approval->datein }}</td>

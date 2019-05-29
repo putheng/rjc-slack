@@ -21,9 +21,9 @@ class Approval extends Model
 		'body'
 	];
 	
-	public function getUsernameAttribute($value)
+	public function getSlackNameAttribute()
 	{
-		return ucfirst(str_replace('.', ' ', $this->slack($value)->name));
+		return ucfirst(str_replace('.', ' ', $this->slack->name));
 	}
 	
     public function scopeFilter($query, $request)
@@ -32,9 +32,9 @@ class Approval extends Model
                 ->whereDate('dateout', '<=', $request->to);
     }
 	
-	public function slack($username)
+	public function slack()
 	{
-		return Slack::where('slackid', $username)->first();
+		return $this->belongsTo(Slack::class, 'username', 'slackid');
 	}
 
 	public function getApprover()
