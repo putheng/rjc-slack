@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Slack;
 use Illuminate\Database\Eloquent\Model;
 
 class OverTime extends Model
@@ -17,4 +18,9 @@ class OverTime extends Model
     	'hours',
     	'status'
     ];
+
+    public function slack()
+    {
+        return $this->belongsTo(Slack::class, 'name', 'slackid');
+    }
 }

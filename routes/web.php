@@ -34,6 +34,9 @@ Route::group(['prefix' => 'slack', 'as' => 'slack.', 'middleware' => 'auth'], fu
     Route::post('/filter', 'SlackControler@exportCsv')->name('filter.export');
     
     Route::get('/report/off', 'SlackControler@reportDayOff')->name('reportOff');
+    Route::get('/report/ot', 'OverTimeController@index')->name('ot');
+    Route::get('/report/ot/filter', 'OverTimeController@filter')->name('off.filter');
+
     Route::get('/report/off/filter', 'SlackControler@reportDayFilter')->name('reportDayFilter');
     Route::put('/report/dayOff/filter', 'SlackControler@exportReport')->name('exportReport');
 });

@@ -54,10 +54,13 @@
 
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="{{ route('slack.show') }}">Daily Check</a>
+                                        <a href="{{ route('slack.show') }}">Daily</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('slack.reportOff') }}">Dayoff report</a>
+                                        <a href="{{ route('slack.reportOff') }}">Day off</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('slack.ot') }}">Over Time</a>
                                     </li>
                                     <li>
                                         <a href="{{ route('logout') }}"
