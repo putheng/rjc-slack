@@ -406,7 +406,7 @@ class ApprovalController extends Controller
                                 "actions": [
                                     {
                                         "type": "button",
-                                        "text": "Request to Leave",
+                                        "text": "Request Working Outside",
                                         "url": "http://renet-slack.herokuapp.com/slack/approval/form?token='. str_random(255) .'&id='. $id .'",
                                         "style": "primary"
                                     },
@@ -544,7 +544,7 @@ class ApprovalController extends Controller
     public function buildRequestMessage(Request $request, $create)
     {
         return $this->client->post(
-            $this->url .'TCDTENTL7/BDLTV9TNE/bH0otVLUIrclyu0VpCLD3rIR',
+            $this->url .'TCDTENTL7/BKEFNS10A/xdeqX6VnrIiZn41dMBEyjLl3',
             [
                 'headers' => ['Content-Type' => 'application/json'],
                 'json' => json_decode('
