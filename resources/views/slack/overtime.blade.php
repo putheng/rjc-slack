@@ -35,7 +35,8 @@
                         {{-- <th>ID</th> --}}
                         <th>NAME</th>
                         <th>REASON</th>
-                        <th>DATE</th>
+                        <th>IN</th>
+                        <th>OUT</th>
                         <th>HOURS</th>
                         <th>STATUS</th>
                     </thead>
@@ -45,7 +46,6 @@
                             {{-- <td>{{ $slack->slackid }}</td> --}}
                             <td>{{ ucwords(str_replace('.', ' ', $slack->slack->name)) }}</td>
                             <td>{{ $slack->reason }}</td>
-                            <td>{{ $slack->created_at }}</td>
                             <td>{{ $slack->in }}</td>
                             <td>{{ $slack->out }}</td>
                             <td>{{ $slack->hours }}</td>
