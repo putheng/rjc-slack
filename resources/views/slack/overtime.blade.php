@@ -46,6 +46,8 @@
                             <td>{{ ucwords(str_replace('.', ' ', $slack->slack->name)) }}</td>
                             <td>{{ $slack->reason }}</td>
                             <td>{{ $slack->created_at }}</td>
+                            <td>{{ $slack->in }}</td>
+                            <td>{{ $slack->out }}</td>
                             <td>{{ $slack->hours }}</td>
                             <td>{{ $slack->status }}</td>
                         </tr>
