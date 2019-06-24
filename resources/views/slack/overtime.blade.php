@@ -35,8 +35,8 @@
                         {{-- <th>ID</th> --}}
                         <th>NAME</th>
                         <th>REASON</th>
-                        <th>IN</th>
-                        <th>OUT</th>
+                        <th>DATE</th>
+                        <th>HOURS</th>
                         <th>STATUS</th>
                     </thead>
                     <tbody>
@@ -46,7 +46,7 @@
                             <td>{{ ucwords(str_replace('.', ' ', $slack->slack->name)) }}</td>
                             <td>{{ $slack->reason }}</td>
                             <td>{{ $slack->created_at }}</td>
-                            <td>{{ $slack->updated_at }}</td>
+                            <td>{{ $slack->hours }}</td>
                             <td>{{ $slack->status }}</td>
                         </tr>
                         @endforeach
