@@ -140,7 +140,7 @@ class ApprovalController extends Controller
 
         $value = $payload->actions[0]->value;
         
-        file_put_contents('count.txt', $request->all());
+        file_put_contents('count.txt', 'ok');
         
         $explode = explode('%', $value);
         
@@ -248,7 +248,7 @@ class ApprovalController extends Controller
     public function sendRejectOtRequest($id, $approve)
     {
         $this->client->post(
-            $this->url .'TCDTENTL7/BKREYN90U/8KYENGsuWUdZPRcWfWcMwDet',
+            $this->url .'TCDTENTL7/BDLTV9TNE/bH0otVLUIrclyu0VpCLD3rIR',
             [
                 'headers' => ['Content-Type' => 'application/json'],
                 'json' => json_decode('
@@ -268,7 +268,7 @@ class ApprovalController extends Controller
         sleep(1);
         
         $this->client->post(
-            $this->url .'TCDTENTL7/BKREYN90U/8KYENGsuWUdZPRcWfWcMwDet',
+            $this->url .'TCDTENTL7/BDGR52M6F/ZYKHb8pACSY3D1bVxu4PzNKw',
             [
                 'headers' => ['Content-Type' => 'application/json'],
                 'json' => json_decode('
@@ -289,7 +289,7 @@ class ApprovalController extends Controller
     public function sendApprovedRequest($id, $approve)
     {
         $this->client->post(
-            $this->url .'TCDTENTL7/BKREYN90U/8KYENGsuWUdZPRcWfWcMwDet',
+            $this->url .'TCDTENTL7/BDLTV9TNE/bH0otVLUIrclyu0VpCLD3rIR',
             [
                 'headers' => ['Content-Type' => 'application/json'],
                 'json' => json_decode('
@@ -309,7 +309,7 @@ class ApprovalController extends Controller
         sleep(1);
         
         $this->client->post(
-            $this->url .'TCDTENTL7/BKREYN90U/8KYENGsuWUdZPRcWfWcMwDet',
+            $this->url .'TCDTENTL7/BDGR52M6F/ZYKHb8pACSY3D1bVxu4PzNKw',
             [
                 'headers' => ['Content-Type' => 'application/json'],
                 'json' => json_decode('
@@ -330,7 +330,7 @@ class ApprovalController extends Controller
     public function sendRejectRequest($id, $approve)
     {
         $this->client->post(
-            $this->url .'TCDTENTL7/BKREYN90U/8KYENGsuWUdZPRcWfWcMwDet',
+            $this->url .'TCDTENTL7/BDLTV9TNE/bH0otVLUIrclyu0VpCLD3rIR',
             [
                 'headers' => ['Content-Type' => 'application/json'],
                 'json' => json_decode('
@@ -350,7 +350,7 @@ class ApprovalController extends Controller
         sleep(1);
         
         $this->client->post(
-            $this->url .'TCDTENTL7/BKREYN90U/8KYENGsuWUdZPRcWfWcMwDet',
+            $this->url .'TCDTENTL7/BDGR52M6F/ZYKHb8pACSY3D1bVxu4PzNKw',
             [
                 'headers' => ['Content-Type' => 'application/json'],
                 'json' => json_decode('
