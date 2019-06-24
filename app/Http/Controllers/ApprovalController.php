@@ -136,113 +136,114 @@ class ApprovalController extends Controller
     
     public function getResponse(Request $request)
     {
-        file_put_contents('count.txt', $request->all());
+        file_put_contents('count.txt', 'ok');
+    //     file_put_contents('count.txt', $request->all());
 
-        $payload = json_decode($request->payload);
+    //     $payload = json_decode($request->payload);
 
-        $value = $payload->actions[0]->value;
+    //     $value = $payload->actions[0]->value;
         
-        $explode = explode('%', $value);
+    //     $explode = explode('%', $value);
         
-        $response = $explode[0];
-        $userid = $payload->user->id;
-        $requestid = $explode[2];
+    //     $response = $explode[0];
+    //     $userid = $payload->user->id;
+    //     $requestid = $explode[2];
         
-        if($response == 'newreques')
-        {
-            $this->sendRequestForm($userid);
-        }
+    //     if($response == 'newreques')
+    //     {
+    //         $this->sendRequestForm($userid);
+    //     }
         
-        if($response == 'approve')
-        {
-            $approval = Approval::find($requestid);
-            $approval->status = 'Approved';
+    //     if($response == 'approve')
+    //     {
+    //         $approval = Approval::find($requestid);
+    //         $approval->status = 'Approved';
             
-            $approval->save();
+    //         $approval->save();
 
-            $approver = Approver::where('slackid', $userid)->first();
+    //         $approver = Approver::where('slackid', $userid)->first();
 
-            $aa = new ApprovalApprover;
-            $aa->approval_id = $requestid;
-            $aa->approver_id = $approver->id;
-            $aa->save();
+    //         $aa = new ApprovalApprover;
+    //         $aa->approval_id = $requestid;
+    //         $aa->approver_id = $approver->id;
+    //         $aa->save();
             
-            $this->sendApprovedRequest($userid, $approval);
+    //         $this->sendApprovedRequest($userid, $approval);
             
-        }
+    //     }
 
-        if($response == 'approveOt')
-        {
-            $approval = OverTime::find($requestid);
+    //     if($response == 'approveOt')
+    //     {
+    //         $approval = OverTime::find($requestid);
             
-            $approval->status = 'Approved';
+    //         $approval->status = 'Approved';
             
-            $approval->save();
+    //         $approval->save();
             
-            $this->sendApprovedOtRequest($userid, $approval);
-        }
+    //         $this->sendApprovedOtRequest($userid, $approval);
+    //     }
         
-        if($response == 'rejectOt')
-        {
-            $approval = OverTime::find($requestid);
+    //     if($response == 'rejectOt')
+    //     {
+    //         $approval = OverTime::find($requestid);
 
-            $approval->status = 'Rejected';
-            $approval->save();
+    //         $approval->status = 'Rejected';
+    //         $approval->save();
             
-            $this->sendRejectOtRequest($userid, $approval);
-        }
+    //         $this->sendRejectOtRequest($userid, $approval);
+    //     }
         
-        if($response == 'reject')
-        {
-            $approval = Approval::find($requestid);
-            $approval->status = 'Rejected';
-            $approval->save();
+    //     if($response == 'reject')
+    //     {
+    //         $approval = Approval::find($requestid);
+    //         $approval->status = 'Rejected';
+    //         $approval->save();
             
-            $this->sendRejectRequest($userid, $approval);
-        }
+    //         $this->sendRejectRequest($userid, $approval);
+    //     }
         
         
-    }
+    // }
 
-    public function sendApprovedOtRequest($id, $approve)
-    {
-        $this->client->post(
-            $this->url .'TCDTENTL7/BDLTV9TNE/bH0otVLUIrclyu0VpCLD3rIR',
-            [
-                'headers' => ['Content-Type' => 'application/json'],
-                'json' => json_decode('
-                    {
-                        "text": "\n\nRequested *Over Time* from <@'. $approve->name .'>\n *Was approved* by <@'. $id .'>\n",
-                        "channel": "C061EG9SL",
-                        "attachments": [
-                            {
-                                "fallback": "The request was approved."
-                            }
-                        ]
-                    }
-                ')
-            ]
-        );
+    // public function sendApprovedOtRequest($id, $approve)
+    // {
+    //     $this->client->post(
+    //         $this->url .'TCDTENTL7/BDLTV9TNE/bH0otVLUIrclyu0VpCLD3rIR',
+    //         [
+    //             'headers' => ['Content-Type' => 'application/json'],
+    //             'json' => json_decode('
+    //                 {
+    //                     "text": "\n\nRequested *Over Time* from <@'. $approve->name .'>\n *Was approved* by <@'. $id .'>\n",
+    //                     "channel": "C061EG9SL",
+    //                     "attachments": [
+    //                         {
+    //                             "fallback": "The request was approved."
+    //                         }
+    //                     ]
+    //                 }
+    //             ')
+    //         ]
+    //     );
         
-        sleep(1);
+    //     sleep(1);
         
-        $this->client->post(
-            $this->url .'TCDTENTL7/BDGR52M6F/ZYKHb8pACSY3D1bVxu4PzNKw',
-            [
-                'headers' => ['Content-Type' => 'application/json'],
-                'json' => json_decode('
-                    {
-                        "text": "\n\nRequested *Over Time* from <@'. $approve->name .'>\n *Was approved* by <@'. $id .'>\n",
-                        "channel": "C061EG9SL",
-                        "attachments": [
-                            {
-                                "fallback": "The request was approved!"
-                            }
-                        ]
-                    }
-                ')
-            ]
-        );
+    //     $this->client->post(
+    //         $this->url .'TCDTENTL7/BDGR52M6F/ZYKHb8pACSY3D1bVxu4PzNKw',
+    //         [
+    //             'headers' => ['Content-Type' => 'application/json'],
+    //             'json' => json_decode('
+    //                 {
+    //                     "text": "\n\nRequested *Over Time* from <@'. $approve->name .'>\n *Was approved* by <@'. $id .'>\n",
+    //                     "channel": "C061EG9SL",
+    //                     "attachments": [
+    //                         {
+    //                             "fallback": "The request was approved!"
+    //                         }
+    //                     ]
+    //                 }
+    //             ')
+    //         ]
+    //     );
     }
 
     public function sendRejectOtRequest($id, $approve)
