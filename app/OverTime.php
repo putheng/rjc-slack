@@ -15,7 +15,9 @@ class OverTime extends Model
     	'activities',
     	'created_at',
     	'updated_at',
-    	'hours',
+        'hours',
+        'in',
+    	'out',
     	'status'
     ];
 

@@ -36,7 +36,13 @@ class OTController extends Controller
     	$totalHours = $startdate->diffInHours($enddate);
 
     	$value = $request->only('name', 'userid', 'department', 'reason', 'activities');
-    	$data = array_merge($value, ['hours' => $totalHours]);
+    	$data = array_merge($value, 
+            [
+                'hours' => $totalHours,
+                'in' => $request->startdate . ' '. $request->starttime,
+                'out' => $request->enddate . ' '. $request->endtime,
+            ]
+        );
 
     	$create = OverTime::create($data);
 
