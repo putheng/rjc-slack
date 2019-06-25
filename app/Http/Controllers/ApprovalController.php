@@ -50,7 +50,7 @@ class ApprovalController extends Controller
         return back()->withSuccess('your form was successfully submitted');
     	
     }
-    
+
     public function buildRequestOffMessage(Request $request, $create)
     {
         return $this->client->post(
@@ -150,7 +150,7 @@ class ApprovalController extends Controller
         
         // if($response == 'newreques')
         // {
-        //     $this->sendRequestForm($userid);
+            $this->sendRequestForm($userid);
         // }
         
         if($response == 'approve')
@@ -171,16 +171,16 @@ class ApprovalController extends Controller
             
         }
 
-        // if($response == 'approveOt')
-        // {
-        //     $approval = OverTime::find($requestid);
+        if($response == 'approveOt')
+        {
+            $approval = OverTime::find($requestid);
             
-        //     $approval->status = 'Approved';
+            $approval->status = 'Approved';
             
-        //     $approval->save();
+            $approval->save();
             
-        //     $this->sendApprovedOtRequest($userid, $approval);
-        // }
+            $this->sendApprovedOtRequest($userid, $approval);
+        }
         
         // if($response == 'rejectOt')
         // {
@@ -207,13 +207,13 @@ class ApprovalController extends Controller
     public function sendApprovedOtRequest($id, $approve)
     {
         $this->client->post(
-            $this->url .'TCDTENTL7/BDLTV9TNE/bH0otVLUIrclyu0VpCLD3rIR',
+            $this->url .'TCDTENTL7/BKEGTB4NN/CLbzqRXPFS3RcU7jP9aDg1wJ',
             [
                 'headers' => ['Content-Type' => 'application/json'],
                 'json' => json_decode('
                     {
                         "text": "\n\nRequested *Over Time* from <@'. $approve->name .'>\n *Was approved* by <@'. $id .'>\n",
-                        "channel": "C061EG9SL",
+                        "channel": "GKQL2PJS1",
                         "attachments": [
                             {
                                 "fallback": "The request was approved."
