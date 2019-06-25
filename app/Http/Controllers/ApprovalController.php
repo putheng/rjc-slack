@@ -150,37 +150,37 @@ class ApprovalController extends Controller
         
         // if($response == 'newreques')
         // {
-            $this->sendRequestForm($userid);
+        //     $this->sendRequestForm($userid);
         // }
         
-        if($response == 'approve')
-        {
-            $approval = Approval::find($requestid);
-            $approval->status = 'Approved';
+        // if($response == 'approve')
+        // {
+        //     $approval = Approval::find($requestid);
+        //     $approval->status = 'Approved';
             
-            $approval->save();
+        //     $approval->save();
 
-            $approver = Approver::where('slackid', $userid)->first();
+        //     $approver = Approver::where('slackid', $userid)->first();
 
-            $aa = new ApprovalApprover;
-            $aa->approval_id = $requestid;
-            $aa->approver_id = $approver->id;
-            $aa->save();
+        //     $aa = new ApprovalApprover;
+        //     $aa->approval_id = $requestid;
+        //     $aa->approver_id = $approver->id;
+        //     $aa->save();
             
-            // $this->sendApprovedRequest($userid, $approval);
+        //     // $this->sendApprovedRequest($userid, $approval);
             
-        }
+        // }
 
-        if($response == 'approveOt')
-        {
-            $approval = OverTime::find($requestid);
+        // if($response == 'approveOt')
+        // {
+        //     $approval = OverTime::find($requestid);
             
-            $approval->status = 'Approved';
+        //     $approval->status = 'Approved';
             
-            $approval->save();
+        //     $approval->save();
             
-            $this->sendApprovedOtRequest($userid, $approval);
-        }
+        //     $this->sendApprovedOtRequest($userid, $approval);
+        // }
         
         // if($response == 'rejectOt')
         // {
