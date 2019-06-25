@@ -136,7 +136,7 @@ class ApprovalController extends Controller
     
     public function getResponse(Request $request)
     {
-        // return 'challenge';
+        return $request->challenge;
 
         file_put_contents('count.txt', $request->all());
 
