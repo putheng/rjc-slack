@@ -44,8 +44,6 @@ class ApprovalController extends Controller
         ]);
 
         $this->buildRequestOffMessage($request, $create);
-        
-        $this->newRequestForm();
 
         return back()->withSuccess('your form was successfully submitted');
     	
