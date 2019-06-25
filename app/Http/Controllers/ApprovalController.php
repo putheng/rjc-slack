@@ -171,16 +171,16 @@ class ApprovalController extends Controller
             
         // }
 
-        // if($response == 'approveOt')
-        // {
-        //     $approval = OverTime::find($requestid);
+        if($response == 'approveOt')
+        {
+            $approval = OverTime::find($requestid);
             
-        //     $approval->status = 'Approved';
+            $approval->status = 'Approved';
             
-        //     $approval->save();
+            $approval->save();
             
-        //     $this->sendApprovedOtRequest($userid, $approval);
-        // }
+            $this->sendApprovedOtRequest($userid, $approval);
+        }
         
         // if($response == 'rejectOt')
         // {
@@ -207,7 +207,7 @@ class ApprovalController extends Controller
     public function sendApprovedOtRequest($id, $approve)
     {
         $this->client->post(
-            $this->url .'TCDTENTL7/BKEGTB4NN/CLbzqRXPFS3RcU7jP9aDg1wJ',
+            $this->url .'TCDTENTL7/BKV3W22QM/7objnmxoEWQxX2RZ8ewLvaKA',
             [
                 'headers' => ['Content-Type' => 'application/json'],
                 'json' => json_decode('
