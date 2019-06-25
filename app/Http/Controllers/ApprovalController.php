@@ -146,10 +146,28 @@ class ApprovalController extends Controller
         $userid = $payload->user->id;
         $requestid = $explode[2];
         
-        // if($response == 'newreques')
-        // {
-        //     $this->sendRequestForm($userid);
-        // }
+        if($response == 'newreques')
+        {
+            $this->sendRequestForm($userid);
+        }
+        
+        if($response == 'approveOut')
+        {
+            $approval = Approval::find($requestid);
+            $approval->status = 'Approved';
+            
+            $approval->save();
+
+            $approver = Approver::where('slackid', $userid)->first();
+
+            $aa = new ApprovalApprover;
+            $aa->approval_id = $requestid;
+            $aa->approver_id = $approver->id;
+            $aa->save();
+            
+            $this->sendApprovedOutRequest($userid, $approval);
+            
+        }
         
         if($response == 'approve')
         {
@@ -180,15 +198,15 @@ class ApprovalController extends Controller
             $this->sendApprovedOtRequest($userid, $approval);
         }
         
-        // if($response == 'rejectOt')
-        // {
-        //     $approval = OverTime::find($requestid);
+        if($response == 'rejectOt')
+        {
+            $approval = OverTime::find($requestid);
 
-        //     $approval->status = 'Rejected';
-        //     $approval->save();
+            $approval->status = 'Rejected';
+            $approval->save();
             
-        //     $this->sendRejectOtRequest($userid, $approval);
-        // }
+            $this->sendRejectOtRequest($userid, $approval);
+        }
         
         // if($response == 'reject')
         // {
@@ -246,7 +264,7 @@ class ApprovalController extends Controller
     public function sendRejectOtRequest($id, $approve)
     {
         $this->client->post(
-            $this->url .'TCDTENTL7/BDLTV9TNE/bH0otVLUIrclyu0VpCLD3rIR',
+            $this->url .'TCDTENTL7/BKV3W22QM/7objnmxoEWQxX2RZ8ewLvaKA',
             [
                 'headers' => ['Content-Type' => 'application/json'],
                 'json' => json_decode('
@@ -276,6 +294,47 @@ class ApprovalController extends Controller
                         "attachments": [
                             {
                                 "fallback": "The request was rejected!"
+                            }
+                        ]
+                    }
+                ')
+            ]
+        );
+    }
+
+    public function sendApprovedOutRequest($id, $approve)
+    {
+        $this->client->post(
+            $this->url .'TCDTENTL7/BKWTU1B7Z/MY5alrKR2WsixgagqI2CzK3C',
+            [
+                'headers' => ['Content-Type' => 'application/json'],
+                'json' => json_decode('
+                    {
+                        "text": "\n\nRequested to leave from <@'. $approve->slackid .'>\n *Was approved* by <@'. $id .'>\n",
+                        "channel": "C061EG9SL",
+                        "attachments": [
+                            {
+                                "fallback": "The request was approved."
+                            }
+                        ]
+                    }
+                ')
+            ]
+        );
+        
+        sleep(1);
+        
+        $this->client->post(
+            $this->url .'TCDTENTL7/BDGR52M6F/ZYKHb8pACSY3D1bVxu4PzNKw',
+            [
+                'headers' => ['Content-Type' => 'application/json'],
+                'json' => json_decode('
+                    {
+                        "text": "\n\nRequested to leave from <@'. $approve->slackid .'>\n *Was approved* by <@'. $id .'>\n",
+                        "channel": "C061EG9SL",
+                        "attachments": [
+                            {
+                                "fallback": "The request was approved!"
                             }
                         ]
                     }
@@ -554,7 +613,7 @@ class ApprovalController extends Controller
                                         "name": "approval",
                                         "text": "Approve",
                                         "type": "button",
-                                        "value": "approve%'. $request->username .'%'. $create->id .'",
+                                        "value": "approveOut%'. $request->username .'%'. $create->id .'",
                                         "style": "primary"
                                     },
                                     {
@@ -562,7 +621,7 @@ class ApprovalController extends Controller
                                         "text": "Reject",
                                         "style": "danger",
                                         "type": "button",
-                                        "value": "reject%'. $request->username .'%'. $create->id .'",
+                                        "value": "rejectOut%'. $request->username .'%'. $create->id .'",
                                         "confirm": {
                                             "title": "Are you sure?",
                                             "text": "Would you like to reject this request?",
