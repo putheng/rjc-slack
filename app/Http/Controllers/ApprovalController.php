@@ -208,14 +208,23 @@ class ApprovalController extends Controller
             $this->sendRejectOtRequest($userid, $approval);
         }
         
-        // if($response == 'reject')
-        // {
-        //     $approval = Approval::find($requestid);
-        //     $approval->status = 'Rejected';
-        //     $approval->save();
+        if($response == 'reject')
+        {
+            $approval = Approval::find($requestid);
+            $approval->status = 'Rejected';
+            $approval->save();
             
-        //     $this->sendRejectRequest($userid, $approval);
-        // }
+            $this->sendRejectRequest($userid, $approval);
+        }
+        
+        if($response == 'rejectOut')
+        {
+            $approval = Approval::find($requestid);
+            $approval->status = 'Rejected';
+            $approval->save();
+            
+            $this->sendRejectRequest($userid, $approval);
+        }
         
         
     }
@@ -384,6 +393,47 @@ class ApprovalController extends Controller
         );
     }
     
+    public function sendRejectOutRequest($id, $approve)
+    {
+        $this->client->post(
+            $this->url .'TCDTENTL7/BKWTU1B7Z/MY5alrKR2WsixgagqI2CzK3C',
+            [
+                'headers' => ['Content-Type' => 'application/json'],
+                'json' => json_decode('
+                    {
+                        "text": "\n\nRequested to leave from <@'. $approve->slackid .'>\n *Was rejected* by <@'. $id .'>\n",
+                        "channel": "C061EG9SL",
+                        "attachments": [
+                            {
+                                "fallback": "The request was rejected!"
+                            }
+                        ]
+                    }
+                ')
+            ]
+        );
+        
+        sleep(1);
+        
+        $this->client->post(
+            $this->url .'TCDTENTL7/BDGR52M6F/ZYKHb8pACSY3D1bVxu4PzNKw',
+            [
+                'headers' => ['Content-Type' => 'application/json'],
+                'json' => json_decode('
+                    {
+                        "text": "\n\nRequested to leave from <@'. $approve->slackid .'>\n *Was rejected* by <@'. $id .'>\n",
+                        "channel": "C061EG9SL",
+                        "attachments": [
+                            {
+                                "fallback": "The request was rejected!"
+                            }
+                        ]
+                    }
+                ')
+            ]
+        );
+    }
+
     public function sendRejectRequest($id, $approve)
     {
         $this->client->post(
