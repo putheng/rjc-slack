@@ -47,7 +47,7 @@ class OTController extends Controller
     	$create = OverTime::create($data);
 
     	$this->buildRequestOTMessage($request, $create);
-    	$this->newRequestForm();
+    	// $this->newRequestForm();
 
     	return back()->withSuccess('your form was successfully submitted');
     }
