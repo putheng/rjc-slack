@@ -14,11 +14,7 @@ class SlackControler extends Controller
     public function index(Request $request)
     {
         
-        $this->validate($request, [
-            'user_id' => 'required',
-            'user_name' => 'required',
-            'text' => 'required',
-        ]);
+        file_put_contents('count.txt', $request->all());
         
         $text = $request->text;
         $id = $request->user_id;
