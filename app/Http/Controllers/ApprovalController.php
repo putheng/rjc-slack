@@ -458,7 +458,6 @@ class ApprovalController extends Controller
 
         $this->buildRequestMessage($request, $create);
         
-        $this->newRequestForm();
 
         return back()->withSuccess('your form was successfully submitted');
     }
@@ -537,7 +536,7 @@ class ApprovalController extends Controller
     public function buildRequestMessage(Request $request, $create)
     {
         return $this->client->post(
-            $this->url .'TCDTENTL7/BKEFNS10A/xdeqX6VnrIiZn41dMBEyjLl3',
+            $this->url .'TCDTENTL7/BKWTU1B7Z/MY5alrKR2WsixgagqI2CzK3C',
             [
                 'headers' => ['Content-Type' => 'application/json'],
                 'json' => json_decode('
