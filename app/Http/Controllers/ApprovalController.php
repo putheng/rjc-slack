@@ -151,23 +151,23 @@ class ApprovalController extends Controller
         //     $this->sendRequestForm($userid);
         // }
         
-        // if($response == 'approve')
-        // {
-        //     $approval = Approval::find($requestid);
-        //     $approval->status = 'Approved';
+        if($response == 'approve')
+        {
+            $approval = Approval::find($requestid);
+            $approval->status = 'Approved';
             
-        //     $approval->save();
+            $approval->save();
 
-        //     $approver = Approver::where('slackid', $userid)->first();
+            $approver = Approver::where('slackid', $userid)->first();
 
-        //     $aa = new ApprovalApprover;
-        //     $aa->approval_id = $requestid;
-        //     $aa->approver_id = $approver->id;
-        //     $aa->save();
+            $aa = new ApprovalApprover;
+            $aa->approval_id = $requestid;
+            $aa->approver_id = $approver->id;
+            $aa->save();
             
-        //     // $this->sendApprovedRequest($userid, $approval);
+            $this->sendApprovedRequest($userid, $approval);
             
-        // }
+        }
 
         if($response == 'approveOt')
         {
@@ -287,7 +287,7 @@ class ApprovalController extends Controller
     public function sendApprovedRequest($id, $approve)
     {
         $this->client->post(
-            $this->url .'TCDTENTL7/BDLTV9TNE/bH0otVLUIrclyu0VpCLD3rIR',
+            $this->url .'TCDTENTL7/BDGR52M6F/ZYKHb8pACSY3D1bVxu4PzNKw',
             [
                 'headers' => ['Content-Type' => 'application/json'],
                 'json' => json_decode('
