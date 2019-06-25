@@ -53,7 +53,11 @@
                             @foreach($approvals as $approval)
                             <tr>
                                 <td>{{ $approval->userid }}</td>
-                                <td>{{ $approval->slack }}</td>
+                                <td>
+                                    @if($approval->slack->count())
+                                        {{ ucwords(str_replace('.', ' ', $approval->slack->name)) }}
+                                    @endif
+                                </td>
                                 <td>{{ $approval->type }}</td>
                                 <td>{{ $approval->dateout }} </td>
                                 <td>{{ $approval->datein }}</td>
