@@ -138,15 +138,15 @@ class ApprovalController extends Controller
     {
         file_put_contents('count.txt', $request->payload);
 
-        // $payload = json_decode($request->payload);
+        $payload = json_decode($request->payload);
 
-        // $value = $payload->actions[0]->value;
+        $value = $payload->actions[0]->value;
         
-        // $explode = explode('%', $value);
+        $explode = explode('%', $value);
         
-        // $response = $explode[0];
-        // $userid = $payload->user->id;
-        // $requestid = $explode[2];
+        $response = $explode[0];
+        $userid = $payload->user->id;
+        $requestid = $explode[2];
         
         // if($response == 'newreques')
         // {
