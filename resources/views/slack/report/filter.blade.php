@@ -54,7 +54,7 @@
                             <tr>
                                 <td>{{ $approval->userid }}</td>
                                 <td>
-                                    @if($approval->slack->count())
+                                    @if($approval->slack)
                                         {{ ucwords(str_replace('.', ' ', $approval->slack->name)) }}
                                     @endif
                                 </td>
