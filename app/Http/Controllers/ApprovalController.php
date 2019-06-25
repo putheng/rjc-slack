@@ -205,7 +205,7 @@ class ApprovalController extends Controller
             $approval->status = 'Rejected';
             $approval->save();
             
-            // $this->sendRejectOtRequest($userid, $approval);
+            $this->sendRejectOtRequest($userid, $approval);
         }
         
         if($response == 'reject')
