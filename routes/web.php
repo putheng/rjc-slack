@@ -15,6 +15,8 @@ Route::post('/slack/approval/ot', 'OTController@store');
 Route::post('/slack/hook', 'SlackControler@index');
 Route::post('/slack/request/leave', 'ApprovalController@getResponse');
 
+Route::get('/slack/request/leave/new', 'ApprovalController@getNewRequestForm');
+
 Route::get('/slack/approval/form', 'ApprovalController@index')->name('form.approval');
 Route::post('/slack/approval/form', 'ApprovalController@store');
 

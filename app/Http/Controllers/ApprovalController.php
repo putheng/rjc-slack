@@ -496,6 +496,47 @@ class ApprovalController extends Controller
             $this->sendRequestForm($id);
         }
     }
+
+    public function getNewRequestForm()
+    {
+        return $this->client->post(
+            $this->url .'TCDTENTL7/BDGR52M6F/ZYKHb8pACSY3D1bVxu4PzNKw',
+            [
+                'headers' => ['Content-Type' => 'application/json'],
+                'json' => json_decode('
+                    {
+                        "text": "Request any approval you like by continuing below.",
+                        "channel": "C061EG9SL",
+                        "attachments": [
+                            {
+                                "fallback": "Your request form at https://flights.example.com/book/r123456",
+                                "actions": [
+                                    {
+                                        "type": "button",
+                                        "text": "Request Working Outside",
+                                        "url": "http://renet-slack.herokuapp.com/slack/approval/form",
+                                        "style": "primary"
+                                    },
+                                    {
+                                        "type": "button",
+                                        "text": "Request Day Off",
+                                        "url": "http://renet-slack.herokuapp.com/slack/approval/leave",
+                                        "style": "primary"
+                                    },
+                                    {
+                                        "type": "button",
+                                        "text": "Request Over Time",
+                                        "url": "http://renet-slack.herokuapp.com/slack/approval/ot",
+                                        "style": "primary"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ')
+            ]
+        );
+    }
     
     public function sendRequestForm($id)
     {
