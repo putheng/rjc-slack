@@ -155,10 +155,6 @@
 <script type="text/javascript">
 $(document).ready(function() {
     $('.select2').select2();
-
-    $('#name').on('change', function(e){
-    	console.log(e);
-    });
 });
 </script>
 <link href="http://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />

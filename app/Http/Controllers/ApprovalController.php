@@ -607,6 +607,8 @@ class ApprovalController extends Controller
     	]);
 
         $this->buildRequestMessage($request, $create);
+
+        $this->newRequestForm();
         
 
         return back()->withSuccess('your form was successfully submitted');
