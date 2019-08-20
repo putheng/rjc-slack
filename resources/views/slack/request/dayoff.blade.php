@@ -28,7 +28,7 @@
 								    <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
     									<label class="control-label">ឈ្មោះ / Name</label>
     									<br>
-    									<select class="form-control select2" name="username">
+    									<select id="name" class="form-control select2" name="username">
     										<option value="">Enter your name</option>
     										@foreach(\App\Models\Slack::get() as $slack)
     											<option value="{{ $slack->slackid }}">{{ ucwords(str_replace('.', ' ', $slack->name)) }}</option>
@@ -44,7 +44,7 @@
 								</td>
 								<td style="width: 25%">
 									<div class="form-group{{ $errors->has('userid') ? ' has-error' : '' }}">
-										<label class="control-label">អត្ថលេខ / ID</label>
+										<label id="idcard" class="control-label">អត្ថលេខ / ID</label>
 										<input type="text" name="userid" class="form-control">
 										@if($errors->has('userid'))
 											<span class="help-block">
@@ -56,7 +56,7 @@
 								<td style="width: 25%">
 									<div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
 										<label class="control-label">Phone Number</label>
-										<input type="text" name="phone" class="form-control">
+										<input id="phone" type="text" name="phone" class="form-control">
 										@if($errors->has('phone'))
 											<span class="help-block">
 												{{ $errors->first('phone') }}
@@ -66,7 +66,7 @@
 								</td>
 								<td style="width: 25%">
 									<div class="form-group{{ $errors->has('position') ? ' has-error' : '' }}">
-										<label class="control-label">មុខតំណែង / Position</label>
+										<label id="position" class="control-label">មុខតំណែង / Position</label>
 										<input type="text" name="position" class="form-control">
 										@if($errors->has('position'))
 											<span class="help-block">
@@ -101,7 +101,7 @@
 								<td>
 									<div class="control-label{{ $errors->has('branch') ? ' has-error' : '' }}">
 										<label class="control-label">សាខា / Branch</label>
-										<input type="text" name="branch" class="form-control">
+										<input id="branch" type="text" name="branch" class="form-control">
 										@if($errors->has('branch'))
 											<span class="help-block">
 												{{ $errors->first('branch') }}
@@ -112,7 +112,7 @@
 								<td>
 									<div class="control-label{{ $errors->has('section') ? ' has-error' : '' }}">
 										<label class="control-label">ផ្នែក / Section</label>
-										<input type="text" name="section" class="form-control">
+										<input id="section" type="text" name="section" class="form-control">
 										@if($errors->has('section'))
 											<span class="help-block">
 												{{ $errors->first('section') }}
@@ -203,6 +203,15 @@
 <script type="text/javascript">
 $(document).ready(function() {
     $('.select2').select2();
+
+	$('#name').on('change', function(){
+    	$.get('/fetch/data?id='+ this.value, function(response){
+    		$('#idcard').val(response.data.card);
+    		$('#phone').val(response.data.phone);
+    		$('#position').val(response.data.position);
+    		$('#branch').val(response.data.department);
+    	})
+    });
 });
 </script>
 <link href="http://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
