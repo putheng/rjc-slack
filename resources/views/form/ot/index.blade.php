@@ -41,7 +41,7 @@
 								<td>
 									<div class="form-group{{ $errors->has('userid') ? ' has-error' : '' }}">
 										<label class="control-label">អត្ថលេខ / ID</label>
-										<input value="{{ old('userid') }}" type="text" name="userid" class="form-control">
+										<input id="idcard" value="{{ old('userid') }}" type="text" name="userid" class="form-control">
 										@if($errors->has('userid'))
 											<span class="help-block">
 												{{ $errors->first('userid') }}
@@ -52,7 +52,7 @@
 								<td>
 									<div class="form-group{{ $errors->has('department') ? ' has-error' : '' }}">
 										<label class="control-label">ផ្នែក / Department</label>
-										<input value="{{ old('department') }}" type="text" name="department" class="form-control">
+										<input id="department" value="{{ old('department') }}" type="text" name="department" class="form-control">
 										@if($errors->has('department'))
 											<span class="help-block">
 												{{ $errors->first('department') }}
@@ -160,6 +160,13 @@
 <script type="text/javascript">
 $(document).ready(function() {
     $('.select2s').select2();
+
+    $('#name').on('change', function(){
+    	$.get('/fetch/data?id='+ this.value, function(response){
+    		$('#idcard').val(response.data.card);
+    		$('#department').val(response.data.position);
+    	})
+    });
 });
 </script>
 <link href="http://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
