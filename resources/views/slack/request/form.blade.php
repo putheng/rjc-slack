@@ -41,7 +41,7 @@
 								<td>
 									<div class="form-group{{ $errors->has('userid') ? ' has-error' : '' }}">
 										<label class="control-label">អត្ថលេខ / ID</label>
-										<input type="text" name="userid" class="form-control" value="{{ $slack->card }}">
+										<input id="idcard" type="text" name="userid" class="form-control">
 										@if($errors->has('userid'))
 											<span class="help-block">
 												{{ $errors->first('userid') }}
@@ -52,7 +52,7 @@
 								<td>
 									<div class="form-group{{ $errors->has('department') ? ' has-error' : '' }}">
 										<label class="control-label">ផ្នែក / Department</label>
-										<input type="text" name="department" class="form-control" value="{{ $slack->department }}">
+										<input id="department" type="text" name="department" class="form-control">
 										@if($errors->has('department'))
 											<span class="help-block">
 												{{ $errors->first('department') }}
@@ -155,6 +155,12 @@
 <script type="text/javascript">
 $(document).ready(function() {
     $('.select2').select2();
+    $('#name').on('change', function(){
+    	$.get('/fetch/data?id='+ this.value, function(response){
+    		$('#idcard').val(this.value.card);
+    		$('#department').val(this.value.department);
+    	})
+    });
 });
 </script>
 <link href="http://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />

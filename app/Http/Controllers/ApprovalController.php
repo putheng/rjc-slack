@@ -478,9 +478,7 @@ class ApprovalController extends Controller
 
     public function index(Request $request)
     {
-        $slack = Slack::where('slackid', $request->id)->first();
-        
-    	return view('slack.request.form', compact('slack'));
+    	return view('slack.request.form');
     }
     
     public function view(Request $request, Approval $approval)
