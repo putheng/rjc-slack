@@ -1,5 +1,6 @@
 <?php
 
+Route::get('/fetch/data', 'ApiController@index');
 Route::get('/webhook', 'WebHookController@index');
 
 Route::get('/webhoos/contract_termination', 'ContractTerminationController@webhoos');
