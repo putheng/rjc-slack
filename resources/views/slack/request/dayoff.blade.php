@@ -44,8 +44,8 @@
 								</td>
 								<td style="width: 25%">
 									<div class="form-group{{ $errors->has('userid') ? ' has-error' : '' }}">
-										<label id="idcard" class="control-label">អត្ថលេខ / ID</label>
-										<input type="text" name="userid" class="form-control">
+										<label class="control-label">អត្ថលេខ / ID</label>
+										<input id="idcard" type="text" name="userid" class="form-control">
 										@if($errors->has('userid'))
 											<span class="help-block">
 												{{ $errors->first('userid') }}
@@ -66,8 +66,8 @@
 								</td>
 								<td style="width: 25%">
 									<div class="form-group{{ $errors->has('position') ? ' has-error' : '' }}">
-										<label id="position" class="control-label">មុខតំណែង / Position</label>
-										<input type="text" name="position" class="form-control">
+										<label class="control-label">មុខតំណែង / Position</label>
+										<input id="position" type="text" name="position" class="form-control">
 										@if($errors->has('position'))
 											<span class="help-block">
 												{{ $errors->first('position') }}
