@@ -41,7 +41,7 @@
 								<td>
 									<div class="form-group{{ $errors->has('userid') ? ' has-error' : '' }}">
 										<label class="control-label">អត្ថលេខ / ID</label>
-										<input type="text" name="userid" class="form-control">
+										<input type="text" name="userid" class="form-control" value="{{ $slack->card }}">
 										@if($errors->has('userid'))
 											<span class="help-block">
 												{{ $errors->first('userid') }}

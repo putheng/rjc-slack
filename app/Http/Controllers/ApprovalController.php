@@ -6,6 +6,7 @@ use App\Approver;
 use App\Http\Requests\StoreDayOffFromResuest;
 use App\Models\Approval;
 use App\Models\ApprovalApprover;
+use App\Models\Slack;
 use App\OverTime;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
@@ -475,9 +476,11 @@ class ApprovalController extends Controller
         );
     }
 
-    public function index()
+    public function index(Request $request)
     {
-    	return view('slack.request.form');
+        $slack = Slack::where('slackid', $request->id)->first();
+        
+    	return view('slack.request.form', compact('slack'));
     }
     
     public function view(Request $request, Approval $approval)
@@ -555,19 +558,19 @@ class ApprovalController extends Controller
                                     {
                                         "type": "button",
                                         "text": "Request Working Outside",
-                                        "url": "http://renet-slack.herokuapp.com/slack/approval/form?token='. str_random(255) .'&id='. $id .'",
+                                        "url": "http://renet-slack.herokuapp.com/slack/approval/form?id='. $id .'",
                                         "style": "primary"
                                     },
                                     {
                                         "type": "button",
                                         "text": "Request Day Off",
-                                        "url": "http://renet-slack.herokuapp.com/slack/approval/leave?token='. str_random(255) .'&id='. $id .'",
+                                        "url": "http://renet-slack.herokuapp.com/slack/approval/leave?id='. $id .'",
                                         "style": "primary"
                                     },
                                     {
                                         "type": "button",
                                         "text": "Request Over Time",
-                                        "url": "http://renet-slack.herokuapp.com/slack/approval/ot?token='. str_random(255) .'&id='. $id .'",
+                                        "url": "http://renet-slack.herokuapp.com/slack/approval/ot?id='. $id .'",
                                         "style": "primary"
                                     }
                                 ]
