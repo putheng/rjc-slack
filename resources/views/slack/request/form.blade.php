@@ -52,7 +52,7 @@
 								<td>
 									<div class="form-group{{ $errors->has('department') ? ' has-error' : '' }}">
 										<label class="control-label">ផ្នែក / Department</label>
-										<input type="text" name="department" class="form-control">
+										<input type="text" name="department" class="form-control" value="{{ $slack->department }}">
 										@if($errors->has('department'))
 											<span class="help-block">
 												{{ $errors->first('department') }}
