@@ -24,7 +24,7 @@
 								    <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
     									<label class="control-label">ឈ្មោះ / Name</label>
     									
-    									<br><select class="form-control select2" name="username">
+    									<br><select id="name" class="form-control select2" name="username">
     										<option value="">Enter your name</option>
     										@foreach(\App\Models\Slack::get() as $slack)
     											<option value="{{ $slack->slackid }}">{{ ucwords(str_replace('.', ' ', $slack->name)) }}</option>
@@ -155,6 +155,10 @@
 <script type="text/javascript">
 $(document).ready(function() {
     $('.select2').select2();
+
+    $('#name').on('change', function(e){
+    	console.log(e);
+    });
 });
 </script>
 <link href="http://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
