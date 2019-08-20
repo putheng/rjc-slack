@@ -24,7 +24,7 @@
 								    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
     									<label class="control-label">ឈ្មោះ / Name</label>
     									
-    									<br><select class="form-control select2" name="name">
+    									<br><select id="name" class="form-control select2" name="name">
     										<option value="">Enter your name</option>
     										@foreach(\App\Models\Slack::orderBy('name', 'asc')->get() as $slack)
     											<option value="{{ $slack->slackid }}">{{ ucwords(str_replace('.', ' ', $slack->name)) }}</option>
