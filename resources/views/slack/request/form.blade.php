@@ -157,8 +157,8 @@ $(document).ready(function() {
     $('.select2').select2();
     $('#name').on('change', function(){
     	$.get('/fetch/data?id='+ this.value, function(response){
-    		$('#idcard').val(this.value.card);
-    		$('#department').val(this.value.department);
+    		$('#idcard').val(response.data.card);
+    		$('#department').val(response.data.department);
     	})
     });
 });
