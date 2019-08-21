@@ -30,7 +30,7 @@
     									<br>
     									<select id="name" class="form-control select2" name="username">
     										<option value="">Enter your name</option>
-    										@foreach(\App\Models\Slack::get() as $slack)
+    										@foreach(\App\Models\Slack::orderBy('name', 'asc')->get() as $slack)
     											<option value="{{ $slack->slackid }}">{{ ucwords(str_replace('.', ' ', $slack->name)) }}</option>
     										@endforeach
     									</select>
