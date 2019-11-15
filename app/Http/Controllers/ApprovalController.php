@@ -514,25 +514,25 @@ class ApprovalController extends Controller
                                 "actions": [
                                     {
                                         "type": "button",
-                                        "text": "Request Working Outside",
+                                        "text": "Working Outside",
                                         "url": "http://renet-slack.herokuapp.com/slack/approval/form",
                                         "style": "primary"
                                     },
                                     {
                                         "type": "button",
-                                        "text": "Request Day Off",
+                                        "text": "Day Off",
                                         "url": "http://renet-slack.herokuapp.com/slack/approval/leave",
                                         "style": "primary"
                                     },
                                     {
                                         "type": "button",
-                                        "text": "Request Over Time",
+                                        "text": "Over Time",
                                         "url": "http://renet-slack.herokuapp.com/slack/approval/ot",
                                         "style": "primary"
                                     },
                                     {
                                         "type": "button",
-                                        "text": "Request Business Trip",
+                                        "text": "Business Trip",
                                         "url": "http://renet-slack.herokuapp.com/slack/approval/trip",
                                         "style": "primary"
                                     }
@@ -561,25 +561,25 @@ class ApprovalController extends Controller
                                 "actions": [
                                     {
                                         "type": "button",
-                                        "text": "Request Working Outside",
+                                        "text": "Working Outside",
                                         "url": "http://renet-slack.herokuapp.com/slack/approval/form?id='. $id .'",
                                         "style": "primary"
                                     },
                                     {
                                         "type": "button",
-                                        "text": "Request Day Off",
+                                        "text": "Day Off",
                                         "url": "http://renet-slack.herokuapp.com/slack/approval/leave?id='. $id .'",
                                         "style": "primary"
                                     },
                                     {
                                         "type": "button",
-                                        "text": "Request Over Time",
+                                        "text": "Over Time",
                                         "url": "http://renet-slack.herokuapp.com/slack/approval/ot?id='. $id .'",
                                         "style": "primary"
                                     },
                                     {
                                         "type": "button",
-                                        "text": "Request Business Trip",
+                                        "text": "Business Trip",
                                         "url": "http://renet-slack.herokuapp.com/slack/approval/trip?id='. $id .'",
                                         "style": "primary"
                                     }
