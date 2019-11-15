@@ -10,6 +10,9 @@ Route::post('/contract_termination', 'ContractTerminationController@store');
 
 Route::get('/', 'SlackControler@show');
 
+Route::get('/slack/approval/trip', 'TripController@index')->name('form.trip');
+Route::post('/slack/approval/trip', 'TripController@store');
+
 Route::get('/slack/approval/ot', 'OTController@index')->name('form.ot');
 Route::post('/slack/approval/ot', 'OTController@store');
 
