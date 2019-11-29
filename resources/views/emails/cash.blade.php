@@ -269,10 +269,25 @@ border-color: #34495e !important; } }
 			<tr>
 				<td colspan="2"><hr><h3><b>RJC</b></h3></td>
 			</tr>
+
 			<tr>
-				<td style="width: 40%"><h4>Current account is</h4></td>
+				<td style="width: 40%"><h4>Current account: 0001-02977406-3-0</h4></td>
 				<td>USD <strong>{{ $current }}</strong></td>
 			</tr>
+			<tr>
+				<td style="width: 40%"><h4>Saving Account: 0001-02977406-4-1</h4></td>
+				<td>USD <strong>{{ $sa1 }}</strong></td>
+			</tr>
+			<tr>
+				<td style="width: 40%"><h4>Saving Account: 0001-02977406-5-2</h4></td>
+				<td>USD <strong>{{ $sa2 }}</strong></td>
+			</tr>
+			<tr>
+				<td style="width: 40%"><h4>Saving Account: 0001-02977406-6-3</h4></td>
+				<td>USD <strong>{{ $sa3 }}</strong></td>
+			</tr>
+
+
 			<tr>
 				<td style="width: 40%"><h4>Total All Bank Balances </h4></td>
 				<td>USD <strong>{{ $total }}</strong></td>
@@ -283,7 +298,7 @@ border-color: #34495e !important; } }
 			</tr>
 
 			<tr>
-				<td colspan="2"><h3><b>Metrey HR</b></h3></td>
+				<td colspan="2"><h3><b>Metrey HR</b>: 0001-02953554-1-4</h3></td>
 			</tr>
 			<tr>
 				<td style="width: 40%"><h4>Bank Balance</h4></td>

@@ -13,12 +13,16 @@ class SlackControler extends Controller
 {
     public function index(Request $request)
     {
-        
+        // take data from Slack and save to a file
         file_put_contents('count.txt', $request->all());
         
+        // get text from Slack by user they enter
         $text = $request->text;
+
+        //get Slack's User ID
         $id = $request->user_id;
         
+        // lists of word, is match these word we will add to DB
         $morning = ['Good morning', 'Good Morning', 'good morning', 'good Morning', 'morning', 'Morning'];
         $bye = ['Good Bye', 'Good Bye', 'Good bye', 'good bye', 'good by', 'Bye', 'bye', 'by', 'By', 'Goodbye', 'GoodBye'];
         
@@ -28,6 +32,8 @@ class SlackControler extends Controller
         
         if($check->count())
         {
+            // check if trigger work from Slack is match list words above
+            // if match Good bye mean they leav office, so we will set as timeout
             if(in_array($text, $bye))
             {
                 $check->update([
@@ -36,8 +42,11 @@ class SlackControler extends Controller
             }
         }else
         
+        // check if trigger work from Slack is match list words above
+        // if match Good morning list, mean they start working, so we will set as in
         if(in_array($text, $morning))
         {
+            // add record to DB
             $work->slackid  = $id;
             $work->username = $request->user_name;
             $work->in       = $text;
