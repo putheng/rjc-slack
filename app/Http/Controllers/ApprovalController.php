@@ -30,6 +30,7 @@ class ApprovalController extends Controller
     }
     
     public function storeOff(StoreDayOffFromResuest $request)
+    // public function storeOff(Request $request)
     {
         $create = Approval::create([
             'username' => $request->username,
@@ -44,10 +45,101 @@ class ApprovalController extends Controller
             'body' => $this->defaultOffText(),
         ]);
 
+        if($request->type == 'Sick Leave'){
+            if(!$fileUpload = $request->file('docs')){
+                return back()->withError('Please attached health certificate for sick leave');
+            }
+            $image = $this->uploadImage($fileUpload);
+            $this->buildSickLeaveRequestMessage($request, $create, $image);
+
+            return back()->withSuccess('your form was successfully submitted');
+        }
+
         $this->buildRequestOffMessage($request, $create);
 
         return back()->withSuccess('your form was successfully submitted');
     	
+    }
+
+    protected function uploadImage($file)
+    {
+        try{
+            $response = $this->client->post(
+                'http://lixr.me/images', [
+                    'multipart' => [
+                        [
+                            'name'     => 'file',
+                            'contents' => fopen( $file->getPathname(), 'r' ),
+                            'filename' => 'upload.png'
+                        ],
+                    ],
+                ],
+            );
+
+           $image = json_decode(
+                $response->getBody()->getContents()
+            )->data->uuid .'?s=800';
+
+           return 'http://lixr.me/images/'. $image;
+
+        } catch(\Exception $e) {
+            echo $e->getMessage();
+            // $response = $e->getResponse();
+            // $responseBody = $response->getBody()->getContents();
+
+            // echo $responseBody;
+            exit;
+        }
+    }
+
+    public function buildSickLeaveRequestMessage(Request $request, $create, $image)
+    {
+        return $this->client->post(
+            $this->url .'TCDTENTL7/BKX2LMJ07/FkjcP5e5uwddmCb7GShCXWY2',
+            [
+                'headers' => ['Content-Type' => 'application/json'],
+                'json' => json_decode('
+                    {
+                        "text": "'. $this->buildRequestTo($request) .' \n*Your approval is requested to make an offer to* <@'. $request->username .'>",
+                        "attachments": [
+                            {
+                                "title": "Attached health certificate",
+                                "image_url": "'. $image .'"
+                            },
+                            {
+                                "text": "'. $this->defaultOffText() .' \n",
+                                "fallback": "You are unable to approve",
+                                "callback_id": "aprq",
+                                "color": "#3AA3E3",
+                                "attachment_type": "default",
+                                "actions": [
+                                    {
+                                        "name": "approval",
+                                        "text": "Approve",
+                                        "type": "button",
+                                        "value": "approve%'. $request->username .'%'. $create->id .'",
+                                        "style": "primary"
+                                    },
+                                    {
+                                        "name": "approval",
+                                        "text": "Reject",
+                                        "style": "danger",
+                                        "type": "button",
+                                        "value": "reject%'. $request->username .'%'. $create->id .'",
+                                        "confirm": {
+                                            "title": "Are you sure?",
+                                            "text": "Would you like to reject this request?",
+                                            "ok_text": "Yes",
+                                            "dismiss_text": "No"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ')
+            ]
+        );
     }
 
     public function buildRequestOffMessage(Request $request, $create)

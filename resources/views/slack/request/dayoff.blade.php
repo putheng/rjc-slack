@@ -18,8 +18,12 @@
 		@if(session()->has('success'))
 			<div class="alert alert-success" role="alert"><strong>Congratulations! </strong>{{ session('success') }}</div>
 		@endif
+
+		@if(session()->has('error'))
+			<div class="alert alert-danger" role="alert">{{ session('error') }}</div>
+		@endif
 			<div class="table-responsive">
-				<form action="{{ route('form.approval.leave') }}" method="post">
+				<form action="{{ route('form.approval.leave') }}" method="post" enctype="multipart/form-data">
 					{{ csrf_field() }}
 					<table class="table">
 						<tbody>
@@ -45,7 +49,7 @@
 								<td style="width: 25%">
 									<div class="form-group{{ $errors->has('userid') ? ' has-error' : '' }}">
 										<label class="control-label">អត្ថលេខ / ID</label>
-										<input id="idcard" type="text" name="userid" class="form-control">
+										<input value="{{ old('userid') }}" id="idcard" type="text" name="userid" class="form-control">
 										@if($errors->has('userid'))
 											<span class="help-block">
 												{{ $errors->first('userid') }}
@@ -56,7 +60,7 @@
 								<td style="width: 25%">
 									<div class="form-group{{ $errors->has('phone') ? ' has-error' : '' }}">
 										<label class="control-label">Phone Number</label>
-										<input id="phone" type="text" name="phone" class="form-control">
+										<input value="{{ old('phone') }}" id="phone" type="text" name="phone" class="form-control">
 										@if($errors->has('phone'))
 											<span class="help-block">
 												{{ $errors->first('phone') }}
@@ -67,7 +71,7 @@
 								<td style="width: 25%">
 									<div class="form-group{{ $errors->has('position') ? ' has-error' : '' }}">
 										<label class="control-label">មុខតំណែង / Position</label>
-										<input id="position" type="text" name="position" class="form-control">
+										<input value="{{ old('position') }}" id="position" type="text" name="position" class="form-control">
 										@if($errors->has('position'))
 											<span class="help-block">
 												{{ $errors->first('position') }}
@@ -101,7 +105,7 @@
 								<td>
 									<div class="control-label{{ $errors->has('branch') ? ' has-error' : '' }}">
 										<label class="control-label">សាខា / Branch</label>
-										<input id="branch" type="text" name="branch" class="form-control">
+										<input value="{{ old('branch') }}" id="branch" type="text" name="branch" class="form-control">
 										@if($errors->has('branch'))
 											<span class="help-block">
 												{{ $errors->first('branch') }}
@@ -112,7 +116,7 @@
 								<td>
 									<div class="control-label{{ $errors->has('section') ? ' has-error' : '' }}">
 										<label class="control-label">ផ្នែក / Section</label>
-										<input id="section" type="text" name="section" class="form-control">
+										<input value="{{ old('section') }}" id="section" type="text" name="section" class="form-control">
 										@if($errors->has('section'))
 											<span class="help-block">
 												{{ $errors->first('section') }}
@@ -127,7 +131,7 @@
 								<td colspan="5">
 									<div class="form-group{{ $errors->has('reason') ? ' has-error' : '' }}">
 										<label class="control-label">មូលហេតុនៃការស្នើសុំ / Reason of Leave</label>
-										<textarea name="reason" rows="8" class="form-control"></textarea>
+										<textarea name="reason" rows="8" class="form-control">{{ old('reason') }}</textarea>
 										@if($errors->has('reason'))
 											<span class="help-block">
 												{{ $errors->first('reason') }}
@@ -140,7 +144,7 @@
 								<td>
 									<div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
 										<label class="control-label">ប្រភេទនៃការសុំឈប់សម្រាក / Type of Leave</label>
-										<select name="type" class="form-control">
+										<select name="type" class="form-control" id="offtype">
 											<option value="Annual Leave">ច្បាប់សម្រាកប្រចាំឆ្នាំ Annual Leave</option>
 											<option value="Special Leave">ច្បាប់ពិសេស Special Leave</option>
 											<option value="Maternity Leave">ច្បាប់សម្រាលកូន Maternity Leave</option>
@@ -160,6 +164,22 @@
 								<td></td>
 								<td></td>
 							</tr>
+
+							<tr style="display: none;" id="docsm" >
+								<td>
+									<div class="form-group{{ $errors->has('type') ? ' has-error' : '' }}">
+										<label class="control-label">
+											ឯកសារពេទ្យ/Medical files
+										</label>
+										<input type="file" accept="image/*" class="form-control" name="docs">
+									</div>
+								</td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+
 							<tr>
 								<td>
 									<div class="form-group{{ $errors->has('request_to') ? ' has-error' : '' }}">
@@ -202,6 +222,14 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
+	$('#offtype').on('change', function(){
+		if(this.value == 'Sick Leave'){
+			$('#docsm').show();
+		}else{
+			$('#docsm').hide();
+		}
+	})
+
     $('.select2').select2();
 
 	$('#name').on('change', function(){
