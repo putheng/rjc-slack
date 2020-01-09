@@ -316,7 +316,7 @@ class ApprovalController extends Controller
             $approval->status = 'Rejected';
             $approval->save();
             
-            $this->sendRejectRequest($userid, $approval);
+            $this->sendRejectOutRequest($userid, $approval);
         }
         
         
