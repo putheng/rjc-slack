@@ -36,7 +36,7 @@ class StoreDayOffFromResuest extends FormRequest
             'timein' => 'required',
             'request_to' => 'required',
             'type' => 'required',
-            'reason' => 'required|min:3|max:255',
+            'reason' => 'required|min:3|max:1000',
         ];
     }
 }
