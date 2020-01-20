@@ -4,7 +4,9 @@
 <div class="container">
 	<div class="row">
 		<div class="col">
-			<h4 class="text-center text-up">Request business trip</h4>
+			<h4 class="text-center text-up">
+				IT SUPPORT request
+			</h4>
 		</div>
 	</div>
 	<br><br>
@@ -14,7 +16,7 @@
 			<div class="alert alert-success" role="alert"><strong>Congratulations! </strong>{{ session('success') }}</div>
 		@endif
 			<div class="table-responsive">
-				<form action="{{ route('form.trip') }}" method="post">
+				<form action="{{ route('support.store') }}" method="post">
 					{{ csrf_field() }}
 					<table class="table">
 						<tbody>
@@ -61,24 +63,6 @@
 								</td>
 							</tr>
 							<tr>
-								<td>
-									<label>ថ្ងៃខែឆ្នាំចេញ / Date Out</label>
-									<input type="date" name="dateout" class="form-control" value="{{ date('Y-m-d') }}">
-								</td>
-								<td>
-									<label>ម៉ោងចេញ / Time Out</label>
-									<input type="time" name="timeout" class="form-control" value="08:00:00">
-								</td>
-								<td>
-									<label>រហូតដល់ថ្ងៃ / Until Date</label>
-									<input type="date" name="datein" class="form-control" value="{{ date('Y-m-d') }}">
-								</td>
-								<td>
-									<label>រហូតដល់ម៉ោង / Until Time</label>
-									<input type="time" name="timein" class="form-control" value="17:00:00">
-								</td>
-							</tr>
-							<tr>
 								<td colspan="5"><hr></td>
 							</tr>
 							<tr>
@@ -101,8 +85,8 @@
 							<tr>
 								<td colspan="5">
 									<div class="form-group{{ $errors->has('reason') ? ' has-error' : '' }}">
-										<label class="control-label">មូលហេតុនៃការស្នើសុំ / Reason of Leave</label>
-										<textarea name="reason" rows="8" class="form-control"></textarea>
+										<label class="control-label">Description</label>
+										<textarea name="description" rows="8" class="form-control"></textarea>
 										@if($errors->has('reason'))
 											<span class="help-block">
 												{{ $errors->first('reason') }}
@@ -111,24 +95,7 @@
 									</div>
 								</td>
 							</tr>
-							<tr>
-								<td>
-									<div class="form-group{{ $errors->has('request_to') ? ' has-error' : '' }}">
-										<label class="control-label">Request to:</label>
-										<select multiple name="request_to[]" class="form-control select2">
-											@foreach(\App\Approver::orderBy('orderable', 'asc')->get() as $approver)
-												<option value="{{ $approver->slackid  }}">
-													{{ $approver->name  }}
-												</option>
-											@endforeach
-										</select>
-									</div>
-								</td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
+							
 							<tr>
 								<td colspan="5">
 									<input type="hidden" name="id" value="{{ request()->id }}"/>

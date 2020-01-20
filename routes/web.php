@@ -28,6 +28,10 @@ Route::post('/slack/approval/form', 'ApprovalController@store');
 Route::get('/slack/approval/leave', 'ApprovalController@viewOff')->name('form.approval.leave');
 Route::post('/slack/approval/leave', 'ApprovalController@storeOff');
 
+
+Route::get('/slack/approval/support', 'SupportController@show');
+Route::post('/slack/approval/support', 'SupportController@store')->name('support.store');
+
 Route::get('/slack/approval/form/{approval}', 'ApprovalController@view');
 
 Route::post('/slac/approval/request', 'ApprovalController@request')->name('approval.request');

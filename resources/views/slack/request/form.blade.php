@@ -117,7 +117,7 @@
 									<div class="form-group{{ $errors->has('request_to') ? ' has-error' : '' }}">
 										<label class="control-label">Request to:</label>
 										<select multiple name="request_to[]" class="form-control select2">
-											@foreach(\App\Approver::orderBy('id', 'asc')->get() as $approver)
+											@foreach(\App\Approver::orderBy('orderable', 'asc')->get() as $approver)
 												<option value="{{ $approver->slackid  }}">
 													{{ $approver->name  }}
 												</option>

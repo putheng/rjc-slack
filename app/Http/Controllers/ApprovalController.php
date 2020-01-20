@@ -627,6 +627,12 @@ class ApprovalController extends Controller
                                         "text": "Business Trip",
                                         "url": "http://renet-slack.herokuapp.com/slack/approval/trip",
                                         "style": "primary"
+                                    },
+                                    {
+                                        "type": "button",
+                                        "text": "IT Supprt",
+                                        "url": "http://renet-slack.herokuapp.com/slack/approval/support",
+                                        "style": "primary"
                                     }
                                 ]
                             }
