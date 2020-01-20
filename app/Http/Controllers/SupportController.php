@@ -36,6 +36,8 @@ class SupportController extends Controller
     	);
 
     	$this->buildMessage($request, $support);
+
+    	return back()->withSuccess('Your form was successfully submitted');
     }
 
     public function buildMessage(Request $request, $model)
