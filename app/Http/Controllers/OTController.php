@@ -165,6 +165,6 @@ class OTController extends Controller
 
    	public function buildRequestText()
     {
-        return preg_replace("/\r|\n/", "", request()->reason);
+        return preg_replace("/\r|\n/", "", request()->activities);
     }
 }
