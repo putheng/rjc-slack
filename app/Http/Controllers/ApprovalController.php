@@ -361,7 +361,7 @@ class ApprovalController extends Controller
                 'headers' => ['Content-Type' => 'application/json'],
                 'json' => json_decode('
                     {
-                        "text": "\n\nRequested *Over Time* from <@'. $approve->name .'>\n *Was approved* by <@'. $id .'>\n",
+                        "text": "\n\nRequested *Over Time* from <@'. $approve->name .'>\n *Was acknowledge* by <@'. $id .'>\n",
                         "channel": "C061EG9SL",
                         "attachments": [
                             {
