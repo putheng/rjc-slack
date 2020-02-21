@@ -290,6 +290,17 @@ class ApprovalController extends Controller
             
             $this->sendApprovedOtRequest($userid, $approval);
         }
+
+        if($response == 'acknowledgeOt')
+        {
+            $approval = OverTime::find($requestid);
+            
+            $approval->status = 'Approved';
+            
+            $approval->save();
+            
+            $this->sendAcknowledgeOtRequest($userid, $approval);
+        }
         
         if($response == 'rejectOt')
         {
@@ -320,6 +331,47 @@ class ApprovalController extends Controller
         }
         
         
+    }
+
+    public function sendAcknowledgeOtRequest($id, $approve)
+    {
+        $this->client->post(
+            $this->url .'TCDTENTL7/BKV3W22QM/7objnmxoEWQxX2RZ8ewLvaKA',
+            [
+                'headers' => ['Content-Type' => 'application/json'],
+                'json' => json_decode('
+                    {
+                        "text": "\n\nRequested *Over Time* from <@'. $approve->name .'>\n *Was acknowledge* by <@'. $id .'>\n",
+                        "channel": "GKQL2PJS1",
+                        "attachments": [
+                            {
+                                "fallback": "The request was approved."
+                            }
+                        ]
+                    }
+                ')
+            ]
+        );
+        
+        sleep(1);
+        
+        $this->client->post(
+            $this->url .'TCDTENTL7/BDGR52M6F/ZYKHb8pACSY3D1bVxu4PzNKw',
+            [
+                'headers' => ['Content-Type' => 'application/json'],
+                'json' => json_decode('
+                    {
+                        "text": "\n\nRequested *Over Time* from <@'. $approve->name .'>\n *Was approved* by <@'. $id .'>\n",
+                        "channel": "C061EG9SL",
+                        "attachments": [
+                            {
+                                "fallback": "The request was approved!"
+                            }
+                        ]
+                    }
+                ')
+            ]
+        );
     }
 
     public function sendApprovedOtRequest($id, $approve)
