@@ -77,6 +77,13 @@ class OTController extends Controller
                                         "style": "primary"
                                     },
                                     {
+                                        "name": "acknowledge",
+                                        "text": "Acknowledge",
+                                        "type": "button",
+                                        "value": "acknowledgeOt%'. $request->name .'%'. $create->id .'",
+                                        "style": "primary"
+                                    },
+                                    {
                                         "name": "approval",
                                         "text": "Reject",
                                         "style": "danger",
