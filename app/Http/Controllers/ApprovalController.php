@@ -121,6 +121,13 @@ class ApprovalController extends Controller
                                         "style": "primary"
                                     },
                                     {
+                                        "name": "acknowledge",
+                                        "text": "Acknowledge",
+                                        "type": "button",
+                                        "value": "acknowledgeOff%'. $request->name .'%'. $create->id .'",
+                                        "style": "primary"
+                                    },
+                                    {
                                         "name": "approval",
                                         "text": "Reject",
                                         "style": "danger",
@@ -164,6 +171,13 @@ class ApprovalController extends Controller
                                         "text": "Approve",
                                         "type": "button",
                                         "value": "approve%'. $request->username .'%'. $create->id .'",
+                                        "style": "primary"
+                                    },
+                                    {
+                                        "name": "acknowledge",
+                                        "text": "Acknowledge",
+                                        "type": "button",
+                                        "value": "acknowledgeOff%'. $request->name .'%'. $create->id .'",
                                         "style": "primary"
                                     },
                                     {
@@ -301,6 +315,21 @@ class ApprovalController extends Controller
             
             $this->sendAcknowledgeOtRequest($userid, $approval);
         }
+
+        if($response == 'acknowledgeOut')
+        {
+            $this->sendAcknowledgeOutRequest($userid, $approval);
+        }
+
+        if($response == 'acknowledgeOff')
+        {
+
+            $approval = Approval::find($requestid);
+            $approval->status = 'Approved';
+            $approval->save();
+            
+            $this->sendAcknowledgeOffRequest($userid, $approval);
+        }
         
         if($response == 'rejectOt')
         {
@@ -362,6 +391,88 @@ class ApprovalController extends Controller
                 'json' => json_decode('
                     {
                         "text": "\n\nRequested *Over Time* from <@'. $approve->name .'>\n *Was acknowledge* by <@'. $id .'>\n",
+                        "channel": "C061EG9SL",
+                        "attachments": [
+                            {
+                                "fallback": "The request was approved!"
+                            }
+                        ]
+                    }
+                ')
+            ]
+        );
+    }
+
+    public function sendAcknowledgeOffRequest($id, $approve)
+    {
+        $this->client->post(
+            $this->url .'TCDTENTL7/BKV3W22QM/7objnmxoEWQxX2RZ8ewLvaKA',
+            [
+                'headers' => ['Content-Type' => 'application/json'],
+                'json' => json_decode('
+                    {
+                        "text": "\n\nRequested *Leave* from <@'. $approve->name .'>\n *Was acknowledge* by <@'. $id .'>\n",
+                        "channel": "GKQL2PJS1",
+                        "attachments": [
+                            {
+                                "fallback": "The request was approved."
+                            }
+                        ]
+                    }
+                ')
+            ]
+        );
+        
+        sleep(1);
+        
+        $this->client->post(
+            $this->url .'TCDTENTL7/BDGR52M6F/ZYKHb8pACSY3D1bVxu4PzNKw',
+            [
+                'headers' => ['Content-Type' => 'application/json'],
+                'json' => json_decode('
+                    {
+                        "text": "\n\nRequested *Leave* from <@'. $approve->name .'>\n *Was acknowledge* by <@'. $id .'>\n",
+                        "channel": "C061EG9SL",
+                        "attachments": [
+                            {
+                                "fallback": "The request was approved!"
+                            }
+                        ]
+                    }
+                ')
+            ]
+        );
+    }
+
+    public function sendAcknowledgeOutRequest($id, $approve)
+    {
+        $this->client->post(
+            $this->url .'TCDTENTL7/BKV3W22QM/7objnmxoEWQxX2RZ8ewLvaKA',
+            [
+                'headers' => ['Content-Type' => 'application/json'],
+                'json' => json_decode('
+                    {
+                        "text": "\n\nRequested *Work Outside* from <@'. $approve->name .'>\n *Was acknowledge* by <@'. $id .'>\n",
+                        "channel": "GKQL2PJS1",
+                        "attachments": [
+                            {
+                                "fallback": "The request was approved."
+                            }
+                        ]
+                    }
+                ')
+            ]
+        );
+        
+        sleep(1);
+        
+        $this->client->post(
+            $this->url .'TCDTENTL7/BDGR52M6F/ZYKHb8pACSY3D1bVxu4PzNKw',
+            [
+                'headers' => ['Content-Type' => 'application/json'],
+                'json' => json_decode('
+                    {
+                        "text": "\n\nRequested *Work Outside* from <@'. $approve->name .'>\n *Was acknowledge* by <@'. $id .'>\n",
                         "channel": "C061EG9SL",
                         "attachments": [
                             {
@@ -876,6 +987,13 @@ class ApprovalController extends Controller
                                         "text": "Approve",
                                         "type": "button",
                                         "value": "approveOut%'. $request->username .'%'. $create->id .'",
+                                        "style": "primary"
+                                    },
+                                    {
+                                        "name": "acknowledge",
+                                        "text": "Acknowledge",
+                                        "type": "button",
+                                        "value": "acknowledgeOut%'. $request->name .'%'. $create->id .'",
                                         "style": "primary"
                                     },
                                     {
