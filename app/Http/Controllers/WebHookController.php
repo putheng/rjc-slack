@@ -32,7 +32,8 @@ class WebHookController extends Controller
 			'pha.nary@renet.com.kh',
 			'preap.oudom@renet.com.kh',
 			'leav.dara@renet.com.kh',
-			'miyaji.naoki@renet.jp'
+			'miyaji.naoki@renet.jp',
+			'naymeng07@gmail.com'
 		];
 
 		$data = [
