@@ -16,24 +16,24 @@ class WebHookController extends Controller
 		$to_name = 'Putheng';
 		$to_email = [
 			'putheng@renet.com.kh',
-			'chhoeng.sreyleak@renet.com.kh',
-			'shizuka.aoki@renet.com.kh',
-			'hirose.daichi@renet.jp',
-			'masahiro.sunaga@renet.com.kh',
-			'niioka.naoki@renet.jp',
-			'kumai.yuichi@renet.jp',
-			'yamane.hideyuki@renet.jp',
-			'kuch.kimlek@renet.com.kh',
-			'masamichi.nasuno@renet.com.kh',
-			'kuroda@renet.jp',
-			'murai.katsushi@renet.jp',
-			'masuda.takayuki@renet.jp',
-			'yamaguchi.kaori@renet.jp',
-			'pha.nary@renet.com.kh',
-			'preap.oudom@renet.com.kh',
-			'leav.dara@renet.com.kh',
-			'miyaji.naoki@renet.jp',
-			'naymeng07@gmail.com'
+			// 'chhoeng.sreyleak@renet.com.kh',
+			// 'shizuka.aoki@renet.com.kh',
+			// 'hirose.daichi@renet.jp',
+			// 'masahiro.sunaga@renet.com.kh',
+			// 'niioka.naoki@renet.jp',
+			// 'kumai.yuichi@renet.jp',
+			// 'yamane.hideyuki@renet.jp',
+			// 'kuch.kimlek@renet.com.kh',
+			// 'masamichi.nasuno@renet.com.kh',
+			// 'kuroda@renet.jp',
+			// 'murai.katsushi@renet.jp',
+			// 'masuda.takayuki@renet.jp',
+			// 'yamaguchi.kaori@renet.jp',
+			// 'pha.nary@renet.com.kh',
+			// 'preap.oudom@renet.com.kh',
+			// 'leav.dara@renet.com.kh',
+			// 'miyaji.naoki@renet.jp',
+			// 'naymeng07@gmail.com'
 		];
 
 		$data = [
