@@ -42,6 +42,8 @@ class WebHookController extends Controller
 			'sa1' => $request->sa1,
 			'sa2' => $request->sa2,
 			'sa3' => $request->sa3,
+			'wing' => $request->wing,
+			'aba' => $request->aba,
 			'mhr' => $mhr,
 		];
 		    

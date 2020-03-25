@@ -286,6 +286,14 @@ border-color: #34495e !important; } }
 				<td style="width: 40%"><h4>Saving Account:<br> 0001-02977406-6-3</h4></td>
 				<td>USD <strong>{{ $sa3 }}</strong></td>
 			</tr>
+			<tr>
+				<td style="width: 40%"><h4>Wing Account:<br> 1777756</h4></td>
+				<td>USD <strong>{{ $wing }}</strong></td>
+			</tr>
+			<tr>
+				<td style="width: 40%"><h4>ABA Account:<br> 1326612</h4></td>
+				<td>USD <strong>{{ $aba }}</strong></td>
+			</tr>
 
 
 			<tr>
